@@ -351,5 +351,15 @@ async def chatbot(websocket: WebSocket):
         # Enviar la respuesta del bot al frontend
         await websocket.send_json(context)
 
+@app.post("/post-audio-search-escrito")
+async def post_audio(data:dict):
+
+    message_decoded = data["question"]
+    print(message_decoded)
+
+    response = search(message_decoded)
+
+    return {"response": response}
+
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
