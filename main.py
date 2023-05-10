@@ -41,8 +41,8 @@ origins = [
     "http://localhost:4173",
     "http://localhost:3000",
     "https://sam-frontend-beta1-0.vercel.app",
-    "https://sam-frontend-beta1-0-rcsc1.vercel.app/",
-    "https://sam-frontend-beta1-0-git-main-rcsc1.vercel.app/"
+    "https://sam-frontend-beta1-0-rcsc1.vercel.app",
+    "https://sam-frontend-beta1-0-git-main-rcsc1.vercel.app"
 ]
 
 
