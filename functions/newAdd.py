@@ -10,10 +10,11 @@ from langchain.utilities.zapier import ZapierNLAWrapper
 # para googlesearch
 from langchain.agents import tools
 from langchain.agents import load_tools
-from langchain.agents import initialize_agent
+from langchain.agents import initialize_agent,Tool
 #para wikipedia
 from langchain.agents import AgentType,load_tools
 from langchain.utilities import WikipediaAPIWrapper
+from langchain.tools import  DuckDuckGoSearchTool ,BaseTool
 
 #Para resumen de youtube
 from langchain.document_loaders import  YoutubeLoader
@@ -70,8 +71,15 @@ def search(message_decoded):
     with get_openai_callback() as cb:
         ssl._create_default_https_context = ssl._create_stdlib_context
         llm = OpenAI(temperature=0,openai_api_key=openai.api_key)
-        tool_names = ["serpapi","wolfram-alpha","wikipedia"]
-        tools = load_tools(tool_names,serpapi_api_key=SERPAPI_API_KEY,wolfram_alpha_appid=WOLFRAM_ALPHA_APPID,wikipedia= wikipedia)
+        tool_names = ["serpapi","wolfram-alpha","wikipedia","llm-math"]
+        tools = load_tools(tool_names,serpapi_api_key=SERPAPI_API_KEY,wolfram_alpha_appid=WOLFRAM_ALPHA_APPID,wikipedia= wikipedia,llm=llm)
+        search_duck = DuckDuckGoSearchTool()
+        duckduckgotool_duck = [Tool(
+                name='DuckDuckGo Search',
+                func =search_duck.run,
+                description="useful for when you need to do a search on the internet to find information that another tool cant find.Be specific with your input"
+        )]
+        tools.extend(duckduckgotool_duck)
         agent = initialize_agent(tools, llm ,agent="zero-shot-react-description",verbose=True)
         response = agent.run(message_decoded)
         print(f"Total Tokens: {cb.total_tokens}")
