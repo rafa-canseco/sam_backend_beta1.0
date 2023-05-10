@@ -11,6 +11,7 @@ from decouple import config
 import openai
 from typing import Dict
 import json
+import uvicorn
 
 
 
@@ -39,7 +40,7 @@ origins = [
     "http://localhost:5174",
     "http://localhost:4173",
     "http://localhost:3000",
-    "https://sam-frontend-ysd3.vercel.app"
+    "https://sam-frontend-beta1-0.vercel.app/"
 ]
 
 
@@ -347,3 +348,6 @@ async def chatbot(websocket: WebSocket):
             
         # Enviar la respuesta del bot al frontend
         await websocket.send_json(context)
+
+if __name__ == "__main__":
+  uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
