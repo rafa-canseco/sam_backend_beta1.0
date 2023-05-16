@@ -261,6 +261,7 @@ async def wallet_tx(requestData: dict):
 
 @app.websocket("/botchat")
 async def chatbot(websocket: WebSocket):
+    print("recibido websocket")
     await websocket.accept()
     context = []
     prompt = ""
