@@ -20,7 +20,7 @@ def convert_text_to_speech(message):
 
     #Define voice
     voice_rachel = "21m00Tcm4TlvDq8ikWAM"
-    voice_antoni = "TxGEqnHWrfWFTfGW9XjX"
+    voice_antoni = "oUciFfPUJCaDqHitPLu5"
 
         #leer el archivo
     with open("data.json") as f:
@@ -66,7 +66,7 @@ def convert_text_to_speech_single(message):
 
     #Define voice
     voice_rachel = "21m00Tcm4TlvDq8ikWAM"
-    voice_antoni = "TxGEqnHWrfWFTfGW9XjX"
+    voice_antoni = "oUciFfPUJCaDqHitPLu5"
 
  
     #asignar variable
