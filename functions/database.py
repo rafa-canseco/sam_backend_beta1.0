@@ -98,7 +98,7 @@ def get_recent_messages_simple():
 
   
   learn_instruction = {"role": "system", 
-                       "content": "Keep your answers under 30 words"}
+                       "content": " Keep your answers under 30 words"}
   
   # Initialize messages
   messages = []

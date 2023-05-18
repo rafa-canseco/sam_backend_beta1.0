@@ -111,6 +111,8 @@ def youtube_resume(url):
         print(f"Total Cost (USD): ${cb.total_cost}")
         return resume
     
+
+    
 # resumir una liga de youtube
 def url_resume(url):
     with get_openai_callback() as cb:
@@ -131,6 +133,58 @@ def url_resume(url):
         print(f"Successful Requests: {cb.successful_requests}")
         print(f"Total Cost (USD): ${cb.total_cost}")
         return resume
+    
+def preguntar_url(url,question):
+    with get_openai_callback() as cb:
+        loader = WebBaseLoader(url)
+        result = loader.load()
+        llm=OpenAI(temperature=0,openai_api_key=openai.api_key)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=100)
+        texts = text_splitter.split_documents(result)
+         #Seleccionar los embedings
+        embeddings = OpenAIEmbeddings()
+        #crear un vectorstore para usarlo de indice
+        db=Chroma.from_documents(texts,embeddings)
+        #revela el index en una interfaz a regresar
+        retriever = db.as_retriever(search_type="similarity",search_kwargs={"k":2})
+        #crea una cadena para responder mensajes
+        qa = RetrievalQA.from_chain_type(llm=OpenAI(temperature=0),chain_type="stuff",retriever=retriever,return_source_documents=True)
+        query=question
+        result= qa({"query":query})
+        print(result)
+        print(f"Total Tokens: {cb.total_tokens}")
+        print(f"Prompt Tokens: {cb.prompt_tokens}")
+        print(f"Completion Tokens: {cb.completion_tokens}")
+        print(f"Successful Requests: {cb.successful_requests}")
+        print(f"Total Cost (USD): ${cb.total_cost}")
+        return result
+
+def preguntar_youtube(url,question):
+    with get_openai_callback() as cb:
+        ssl._create_default_https_context = ssl._create_stdlib_context
+        loader = YoutubeLoader.from_youtube_url(url)
+        result = loader.load()
+        llm=OpenAI(temperature=0,openai_api_key=openai.api_key)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
+        texts = text_splitter.split_documents(result)
+         #Seleccionar los embedings
+        embeddings = OpenAIEmbeddings()
+        #crear un vectorstore para usarlo de indice
+        db=Chroma.from_documents(texts,embeddings)
+        #revela el index en una interfaz a regresar
+        retriever = db.as_retriever(search_type="similarity",search_kwargs={"k":2})
+        #crea una cadena para responder mensajes
+        qa = RetrievalQA.from_chain_type(llm=OpenAI(temperature=0),chain_type="stuff",retriever=retriever,return_source_documents=True)
+        query=question
+        result= qa({"query":query})
+        print(result)
+        print(f"Total Tokens: {cb.total_tokens}")
+        print(f"Prompt Tokens: {cb.prompt_tokens}")
+        print(f"Completion Tokens: {cb.completion_tokens}")
+        print(f"Successful Requests: {cb.successful_requests}")
+        print(f"Total Cost (USD): ${cb.total_cost}")
+        return result
+
 
 
 # leer un pdf

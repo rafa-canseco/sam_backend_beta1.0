@@ -20,7 +20,7 @@ import uvicorn
 from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single
 from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple
 from functions.database import store_messages, reset_messages, store_messages_simple
-from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume
+from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube
 from functions.completion import get_completion_from_messages
 
 
@@ -162,10 +162,24 @@ async def YT_RESUME(data: dict):
     response = youtube_resume(url)
     return {"response": response}
 
+@app.post("/ask_youtube")
+async def Ask_pdf(data: dict):
+    url = data["url"]
+    question = data["question"]
+    response = preguntar_youtube(url,question)
+    return {"response": response}
+
 @app.post("/urlResponse")
 async def URL_RESUME(data: dict):
     url = data["url"]
     response = url_resume(url)
+    return {"response": response}
+
+@app.post("/ask_url")
+async def Ask_pdf(data: dict):
+    url = data["url"]
+    question = data["question"]
+    response = preguntar_url(url,question)
     return {"response": response}
 
 #Buscar en un pdf
