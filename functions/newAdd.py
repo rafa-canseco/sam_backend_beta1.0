@@ -14,7 +14,7 @@ from langchain.agents import initialize_agent,Tool
 #para wikipedia
 from langchain.agents import AgentType,load_tools
 from langchain.utilities import WikipediaAPIWrapper
-from langchain.tools import  DuckDuckGoSearchTool ,BaseTool
+from langchain.tools import  DuckDuckGoSearchRun ,BaseTool
 
 #Para resumen de youtube
 from langchain.document_loaders import  YoutubeLoader
@@ -73,7 +73,7 @@ def search(message_decoded):
         llm = OpenAI(temperature=0,openai_api_key=openai.api_key)
         tool_names = ["serpapi","wolfram-alpha","wikipedia","llm-math"]
         tools = load_tools(tool_names,serpapi_api_key=SERPAPI_API_KEY,wolfram_alpha_appid=WOLFRAM_ALPHA_APPID,wikipedia= wikipedia,llm=llm)
-        search_duck = DuckDuckGoSearchTool()
+        search_duck = DuckDuckGoSearchRun()
         duckduckgotool_duck = [Tool(
                 name='DuckDuckGo Search',
                 func =search_duck.run,
@@ -556,3 +556,139 @@ def blockchain_tx(data):
                 print(receipt)
                 print("envio realizado")
                 return receipt
+            
+from langchain.document_loaders import ToMarkdownLoader
+import os
+from firebase_admin import credentials
+from firebase_admin import storage
+import openai
+from dotenv import load_dotenv
+from llama_index import GPTVectorStoreIndex,SimpleDirectoryReader
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+            
+def load_url(liga, user):
+    api_key = os.getenv("api_key_2markdown")
+    storage_client = storage.bucket("samai-b9f36.appspot.com")
+
+    loader = ToMarkdownLoader(api_key=api_key, url=liga)
+    docs = loader.load()
+    if docs:
+        content = docs[0].page_content
+        carpeta_destino = "news_single"
+        nombre_archivo = "archivo.txt"
+        ruta_destino = f"{user}/{carpeta_destino}/{nombre_archivo}"
+
+        carpeta_ref = storage_client.blob(f"{user}/{carpeta_destino}")
+        if not carpeta_ref.exists():
+            carpeta_ref.upload_from_string("")
+
+        archivo_ref = storage_client.blob(ruta_destino)
+        archivo_ref.upload_from_string(content)
+        print("lectura terminada")
+
+    prefix = f"{user}/news_single/"
+
+    local_folder = "./news_single"
+    os.makedirs(local_folder,exist_ok=True)
+
+    blobs = storage_client.list_blobs(prefix=prefix)
+
+    for blob in blobs:
+        nombre_archivo =blob.name.split("/")[-1]
+
+        archivo_local = os.path.join(local_folder,nombre_archivo)
+        blob.download_to_filename(archivo_local)
+
+
+    documents = SimpleDirectoryReader('news_single').load_data()
+    index = GPTVectorStoreIndex.from_documents(documents)
+    print(index)
+    index.storage_context.persist()
+    # Ruta local de la carpeta "storage"
+    ruta_carpeta_local = "storage"
+
+    # Ruta de la carpeta en Firebase Storage
+    ruta_carpeta_destino = f"{user}/storage_single"
+
+    # Verificar si la carpeta existe en Firebase Storage
+    carpeta_ref = storage_client.blob(ruta_carpeta_destino)
+    if not carpeta_ref.exists():
+        # Crear la carpeta si no existe
+        carpeta_ref.upload_from_string("")
+
+    # Subir la carpeta y sus archivos a Firebase Storage
+    for root, dirs, files in os.walk(ruta_carpeta_local):
+        for file in files:
+            ruta_archivo_local = os.path.join(root, file)
+            ruta_archivo_destino = os.path.join(ruta_carpeta_destino, file)
+            archivo_ref = storage_client.blob(ruta_archivo_destino)
+            archivo_ref.upload_from_filename(ruta_archivo_local)
+    print("storage terminado")
+
+import os
+from llama_index import StorageContext, load_index_from_storage
+from dotenv import load_dotenv
+import openai
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import storage
+
+
+
+def pregunta_url_resumen(user):
+    load_dotenv()
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    storage_client = storage.bucket("samai-b9f36.appspot.com")
+
+    user = user
+    prefix = f"{user}/storage_single/"
+
+    local_folder = "./storage"
+    os.makedirs(local_folder, exist_ok=True)
+
+    blobs = storage_client.list_blobs(prefix=prefix)
+
+    for blob in blobs:
+        nombre_archivo = blob.name.split("/")[-1]
+        archivo_local = os.path.join(local_folder, nombre_archivo)
+        blob.download_to_filename(archivo_local)
+
+    storage_context = StorageContext.from_defaults(persist_dir="./storage")
+    index = load_index_from_storage(storage_context)
+
+    query_engine = index.as_query_engine()
+    x = "Escribe un resumen general"
+    response = query_engine.query(x)
+    print(response)
+    return response
+
+def pregunta_url_abierta(user,question):
+    load_dotenv()
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    storage_client = storage.bucket("samai-b9f36.appspot.com")
+
+    user = user
+    prefix = f"{user}/storage_single/"
+
+    local_folder = "./storage"
+    os.makedirs(local_folder, exist_ok=True)
+
+    blobs = storage_client.list_blobs(prefix=prefix)
+
+    for blob in blobs:
+        nombre_archivo = blob.name.split("/")[-1]
+        archivo_local = os.path.join(local_folder, nombre_archivo)
+        blob.download_to_filename(archivo_local)
+
+    storage_context = StorageContext.from_defaults(persist_dir="./storage")
+    index = load_index_from_storage(storage_context)
+
+    query_engine = index.as_query_engine()
+    x = question
+    response = query_engine.query(x)
+    print(response)
+    return response
+
+

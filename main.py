@@ -20,14 +20,19 @@ import uvicorn
 from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single
 from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple
 from functions.database import store_messages, reset_messages, store_messages_simple
-from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube
+from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
+from firebase_admin import credentials,storage
+import firebase_admin
 
 
 
 # Get Environment Vars
 openai.organization = config("OPEN_AI_ORG")
 openai.api_key = config("OPEN_AI_KEY")
+
+cred = credentials.Certificate("samai-b9f36-firebase-adminsdk-4lk6x-ee898f95b0.json")
+firebase_admin.initialize_app(cred)
 
 
 # Initiate App
@@ -163,7 +168,7 @@ async def YT_RESUME(data: dict):
     return {"response": response}
 
 @app.post("/ask_youtube")
-async def Ask_pdf(data: dict):
+async def Ask_youtube(data: dict):
     url = data["url"]
     question = data["question"]
     response = preguntar_youtube(url,question)
@@ -176,7 +181,7 @@ async def URL_RESUME(data: dict):
     return {"response": response}
 
 @app.post("/ask_url")
-async def Ask_pdf(data: dict):
+async def Ask_url(data: dict):
     url = data["url"]
     question = data["question"]
     response = preguntar_url(url,question)
@@ -375,6 +380,32 @@ async def post_audio(data:dict):
     response = search(message_decoded)
 
     return {"response": response}
+
+@app.post("/single_url_llama")
+async def url(data:dict):
+
+    liga = data["url"] 
+    user = data["user"]
+    load_url(liga=liga,user=user)
+
+    return {"set"}
+
+@app.post("/resumen_global_single")
+async def url_resumen(data:dict):
+    print(data)
+    user = data["user"]
+    response = pregunta_url_resumen(user=user)
+
+    return {"response":response}
+
+@app.post("/pregunta_single")
+async def url_abierta(data:dict):
+    print(data)
+    user = data["user"]
+    question = data["question"]
+    response = pregunta_url_abierta(user=user,question=question)
+
+    return {"response":response}
 
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
