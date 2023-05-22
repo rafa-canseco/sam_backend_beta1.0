@@ -1,0 +1,19 @@
+Optimism, a “ [layer 2](https://www.coindesk.com/learn/what-are-layer-2s-and-why-are-they-important/)” scaling solution for the Ethereum blockchain, [set June 6](https://twitter.com/optimismfnd/status/1658202279147601921?s=46&t=LcdHxOgtVViJTm8qmgGf-g) as the date for its Bedrock hard fork.
+
+The upgrade is expected to take two to four hours, starting at 16:00 coordinated universal time (UTC), [according](https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5) to the Optimism team. Deposits and withdrawals will be unavailable during the period.
+
+The Optimism Foundation [proposed the protocol upgrade](https://www.coindesk.com/markets/2023/02/02/op-token-surges-25-as-optimism-foundation-proposes-bedrock-upgrade/) in February, and it’s been [described](https://oplabs.notion.site/Bedrock-Mission-Control-EXTERNAL-fca344b1f799447cb1bcf3aae62157c5) as “the largest upgrade ever released on OP mainnet,” and a “complete re-write.”
+
+According to that [original proposal](https://gov.optimism.io/t/draft-upgrade-proposal-bedrock/5014), the new upgrade would offer “a new level of modularity, simplicity and Ethereum equivalence for layer 2 solutions, providing unprecedented performance and functionality.”
+
+There’s an intense competition underway to win market share as a top Ethereum scaling solution, with Arbitrum as the industry leader, followed by Optimism and several rollups using zero-knowledge cryptography, according to the website [L2Beat](https://l2beat.com/scaling/tvl). In the past few months, Optimism has scored [big wins with both the crypto exchange](https://www.coindesk.com/tech/2023/02/23/coinbase-launches-layer-2-blockchain-base-to-provide-onramp-for-ethereum-solana-and-others/) Coinbase and venture capital firm Andreessen Horowitz (known as a16z) [revealing efforts to build](https://www.coindesk.com/tech/2023/04/19/a16z-says-its-working-on-an-optimism-based-rollup-called-magi/) on the network.
+
+Optimism’s [OP](https://www.coindesk.com/price/optimism/) token has rallied, gaining 77% so far in 2023 versus a 52% rise for ether ( [ETH](https://www.coindesk.com/price/ethereum/)), the native cryptocurrency of the Ethereum blockchain.
+
+According to the crypto analysis firm Messari, the Optimism community approved the upgrade in April with 99.87% of votes in favor.
+
+The upgrade “implements a modular architecture that separates the OP stack into consensus, execution and settlement components, which will allow Ethereum execution clients to be converted into Optimism execution clients,” Messari wrote.
+
+Another new feature with Bedrock is a two-phase withdrawal process for enhanced bridge security, according to Messari.
+
+Edited by Bradley Keoun.

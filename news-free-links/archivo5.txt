@@ -1,0 +1,13 @@
+Lido upgraded to its second version (“ [V2](https://blog.lido.fi/introducing-lido-v2/)”) on Ethereum later Monday, sending LDO, its native governance token, up 10% to $2.15 in the past 24 hours, [CoinDesk data](https://www.coindesk.com/price/lido-dao/) shows.
+
+Users can now unstake their stETH and receive ETH at a 1:1 ratio, which takes about a day for most users if the exit queue on the Beacon chain is empty, according to a [blog post](https://blog.lido.fi/just-how-fast-are-ethereum-withdrawals-using-the-lido-protocol/). The maximum time that it might take for a validator to exit and withdraw from the staking queue stands at 5 days and 14 hours, data from network explorer [Rated](https://www.rated.network/overview?network=mainnet&timeWindow=1d&rewardsMetric=average).
+
+Users will also [receive an NFT](https://www.coindesk.com/tech/2023/03/28/ethereum-staking-provider-lido-to-incorporate-nfts-into-unstaking-process/) as an intermediate step between requesting to unstake and claiming one’s ETH. When a user requests to unstake, they will receive a Lido-issued NFT representing their withdrawal request. Afterwards, the user uses the NFT to claim their ETH rewards and the NFT is burned. Even though the NFT could be listed for trading on Blur and Opensea, according to Lido marketing lead Kasper Rasmussen, “secondary market activity does not play a role in the withdrawal process.”
+
+Commanding about nearly 80% market share of liquid staking derivatives on Ethereum, per blockchain analytics firm [Nansen](https://query.nansen.ai/public/dashboards/Hk93n66vsO0uvycfui8ypF2xcpNhpraxfwX5AWZJ?utm_campaign=shanghaiupgrade_12apr23&utm_medium=social&utm_source=twitter), Lido has already withdrawn more than 278,000 ETH at press time, making the staking giant the fourth largest entity by ETH withdrawals, trailing crypto exchanges - Kraken, Coinbase and Binance.
+
+Lido said the new V2 received [nine total audits](https://t.co/rLrf4lHLTS) from several firms, such as Statemind and MixBytes. All have been completed except for one by Oxorio which is expected to finish at the end of May.
+
+The change to v2 is important because it is “derisking the entire Lido tech stack,” said Vice President of Stanford Blockchain Club, who goes by the screen name Kydo. “Today’s events show you can both enter and exit the staking house, which has to derisk the staking experience in some way or another,” Rasmussen added.
+
+Edited by Bradley Keoun.

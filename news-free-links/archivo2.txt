@@ -1,0 +1,28 @@
+In any industry, standardization drives scale. [Ethereum’s transition last year to proof of stake (PoS)](https://www.coindesk.com/tech/2022/09/15/the-ethereum-merge-is-done-did-it-work/) unlocked an exciting opportunity to create a benchmark that tracks staking yields, which could serve as the basis for financial products that track this rate.
+
+Under PoS, Ethereum block validators, also known as stakers, lock up a portion of their ether (ETH) as collateral to participate in the network's consensus mechanism. In return for their participation, stakers earn rewards in the form of new protocol emissions and transaction fees.
+
+To fully achieve the promise of this innovation, a standardized benchmark can be produced by capturing and publishing the daily, annualized mean of on-chain rewards across all validators. It would be difficult to manipulate because of the inherent transparency, replicability and immutability of the blockchain – in contrast, say, to the infamously manipulated [LIBOR](https://www.investopedia.com/terms/l/libor.asp) benchmark that powered traditional finance (TradFi) credit markets for years.
+
+Based on a preliminary analysis of how such a benchmark would behave,
+
+average protocol emissions appear to trend downward as new validators come online. But it’s clear that the rate skyrockets with material increases to network activity resulting from a flight to safety (FTX’s insolvency) or new network activity (the recent PEPE meme coin frenzy).
+
+A standardized ETH staking rate will provide immediate utility as:
+
+1. a benchmark
+
+2. a tool for risk transfer
+
+
+As a benchmark, an ETH staking rate would work similarly to traditional instruments like overnight index swap (OIS) rates – delivering reference rate utility to market participants. From new crypto-native [Sharpe ratios](https://www.investopedia.com/terms/s/sharperatio.asp#:~:text=Michela%20Buttignol-,What%20Is%20the%20Sharpe%20Ratio%3F,risk%2C%20rather%20than%20investing%20skill.) to pricing benchmarks, a standardized ETH staking rate can be used to discount future cash flows – letting investors better assess the present value of their investments in the Ethereum ecosystem.
+
+![CoinDesk - Unknown](https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/P5JUUM5CEVA4LNYEYOUTB7ZIL4.png)(CoinDesk)
+
+A standard staking rate would form the underpinning of an important new tool for risk transfer. Interest among natural hedgers, especially validators, and prospective speculators will result in the inevitable formation of a forward curve resulting in swaps, futures and other derivatives. Basis swaps with traditional rates or cross-currency swaps with fiat currencies could provide an interesting new crypto rate onramp, while also allowing structured products to proliferate.
+
+A new staking rate could unlock the next generation of financial products while serving as a building block of Ethereum’s monetary policy. As such, CESR represents an important development in the evolution of the Ethereum ecosystem and a new frontier for innovation in the world of decentralized finance and beyond.
+
+_NOTE: CoinFund_ [_recently announced_](https://www.coindesk.com/markets/2023/04/27/coindesk-indices-crypto-asset-manager-coinfund-launch-an-ethereum-staking-benchmark-rate/) _that it had partnered with CoinDesk Indices to launch CESR, a composite ether staking rate._
+
+Edited by Nick Baker.

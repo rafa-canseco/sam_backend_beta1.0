@@ -1,0 +1,59 @@
+The Ethereum blockchain suffered [two brief episodes](https://www.coindesk.com/tech/2023/05/12/ethereum-resumes-finalizing-blocks-after-second-performance-hiccup-in-24-hours/) last week where blocks weren’t finalizing – an unwanted bout of instability that presents risks to the blockchain’s security but isn’t considered dire.
+
+There was a lot of confusion in terms of what the delay in “finality” meant for the functionality of the blockchain, prompting discussions about security concerns. So, it bears unpacking a bit.
+
+_You’re reading_ [_The Protocol_](https://www.coindesk.com/newsletters/the-protocol/) _, our weekly newsletter exploring the tech behind crypto, one block at a time._ [_Sign up here_](https://www.coindesk.com/newsletters/the-protocol/) _to get it in your inbox every Wednesday._
+
+The cause of the temporary loss of block finality remains under investigation, though Prysm, a provider of client software used to run a node on the blockchain, just [released a new version](https://github.com/prysmaticlabs/prysm/releases/tag/v4.0.4), describing it as “the first full release following the recent mainnet issues,” with “critical fixes.”
+
+When data blocks don’t finalize, there isn’t supposed to be any downtime or difference in end-user experience. That said, a loss in finality can lead to some security issues like [reorgs](https://www.coindesk.com/video/what-ethereum-beacon-chains-reorg-means-for-users-and-developers/embed/).
+
+Reorgs [occur when a blockchain](https://www.alchemy.com/overviews/what-is-a-reorg) produces more than one block at the same time, usually because of a bug or an attack. This means that a validator node temporarily creates a new version of a blockchain, which makes it difficult to properly verify if a transaction has been successful, while the old version of the blockchain continues to exist.
+
+However, snowball effects from this incident led to some end-user jolts. DYdX, a leading crypto exchange platform, had to [temporarily pause deposits](https://status.dydx.exchange/incidents/p1p39vxv6z6z) because of one of last week’s incidents, and Polygon’s zkEVM also experienced some delays with deposits.
+
+![CoinDesk - Unknown](https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/OADAYZUWDBB6XGZXJKVQNYWHGU.png)The chart shows a spike in missed validator slots last week as the Ethereum blockchain temporarily stopped finalizing transactions. (Glassnode)
+
+## So how does finalization work?
+
+In a [proof-of-stake](https://www.coindesk.com/learn/what-is-proof-of-stake/) blockchain like Ethereum’s, validators first have to propose a block that contains transactions. Once those are proposed, other validators have to sign off on the block to permanently add it to the blockchain, which takes about 15 minutes. Once it is approved, or “attested,” by two-thirds of validators, the block eventually becomes finalized.
+
+Thus, [finality is the point](https://www.coindesk.com/learn/top-questions-about-proof-of-stake-and-staking-answered/) where transactions on a blockchain are considered immutable. Finality is supposed to guarantee that transactions within a block cannot be altered.
+
+If finality cannot be guaranteed, the blockchain enters an emergency state called the " [inactivity leak](https://eth2book.info/altair/part2/incentives/inactivity/)," where validators receive penalties for not reaching finalization. When the state is triggered, it acts as a way to incentive the blockchain to start finalizing again. The incident last week triggered Ethereum's first-ever inactivity leak.
+
+The Ethereum community has acknowledged that the current timeframe for blocks to be finalized is too long.
+
+“Having a delay between a block's proposal and finalization also creates an opportunity for short reorgs that an attacker could use to censor certain blocks or extract [MEV](https://www.coindesk.com/learn/what-is-mev-aka-maximal-extractable-value/),” the Ethereum website shared [in a blog](https://ethereum.org/de/roadmap/single-slot-finality/).
+
+Ethereum co-founder Vitalik Buterin was [writing about finality seven years ago](https://blog.ethereum.org/2016/05/09/on-settlement-finality), an indication of just how important an issue it is.
+
+When the [first loss of finality occurred on](https://www.coindesk.com/tech/2023/05/11/ethereum-mainnet-was-unable-to-fully-finalize-transactions-for-25-minutes/) May 11, developers immediately shared it over Twitter, saying they were going to deploy extra help to figure out what was going on. After 25 minutes, the issue seemed to have been resolved and the chain resumed finalizing.
+
+Roughly 24 hours later, [the chain stopped finalizing again for about an hour](https://www.coindesk.com/tech/2023/05/12/ethereum-resumes-finalizing-blocks-after-second-performance-hiccup-in-24-hours/), which caused outages for some infrastructure providers.
+
+In the past, finalization [has temporarily stopped because of bugs](https://www.coindesk.com/tech/2023/03/14/staked-eth-withdrawals-being-processed-on-ethereum-goerli-testnet-ahead-of-shanghai-fork/) in client software used to run the blockchain. Ethereum has multiple clients in the event that there is a flaw or glitch in the software, so there are other options, and the activity on the blockchain can keep running.
+
+## How did this affect the applications?
+
+Tim Beiko, protocol support lead at the Ethereum Foundation, told CoinDesk the incident is “definitely significant, but it's not something where Ethereum’s security or soundness is at risk or compromised.”
+
+“Within minutes, things were corrected and within like a day or two clients had software patches to make sure that this specific case did not come up again,” he said.
+
+The developers are still looking to understand what caused the blockchain to stop finalizing, and are expected to discuss a post-mortem report in their upcoming Consensus Layer call.
+
+Beiko told CoinDesk that the incident did not get to a point “where we began to test the very extreme fallbacks in the protocol to deal with this stuff.”
+
+The incidents did affect several applications that run on top of the Ethereum blockchain.
+
+Jordi Baylina, technical lead at Polygon, said that the finality stoppage meant that deposits onto the Polygon zkEVM chain were delayed, and since the chain relied on Infura, an infrastructure provider which also temporarily had an outage as a result of the loss in finality, issues for individuals using the zkEVM compounded.
+
+“You need to wait for the finality in layer 1 deposit to be available in layer 2,” Balyina said. “So until you don't have finality, you cannot use \[the chain\] or you have the risk of double spending in layer 2.”
+
+DYdX paused its [deposits temporarily](https://status.dydx.exchange/incidents/p1p39vxv6z6z) today due to the lack of Ethereum finality and said it was “continuing to monitor and investigate this issue.”
+
+Despite this, Ethereum developers emphasize that the network did not go down.
+
+“Today’s incident has been a great fire drill. It looks like two or three issues came together (as is often the case). The chain recovered gracefully and we discovered a few other issues that could be improved to make Ethereum more resilient,” [tweeted](https://twitter.com/vdWijden/status/1656790867506520064) Marius van der Wijden, a developer at the Ethereum Foundation.
+
+Edited by Bradley Keoun.
