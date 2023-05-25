@@ -673,7 +673,11 @@ def pregunta_url_resumen(user):
     index = load_index_from_storage(storage_context)
 
     query_engine = index.as_query_engine()
-    x = "Escribe un resumen general"
+    x =  """Escribe un resumen usando Bullet Points.
+        -Bullet point format:
+            -Separate each bullet point with a new line.
+            -Each bullet point should be concise.
+        """
     response = query_engine.query(x)
     print(response)
     return response
