@@ -571,7 +571,7 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    webhook_url = f"{ngrok_url}/webhook"
+    webhook_url = "https://readymad3.com/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
     
