@@ -17,6 +17,8 @@ from telegram.ext import Updater,CallbackContext,MessageHandler,filters
 import requests
 from json import loads
 from pydub import AudioSegment
+import time
+import requests
 
 
 
@@ -571,12 +573,25 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
+    # webhook_url = f"{ngrok_url}/webhook"
     webhook_url = "https://readymad3.com/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
     
+    if response.status_code == 429:
+        # Si se recibe el código de estado 429, esperar gradualmente y volver a intentarlo
+        wait_time = 1  # Tiempo inicial de espera en segundos
+        max_retries = 5  # Número máximo de intentos
+        retries = 0
+        
+        while response.status_code == 429 and retries < max_retries:
+            print(f"Rate limit exceeded. Waiting {wait_time} seconds before retrying...")
+            time.sleep(wait_time)
+            response = requests.post(webhook_endpoint, json={"url": webhook_url})
+            wait_time *= 2  # Duplicar el tiempo de espera en cada intento
+            retries += 1
+        
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail="Failed to set webhook")
-
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
