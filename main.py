@@ -19,6 +19,7 @@ from json import loads
 from pydub import AudioSegment
 import time
 import requests
+import shutil
 
 
 
@@ -47,6 +48,8 @@ chat_id_rafa = config("chat_id_rafa")
 authorized_users = [chat_id_rafa,chat_id_orla]
 respuesta = "texto"
 bot = Bot(token=token)
+# Obtener la ruta de FFmpeg
+ffmpeg_path = shutil.which('ffmpeg')
 
 # Initiate App
 app = FastAPI()
@@ -502,7 +505,7 @@ async def telegram_webhook(request: Request):
                     print("Archivo de audio descargado")
 
                 # Convertir audio a un formato aceptado (por ejemplo, a WAV)
-                    audio = AudioSegment.from_file("audio.oga", format="ogg")
+                    audio = AudioSegment.from_file("audio.oga", format="ogg", ffmpeg=ffmpeg_path)
                     audio.export("audio.wav", format="wav")
 
                     # Abrir y procesar el archivo de audio convertido
@@ -532,7 +535,7 @@ async def telegram_webhook(request: Request):
                         audio_file.write(audio_output)
 
                     ## Obtener la duración del audio en segundos
-                    audio = AudioSegment.from_file("audio_output.ogg")
+                    audio = AudioSegment.from_file("audio_output.ogg", ffmpeg=ffmpeg_path)
                     audio_duration_sec = len(audio) / 1000
                     print("Duración del audio:", audio_duration_sec, "segundos")
 
@@ -573,8 +576,8 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    # webhook_url = f"{ngrok_url}/webhook"
-    webhook_url = "https://readymad3.com/webhook"
+    webhook_url = f"{ngrok_url}/webhook"
+    # webhook_url = "https://readymad3.com/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
     
