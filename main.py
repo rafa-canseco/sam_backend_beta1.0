@@ -4,7 +4,7 @@
 
 
 # Main imports
-from fastapi import FastAPI, File, UploadFile, HTTPException,WebSocket
+from fastapi import FastAPI, File, UploadFile, HTTPException,WebSocket,Request
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from decouple import config
@@ -12,17 +12,21 @@ import openai
 from typing import Dict
 import json
 import uvicorn
-
+from telegram import Bot,Update
+from telegram.ext import Updater,CallbackContext,MessageHandler,filters
+import requests
+from json import loads
+from pydub import AudioSegment
 
 
 
 # Custom function imports
-from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single
-from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple
-from functions.database import store_messages, reset_messages, store_messages_simple
+from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single,convert_text_to_speech_telegram
+from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple,get_chat_response_telegram
+from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram
 from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
-from firebase_admin import credentials,storage
+from firebase_admin import credentials,storage, firestore
 import firebase_admin
 
 
@@ -34,6 +38,13 @@ openai.api_key = config("OPEN_AI_KEY")
 cred = credentials.Certificate("samai-b9f36-firebase-adminsdk-4lk6x-ee898f95b0.json")
 firebase_admin.initialize_app(cred)
 
+token= config("token")
+ngrok_url = config("ngrok_url")
+chat_id_orla = config("chat_id_orla")
+chat_id_rafa = config("chat_id_rafa")
+authorized_users = [chat_id_rafa,chat_id_orla]
+respuesta = "texto"
+bot = Bot(token=token)
 
 # Initiate App
 app = FastAPI()
@@ -60,6 +71,37 @@ app.add_middleware(
     allow_headers=["*"],
     expose_headers=["*"]
 )
+
+# Crear una referencia a la colección "usuarios"
+db = firestore.client()
+usuarios_ref = db.collection("Telegram")
+# Función para incrementar el contador de clics
+def incrementar_contador_clicks(chat_id):
+    try:
+        # Obtener referencia al documento del usuario
+        usuario_doc_ref = usuarios_ref.document(str(chat_id))
+        
+        # Obtener el snapshot del documento actual
+        usuario_doc_snapshot = usuario_doc_ref.get()
+        
+        if usuario_doc_snapshot.exists:
+            # El usuario ya existe en la base de datos, actualizar el contador
+            contador_clicks_actual = usuario_doc_snapshot.get("contadorClicks")
+            nuevo_contador_clicks = (contador_clicks_actual or 0) + 1
+            
+            # Actualizar el documento con el nuevo contador de clics
+            usuario_doc_ref.update({"contadorClicks": nuevo_contador_clicks})
+        else:
+            # El usuario no existe en la base de datos, crear un nuevo documento
+            usuario_doc_ref.set({"contadorClicks": 1})
+            
+        print("Contador de clics actualizado exitosamente")
+    except Exception as e:
+        print("Error al incrementar el contador de clics:", e)
+        # Manejar el error según sea necesario
+
+
+
 
 
 # Check health
@@ -406,6 +448,135 @@ async def url_abierta(data:dict):
     response = pregunta_url_abierta(user=user,question=question)
 
     return {"response":response}
+
+
+@app.post("/webhook")
+async def telegram_webhook(request: Request):
+
+    data = await request.json()
+
+    if "message" in data:
+        message = data["message"]
+        chat_id = message.get("chat", {}).get("id")
+        print(chat_id)
+
+        if str(chat_id)  in authorized_users:
+            if "text" in message:
+                    message_decoded = message["text"]
+                    print(message_decoded)
+
+                    # Get chat response
+                    chat_response = get_chat_response_telegram(message_decoded)
+                    print(chat_response)
+                    # Guard: Ensure output
+                    if not chat_response:
+                        raise HTTPException(status_code=400, detail="Failed chat response")
+
+                    await bot.send_message(chat_id=chat_id,text=chat_response)
+                    incrementar_contador_clicks(chat_id)
+
+                          
+            elif "voice" in message:
+                    audio_file_id = message["voice"]["file_id"]
+
+                    # Obtener la URL de descarga del archivo de audio
+                    get_path = requests.get('https://api.telegram.org/bot{}/getFile?file_id={}'.format(token, audio_file_id))
+                    json_doc = loads(get_path.text)
+                    try:
+                        file_path = json_doc['result']['file_path']
+                        print(file_path)
+                    except Exception as e:
+                        print('No se puede descargar el archivo porque su tamaño supera los 20 MB')
+                        return
+
+                    file_url = 'https://api.telegram.org/file/bot{}/{}'.format(token, file_path)
+
+                    # Descargar el archivo de audio
+                    response = requests.get(file_url)
+                    print(response)
+                    audio_data = response.content
+                    with open("audio.oga", "wb") as file:
+                        file.write(audio_data)
+                    print("Archivo de audio descargado")
+
+                # Convertir audio a un formato aceptado (por ejemplo, a WAV)
+                    audio = AudioSegment.from_file("audio.oga", format="ogg")
+                    audio.export("audio.wav", format="wav")
+
+                    # Abrir y procesar el archivo de audio convertido
+                    with open("audio.wav", "rb") as audio_file:
+                        message_decoded = convert_audio_to_text(audio_file)
+                        print(message_decoded)
+                        print("Audio recibido (estructura de voz)")
+                                # Get chat response
+                    chat_response = get_chat_response_telegram(message_decoded)
+                    print(chat_response)
+                    # Guard: Ensure output
+                    if not chat_response:
+                        raise HTTPException(status_code=400, detail="Failed chat response")
+                    print(chat_response)
+
+
+                    # Convert chat response to audio
+                    audio_output = convert_text_to_speech_telegram(chat_response)
+
+                    # Guard: Ensure output
+                    if not audio_output:
+                        raise HTTPException(status_code=400, detail="Failed audio output")
+
+                    
+                    # Guardar los bytes de audio en un archivo
+                    with open("audio_output.ogg", "wb") as audio_file:
+                        audio_file.write(audio_output)
+
+                    ## Obtener la duración del audio en segundos
+                    audio = AudioSegment.from_file("audio_output.ogg")
+                    audio_duration_sec = len(audio) / 1000
+                    print("Duración del audio:", audio_duration_sec, "segundos")
+
+                    # Enviar el audio a través de Telegram
+                    with open("audio_output.ogg", "rb") as audio_file:
+                        response = await bot.send_voice(chat_id=chat_id, voice=audio_file, duration=audio_duration_sec)
+                        incrementar_contador_clicks(chat_id)
+
+
+                    # Verificar si el mensaje de voz fue enviado correctamente
+                    if message is not None:
+                        print("Audio enviado correctamente")
+                    else:
+                        print("No se pudo enviar el audio a través de Telegram")
+
+            
+            else:
+                print("No se encuentra el campo 'message' en el objeto JSON")
+        else:
+            chat_response = "Acceso no autorizado. Contrata el servicio escribiendo a 0rland0.eth"
+
+            # Verificar si el mensaje ya ha sido enviado
+            if "message_sent" not in message:
+                await bot.send_message(chat_id=chat_id, text=chat_response)
+
+                # Actualizar el campo "message_sent" en el objeto "message"
+                message["message_sent"] = True
+                return {"message": "OK"}
+
+            else:
+                raise HTTPException(status_code=403, detail="Acceso no autorizado")
+
+    return {"message": "OK"}
+
+
+
+@app.on_event("startup")
+async def setup_webhook():
+    # Configurar el webhook con la API de Telegram
+    webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
+    webhook_url = f"{ngrok_url}/webhook"
+    response = requests.post(webhook_endpoint, json={"url": webhook_url})
+    print(response)
+    
+    if response.status_code != 200:
+        raise HTTPException(status_code=response.status_code, detail="Failed to set webhook")
 
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

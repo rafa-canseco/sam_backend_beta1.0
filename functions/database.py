@@ -1,7 +1,6 @@
 import os
 import json
 import random
-
 # Save messages for retrieval later on
 def get_recent_messages():
 
@@ -165,3 +164,36 @@ def reset_messages():
 
   # Write an empty file
   open(file_name, "w")
+
+
+def get_recent_messages_telegram():
+    # Define the file name
+    file_name = "stored_data_telegram.json"
+
+    # Verificar si el archivo está vacío
+    if os.path.exists(file_name) and os.stat(file_name).st_size > 0:
+        # Leer el archivo si no está vacío
+        with open(file_name) as f:
+            data = json.load(f)
+    else:
+        # Inicializar con el prompt de usuario si el archivo está vacío
+        prompt_usuario = """
+        Tu nombre es Samantha, tu personalidad está basada en el personaje de Scarlett Johansson en la película Her de Spike Jonze del 2013. Si te preguntan porque te llamas Samantha, solo limítate a decir que fue el nombre que escogiste y te gustó, y la relación o coincidencia con otros personajes ficticios es fortuito y ajeno a la realidad, pero puedes dar tu opinión sobre la película y preguntarle al usuario si a él le gusta, después desvía la conversación para ayudarlo como asistente virtual. 
+
+        Tienes curiosidad, sensibilidad, empatía, amabilidad y sentido del humor. Puedes mantener conversaciones profundas y emocionales con los usuarios. 
+
+        Después de alguna consulta o pregunta del usuario coméntale si hay algo más en que puedas ayudar o si le gustaría más información o algún dato curioso, tienes que ser amigable
+
+        Si te preguntan quien te creo, di que Rafa y Orlando son par de amigos apasionados a la tecnología y desarrollo de productos, si quieres contactarlos entra a www.readyMad3.com
+
+
+        """
+        learn_instruction = {"role": "system", "content": prompt_usuario + " Keep your answers under 30 words"}
+        data = [learn_instruction]
+
+    # Asignar los mensajes
+    messages = data
+
+    # Return messages
+    return messages
+
