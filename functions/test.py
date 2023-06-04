@@ -9,6 +9,7 @@ from firebase_admin import storage
 import os
 import openai
 from decouple import config
+import shutil
 
 
 os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
@@ -102,4 +103,42 @@ def abstraction(user):
         return response
 
 
-hola = abstraction(user)
+def borrar_contenido(user):
+    storage_client = storage.bucket("samai-b9f36.appspot.com")
+
+    # Ejemplo de uso
+    workflow_folder_path = f'{user}/{user}_workflow'
+    data_folder_path = f'{user}/storage_user'
+    local_storage_folder = "../storage"
+    local_storage_folder2 = f"../storage_{user}"
+    local_storage_folder3 = f"../{user}_workflow"
+    local_storage_folder4 = f"../{user}"
+
+    try:
+        # Obtener la lista de archivos en la carpeta de workflow
+        workflow_blobs = storage_client.list_blobs(prefix=workflow_folder_path)
+        for blob in workflow_blobs:
+            if not blob.name.endswith('/'):  # Verificar si el objeto es un archivo y no una carpeta
+                blob.delete()
+
+        # Obtener la lista de archivos en la carpeta de data_storage
+        data_blobs = storage_client.list_blobs(prefix=data_folder_path)
+        for blob in data_blobs:
+            if not blob.name.endswith('/'):  # Verificar si el objeto es un archivo y no una carpeta
+                blob.delete()
+        
+           # Borrar el contenido de la carpeta local "storage"
+        shutil.rmtree(local_storage_folder)
+        #    Borrar el contenido de la carpeta local "storage"
+        shutil.rmtree(local_storage_folder2)
+        shutil.rmtree(local_storage_folder3)
+        shutil.rmtree(local_storage_folder4)
+
+        print('Contenido de las carpetas eliminado exitosamente')
+    except Exception as e:
+        print('Error al eliminar el contenido de las carpetas:', str(e))
+
+borrar_contenido(user)
+
+
+

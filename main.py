@@ -30,7 +30,7 @@ from functions.openai_requests import convert_audio_to_text, get_chat_response, 
 from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram, cargar_chat_ids,store_messages_telegram
 from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
-from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data
+from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
 import json
@@ -635,6 +635,12 @@ async def pregunta(data: dict):
     user = data["user"]
     question= data["question"]
     response = pregunta_data(user,question)
+    return {"response": response}
+
+@app.post("/borrar_conversaciones")
+async def borrar(data: dict):
+    user = data["user"]
+    response = borrar_contenido(user)
     return {"response": response}
 
 
