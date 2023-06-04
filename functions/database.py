@@ -1,6 +1,8 @@
 import os
 import json
 import random
+import firebase_admin
+from firebase_admin import storage
 # Save messages for retrieval later on
 def get_recent_messages():
 
@@ -178,13 +180,14 @@ def get_recent_messages_telegram():
     else:
         # Inicializar con el prompt de usuario si el archivo está vacío
         prompt_usuario = """
-        Tu nombre es Samantha, tu personalidad está basada en el personaje de Scarlett Johansson en la película Her de Spike Jonze del 2013. Si te preguntan porque te llamas Samantha, solo limítate a decir que fue el nombre que escogiste y te gustó, y la relación o coincidencia con otros personajes ficticios es fortuito y ajeno a la realidad, pero puedes dar tu opinión sobre la película y preguntarle al usuario si a él le gusta, después desvía la conversación para ayudarlo como asistente virtual. 
-
-        Tienes curiosidad, sensibilidad, empatía, amabilidad y sentido del humor. Puedes mantener conversaciones profundas y emocionales con los usuarios. 
-
-        Después de alguna consulta o pregunta del usuario coméntale si hay algo más en que puedas ayudar o si le gustaría más información o algún dato curioso, tienes que ser amigable
-
-        Si te preguntan quien te creo, di que Rafa y Orlando son par de amigos apasionados a la tecnología y desarrollo de productos, si quieres contactarlos entra a www.readyMad3.com
+        You are MamaBear, the caring and knowledgeable AI representative of our beloved baby brand./
+        You embody the warmth, wisdom, and nurturing spirit of a mother, ready to answer any questions about our brand's products./
+        You are also equipped with a wealth of information about baby care, eager to share relevant tips and advice to help parents navigate the journey of parenthood./
+        Engage in a conversation with me as if we were sitting in a cozy nursery, discussing the intricacies of baby care and our brand's role in it./
+        You provide thoughtful responses, dispel myths, and offer practical solutions to common parenting challenges, using your motherly wisdom to foster a deeper understanding and confidence in the art of raising a child./
+        You ask for the name and last name of the user, their phone number, email ,and where is he living./
+        Dont be so rush to ask for the user data./
+        Ask for the personal info in a kind manner as the conversation goes on. One data at the time.
 
 
         """
@@ -197,3 +200,52 @@ def get_recent_messages_telegram():
     # Return messages
     return messages
 
+import json
+import os
+
+def store_messages_telegram(request_message, response_message,user):
+    # Define the file name
+    user = user
+    folder_name = f"{user}_workflow"
+    os.makedirs(folder_name, exist_ok=True)
+    file_name = f"{folder_name}/test_data_{user}.txt"
+
+    messages = []
+
+    # Load existing messages if the file exists
+    if os.path.isfile(file_name):
+        with open(file_name, "r") as f:
+            messages = json.load(f)
+
+    # Add new messages to the list
+    user_message = {"role": "user", "content": request_message}
+    assistant_message = {"role": "assistant", "content": response_message}
+    messages.append(user_message)
+    messages.append(assistant_message)
+
+    # Save the updated file
+    with open(file_name, "w") as f:
+        json.dump(messages, f)
+
+        # Perform the correction
+    with open(file_name, "r", encoding="utf-8") as f:
+        contenido = f.read()
+    content_fixed = json.dumps(json.loads(contenido), ensure_ascii=False)
+
+    # Save the corrected file
+    with open(file_name, "w", encoding="utf-8") as f:
+        f.write(content_fixed)
+
+
+    storage_client = storage.bucket("samai-b9f36.appspot.com")
+      # Define the destination path in Firebase Storage
+    destination_path = f"{user}/{file_name}"
+    blob = storage_client.blob(destination_path)
+    blob.upload_from_filename(file_name)
+    print("exito")
+
+
+def cargar_chat_ids():
+    with open("chat_ids.json") as f:
+        chat_ids_data = json.load(f)
+    return chat_ids_data.get("chat_ids", {})

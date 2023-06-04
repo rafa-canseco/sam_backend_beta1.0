@@ -307,6 +307,8 @@ from langchain.llms import OpenAI
 
 def abstraction(globalDescription, data, attributes, attributeValues, ejemplo,obj_global):
     with get_openai_callback() as cb:
+
+        
         
         llm = ChatOpenAI(
             model_name="gpt-3.5-turbo",

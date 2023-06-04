@@ -20,18 +20,20 @@ from pydub import AudioSegment
 import time
 import requests
 import shutil
+import os
 
 
 
 # Custom function imports
 from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single,convert_text_to_speech_telegram
 from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple,get_chat_response_telegram
-from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram
+from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram, cargar_chat_ids,store_messages_telegram
 from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
+from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data
 from firebase_admin import credentials,storage, firestore
-import firebase_admin
-
+import firebase_admin 
+import json
 
 
 # Get Environment Vars
@@ -40,6 +42,7 @@ openai.api_key = config("OPEN_AI_KEY")
 
 cred = credentials.Certificate("samai-b9f36-firebase-adminsdk-4lk6x-ee898f95b0.json")
 firebase_admin.initialize_app(cred)
+firebase_app =firebase_admin.get_app()
 
 token= config("token")
 ngrok_url = config("ngrok_url")
@@ -52,8 +55,15 @@ bot = Bot(token=token)
 ffmpeg_path = shutil.which('ffmpeg')
 print(ffmpeg_path)
 
+
 # Initiate App
 app = FastAPI()
+
+def cargar_chat_ids():
+    with open("chat_ids.json") as f:
+        chat_ids_data = json.load(f)
+    return chat_ids_data.get("chat_ids", {})
+
 
 
 # CORS - Origins
@@ -458,13 +468,19 @@ async def url_abierta(data:dict):
 
 @app.post("/webhook")
 async def telegram_webhook(request: Request):
-
+    chat_ids = cargar_chat_ids()
     data = await request.json()
 
     if "message" in data:
         message = data["message"]
         chat_id = message.get("chat", {}).get("id")
         print(chat_id)
+        # Verificar si el chat_id existe en el diccionario
+        if str(chat_id) in chat_ids:
+            usuario = chat_ids[str(chat_id)]
+        else:
+            usuario = "error"
+        print(usuario)
 
         if str(chat_id)  in authorized_users:
             if "text" in message:
@@ -480,6 +496,7 @@ async def telegram_webhook(request: Request):
 
                     await bot.send_message(chat_id=chat_id,text=chat_response)
                     incrementar_contador_clicks(chat_id)
+                    store_messages_telegram(request_message=message_decoded, response_message=chat_response,user=usuario)
 
                           
             elif "voice" in message:
@@ -517,10 +534,11 @@ async def telegram_webhook(request: Request):
                                 # Get chat response
                     chat_response = get_chat_response_telegram(message_decoded)
                     print(chat_response)
+                    store_messages_telegram(request_message=message_decoded, response_message=chat_response,user=usuario)
+
                     # Guard: Ensure output
                     if not chat_response:
                         raise HTTPException(status_code=400, detail="Failed chat response")
-                    print(chat_response)
 
 
                     # Convert chat response to audio
@@ -577,8 +595,8 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    # webhook_url = f"{ngrok_url}/webhook"
-    webhook_url = "https://readymad3.com/webhook"
+    webhook_url = f"{ngrok_url}/webhook"
+    # webhook_url = "https://readymad3.com/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
     
@@ -597,5 +615,28 @@ async def setup_webhook():
         
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail="Failed to set webhook")
+    
+
+@app.post("/vector_index")
+async def vecto(data: dict):
+    user = data["user"]
+    response = vector_index(user)
+    return {"response": response}
+
+@app.post("/resumen_opcion")
+async def vecto(data: dict):
+    user = data["user"]
+    user_selection= data["option"]
+    response = resumen_opcion_multiple(user,user_selection)
+    return {"response": response}
+
+@app.post("/data_pregunta")
+async def pregunta(data: dict):
+    user = data["user"]
+    question= data["question"]
+    response = pregunta_data(user,question)
+    return {"response": response}
+
+
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

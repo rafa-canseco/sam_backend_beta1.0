@@ -1,59 +1,129 @@
-The Ethereum blockchain suffered [two brief episodes](https://www.coindesk.com/tech/2023/05/12/ethereum-resumes-finalizing-blocks-after-second-performance-hiccup-in-24-hours/) last week where blocks weren’t finalizing – an unwanted bout of instability that presents risks to the blockchain’s security but isn’t considered dire.
+_Hi. The following is an excerpt from Tim’s new book **What’s Our Problem? A Self-Help Book for Societies**. This is the book’s introduction. You can [**buy the ebook or audiobook**](https://waitbutwhy.com/whatsourproblem) or get the [**Wait But Why version**](https://waitbutwhy.com/2023/02/wop-contents.html) to read the whole thing right here._
 
-There was a lot of confusion in terms of what the delay in “finality” meant for the functionality of the blockchain, prompting discussions about security concerns. So, it bears unpacking a bit.
+#### Introduction:
 
-_You’re reading_ [_The Protocol_](https://www.coindesk.com/newsletters/the-protocol/) _, our weekly newsletter exploring the tech behind crypto, one block at a time._ [_Sign up here_](https://www.coindesk.com/newsletters/the-protocol/) _to get it in your inbox every Wednesday._
+## The Big Picture
 
-The cause of the temporary loss of block finality remains under investigation, though Prysm, a provider of client software used to run a node on the blockchain, just [released a new version](https://github.com/prysmaticlabs/prysm/releases/tag/v4.0.4), describing it as “the first full release following the recent mainnet issues,” with “critical fixes.”
+_The problem with people is that they’re only human._– Bill Watterson
 
-When data blocks don’t finalize, there isn’t supposed to be any downtime or difference in end-user experience. That said, a loss in finality can lead to some security issues like [reorgs](https://www.coindesk.com/video/what-ethereum-beacon-chains-reorg-means-for-users-and-developers/embed/).
+* * *
 
-Reorgs [occur when a blockchain](https://www.alchemy.com/overviews/what-is-a-reorg) produces more than one block at the same time, usually because of a bug or an attack. This means that a validator node temporarily creates a new version of a blockchain, which makes it difficult to properly verify if a transaction has been successful, while the old version of the blockchain continues to exist.
+Imagine if all of human history were written down in a fat book called _The Story of Us_.
 
-However, snowball effects from this incident led to some end-user jolts. DYdX, a leading crypto exchange platform, had to [temporarily pause deposits](https://status.dydx.exchange/incidents/p1p39vxv6z6z) because of one of last week’s incidents, and Polygon’s zkEVM also experienced some delays with deposits.
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.01_sou-book_V2-600x424.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.01_sou-book_V2.png)
 
-![CoinDesk - Unknown](https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/OADAYZUWDBB6XGZXJKVQNYWHGU.png)The chart shows a spike in missed validator slots last week as the Ethereum blockchain temporarily stopped finalizing transactions. (Glassnode)
+Humans have been around for a long, long time—according to the most recent estimates, between 200,000 and 300,000 years. [1](#footnote-1-10114) If every page of _The Story of Us_ covered 250 years of history, the book would be about 1,000 pages long. To take a closer look, let’s tear all the pages out and lay them on the table:
 
-## So how does finalization work?
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.02_sou-pages-743x750.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.02_sou-pages.png)
 
-In a [proof-of-stake](https://www.coindesk.com/learn/what-is-proof-of-stake/) blockchain like Ethereum’s, validators first have to propose a block that contains transactions. Once those are proposed, other validators have to sign off on the block to permanently add it to the blockchain, which takes about 15 minutes. Once it is approved, or “attested,” by two-thirds of validators, the block eventually becomes finalized.
+When we really zoom out, we see that most of what we consider ancient history is really just the very last pages of the story. The Agricultural Revolution starts around page 950 or 960, recorded history gets going at about page 976, and Christianity isn’t born until page 993. Page 1,000, which goes from the early 1770s to the early 2020s, contains all of U.S. history.
 
-Thus, [finality is the point](https://www.coindesk.com/learn/top-questions-about-proof-of-stake-and-staking-answered/) where transactions on a blockchain are considered immutable. Finality is supposed to guarantee that transactions within a block cannot be altered.
+We’re now collectively venturing into the mysterious new world of page 1,001. This excites me—and also scares me—because of three concurrent facts.
 
-If finality cannot be guaranteed, the blockchain enters an emergency state called the " [inactivity leak](https://eth2book.info/altair/part2/incentives/inactivity/)," where validators receive penalties for not reaching finalization. When the state is triggered, it acts as a way to incentive the blockchain to start finalizing again. The incident last week triggered Ethereum's first-ever inactivity leak.
+### Fact 1: Technology is exponential
 
-The Ethereum community has acknowledged that the current timeframe for blocks to be finalized is too long.
+Say we went back to page 760 of _The Story of Us,_ kidnapped someone, and transported them a few centuries forward to page 761. Other than having to find new friends and make some cultural adjustments, they’d probably get along fine, because the worlds of pages 760 and 761 were pretty much the same.
 
-“Having a delay between a block's proposal and finalization also creates an opportunity for short reorgs that an attacker could use to censor certain blocks or extract [MEV](https://www.coindesk.com/learn/what-is-mev-aka-maximal-extractable-value/),” the Ethereum website shared [in a blog](https://ethereum.org/de/roadmap/single-slot-finality/).
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.03_time-machine-1_V2-600x436.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.03_time-machine-1_V2.png)
 
-Ethereum co-founder Vitalik Buterin was [writing about finality seven years ago](https://blog.ethereum.org/2016/05/09/on-settlement-finality), an indication of just how important an issue it is.
+For most of our history, that’s what it would be like to jump forward 250 years to the next page. But the closer you get to page 1,000, the less the rule holds. Like, what if we did the same thing with someone on page 992, 998, or 999?
 
-When the [first loss of finality occurred on](https://www.coindesk.com/tech/2023/05/11/ethereum-mainnet-was-unable-to-fully-finalize-transactions-for-25-minutes/) May 11, developers immediately shared it over Twitter, saying they were going to deploy extra help to figure out what was going on. After 25 minutes, the issue seemed to have been resolved and the chain resumed finalizing.
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.04_time-machine-2_V3-750x535.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.04_time-machine-2_V3.png)
 
-Roughly 24 hours later, [the chain stopped finalizing again for about an hour](https://www.coindesk.com/tech/2023/05/12/ethereum-resumes-finalizing-blocks-after-second-performance-hiccup-in-24-hours/), which caused outages for some infrastructure providers.
+The later you lived in _The Story of Us,_ the more mind-blowing it would be to jump forward to the next page. As you can see, our little person on page 999 was so shocked by the world he saw on page 1,000, he keeled over and died. We can see why when we compare page 1,000 to all the pages before it.
 
-In the past, finalization [has temporarily stopped because of bugs](https://www.coindesk.com/tech/2023/03/14/staked-eth-withdrawals-being-processed-on-ethereum-goerli-testnet-ahead-of-shanghai-fork/) in client software used to run the blockchain. Ethereum has multiple clients in the event that there is a flaw or glitch in the software, so there are other options, and the activity on the blockchain can keep running.
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.05_sou-table.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.05_sou-table.png)
 
-## How did this affect the applications?
+It’s natural to assume that the world we grew up in is normal. But nothing about our current world is normal. Because technology is exponential. More advanced societies make progress at a faster _rate_ than less advanced societies— _because_ they’re more advanced. People in the 19th century knew more and had better technology than people in the 16th century, so it’s no surprise that there were more advances on page 1,000 than on page 999. Over the centuries, this builds upon itself, leading to increasingly rapid progress. [2](#footnote-2-10114) And ever since the Middle Ages ended, human technology has been advancing on an exponential fast track, leading to a world on page 1,000 that would seem like a totally different planet to humans on any previous page.
 
-Tim Beiko, protocol support lead at the Ethereum Foundation, told CoinDesk the incident is “definitely significant, but it's not something where Ethereum’s security or soundness is at risk or compromised.”
+### Fact 2: More technology means higher stakes
 
-“Within minutes, things were corrected and within like a day or two clients had software patches to make sure that this specific case did not come up again,” he said.
+Technology is a multiplier of both good and bad. More technology means better good times, but it also means badder bad times.
 
-The developers are still looking to understand what caused the blockchain to stop finalizing, and are expected to discuss a post-mortem report in their upcoming Consensus Layer call.
+On page 999 of human history, the Enlightenment and Scientific Revolution that generated vast improvements in human prosperity also generated an explosion of slavery and brutal imperialism.
 
-Beiko told CoinDesk that the incident did not get to a point “where we began to test the very extreme fallbacks in the protocol to deal with this stuff.”
+Page 1,000, a time of unprecedented life expectancy, wealth, and political freedom, also saw the two most catastrophic wars in history followed by existential threats with the invention of nuclear and biological weapons and the onset of climate change.
 
-The incidents did affect several applications that run on top of the Ethereum blockchain.
+As the times get better, they also get more dangerous. More technology makes our species more powerful, which increases risk _._ And the scary thing is, if the good and bad keep exponentially growing, it doesn’t matter how great the good times become. If the bad gets to a certain level of bad, it’s all over for us.
 
-Jordi Baylina, technical lead at Polygon, said that the finality stoppage meant that deposits onto the Polygon zkEVM chain were delayed, and since the chain relied on Infura, an infrastructure provider which also temporarily had an outage as a result of the loss in finality, issues for individuals using the zkEVM compounded.
+So far in the 21st century, Fact 1 and Fact 2 seem to be holding strong. The pace of change has been dizzying, with the advent of widespread internet, social media, smart phones, self-driving cars, and crypto, not to mention the dramatic leaps in AI powering many of these advances. The jump in technology from page 1,000 to 1,001 should prove to be even more extreme than the jump from 999 to 1,000—maybe many times more so. This could be unfathomably awesome. We could conquer every problem that ails us today—disease, poverty, climate change, maybe even mortality itself.
 
-“You need to wait for the finality in layer 1 deposit to be available in layer 2,” Balyina said. “So until you don't have finality, you cannot use \[the chain\] or you have the risk of double spending in layer 2.”
+But if the catastrophes of page 1,000 were the most devastating yet, what does that mean about catastrophes on page 1,001? The same technology that has made our world magical has also opened a large number of Pandora’s boxes: rapidly advancing AI, cyber warfare, autonomous weapons, and bioweapons, to name a few.
 
-DYdX paused its [deposits temporarily](https://status.dydx.exchange/incidents/p1p39vxv6z6z) today due to the lack of Ethereum finality and said it was “continuing to monitor and investigate this issue.”
+With the stakes this high, we’d want to be our wisest selves. Which is unfortunate, because:
 
-Despite this, Ethereum developers emphasize that the network did not go down.
+### Fact 3: My society is currently acting like a poopy-pantsed four-year-old who dropped its ice cream
 
-“Today’s incident has been a great fire drill. It looks like two or three issues came together (as is often the case). The chain recovered gracefully and we discovered a few other issues that could be improved to make Ethereum more resilient,” [tweeted](https://twitter.com/vdWijden/status/1656790867506520064) Marius van der Wijden, a developer at the Ethereum Foundation.
+I picture society as a giant human—a living organism like each of us, only much bigger. And when I look at the American society around me, I’m not really seeing this:
 
-Edited by Bradley Keoun.
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.06_adult-society.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.06_adult-society.png)
+
+It looks more like this:
+
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.07_child-society.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.07_child-society.png)
+
+Humans are supposed to mature as they age—but the giant human I live in has been getting more childish each year. Tribalism and political division are on the rise. False narratives and outlandish conspiracy theories are flourishing. Major institutions are floundering. Medieval-style public shaming is suddenly back in fashion. Trust, the critical currency of a healthy society, is disintegrating. And these trends seem to be happening in lots of societies, not just my own.
+
+So what’s our problem? Why, in a time so prosperous, with the stakes so high, would we be going _backward_ in wisdom?
+
+This wouldn’t be the first time. In 1905, philosopher George Santayana issued a warning to humanity:
+
+_Those who cannot remember the past are condemned to repeat it_. [1](#footnote2-1-10114)
+
+The worrying thing about that quote is that philosopher Edmund Burke issued the same warning over a century earlier, in 1790:
+
+_People will not look forward to posterity, who never look backward to their ancestors._ [2](#footnote2-2-10114)
+
+We seem to be having trouble learning an important lesson here.
+
+When we learn a technology lesson, we tend not to forget it. The invention of the integrated circuit in 1959 was a breakthrough that launched a new paradigm in modern computing. This isn’t the kind of thing we later forget, finding ourselves accidentally going back to making computers with vacuum tubes. But wisdom lessons don’t always seem to _stick._ Unlike technological growth, wisdom seems to oscillate up and down, leading societies to repeat age-old mistakes.
+
+As I look at the world around me today, I worry that we’re on our way toward making some terrible—and preventable—mistakes. When I think about Facts 1 and 2, I picture our societies as giants trudging upward on a mountain ridge toward a glorious future—but as they move upward, the ridge gets thinner and the cliffs on either side grow steeper. The higher we go, the more deadly a fall we risk. When I think about Fact 3, I see those giants losing their composure and becoming more erratic in their steps, at the worst possible time.
+
+If you were reading _The Story of Us_ and turned the page to 1,001, everything would seem to be coming to a head, with many storylines suddenly converging. You’d be glued to the book, needing to find out _what happens to this species._
+
+Except we’re not reading _The Story of Us_—we’re living inside of it, as its characters. We’re also its authors, writing the story as we go along.
+
+Our responsibility is immense. If we can figure out how to get page 1,001 right, Future Us and trillions of our descendants could live high up on that mountain in what would seem like a magical utopia to Today Us. If we get page 1,001 wrong and stumble off those steep cliffs, this might be the last page of the story.
+
+As the authors of _The Story of Us_, we have no mentors, no editors, no one to make sure it all turns out okay. It’s all in our hands. This scares me, but it’s also what gives me hope. If we can all get just a little wiser, together, it may be enough to nudge the story onto a trajectory that points toward an unimaginably good future.
+
+## Hey
+
+Hey.
+
+I know we’re all intense-feeling right now after that intro, but I just want to pause for a minute and introduce myself.
+
+I’m Tim. I spend my time writing a blog called _Wait But Why_, where I explore all kinds of things—artificial intelligence, procrastination, relationships, aliens, and lots of other random topics that interest me. Then I illustrate the writing with drawings that seem like they were done by a fourth grader but actually were done by a grown-up man. This was all going fine until a few years ago, when something began to nag at me. The society around me seemed to be devolving, and if that kept happening, none of those other topics I write about would matter. If we really were losing our grip on things, every other topic was secondary to _that_ topic. So I dove in.
+
+When I pick a topic to write about, I like to go deep down the rabbit hole. But this topic— _what’s our problem?—_ turned out to be a rabbit hole like no other. As I began to crawl in, I slipped and fell and ended up here.
+
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.08_rabbit-hole-591x600.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.08_rabbit-hole.png)
+
+Normally, I spend somewhere between three days and three months learning and pondering and discussing a topic before I know what I want to say. This one took me six years. When I finally emerged from the extended rabbit hole, I had a new perspective on the world, on politics, on group dynamics, on how we think and why we believe the things we believe. In [this book](https://waitbutwhy.com/whatsourproblem), I’ll share that perspective with you.
+
+In Chapter 1, we’ll get to know the book’s primary tool—a framework that I’ve spent the past six years developing, testing, and refining. I call it the Ladder. The Ladder is a thinking lens—a pair of glasses for the brain to help us better understand the world and ourselves. It’s made me a much better thinker and communicator, and I hope it will do the same for you.
+
+In Chapter 2, we’ll look at the familiar subject of politics through our unfamiliar new glasses. Instead of seeing politics as a mere horizontal axis of left, right, and center, we’ll use the Ladder to supplement the one-dimensional political discussion with a badly needed vertical dimension.
+
+In Chapter 3, we’ll examine the story of our regression: how and why I believe we’ve been slipping down the Ladder as a society.
+
+From there, we’ll look at our current trajectory up close by examining two American stories. First, in Chapter 4, we’ll turn our attention to America’s Republican Party, and then, in Chapters 5–7, a deep dive into the controversial world of American social justice. [3](#footnote-3-10114) The tired discussions around these phenomena are, I believe, missing the forest for the trees. In both cases, the Ladder will reveal a more interesting and more useful story than is portrayed in popular discourse.
+
+All together, our journey looks like this:
+
+[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.09_table-of-contents_V3-724x750.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.09_table-of-contents_V3.png)
+
+Ready?
+
+* * *
+
+_This was an excerpt from_ _**What’s Our Problem? A Self-Help Book for Societies**. To read the whole book, get the ebook or audiobook on all platforms [**here**](https://waitbutwhy.com/whatsourproblem) or buy the [**Wait But Why version**](https://waitbutwhy.com/2023/02/wop-contents.html) to keep reading here._
+
+More things:
+
+[**The story behind the making of this book**](https://waitbutwhy.com/2023/02/last-six-years.html)
+
+[**Wait But Why homepage**](https://waitbutwhy.com/home)
+
+**[Wait But Why newsletter](http://newsletter.waitbutwhy.com/signup)**
