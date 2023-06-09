@@ -1,129 +1,105 @@
-_Hi. The following is an excerpt from Tim’s new book **What’s Our Problem? A Self-Help Book for Societies**. This is the book’s introduction. You can [**buy the ebook or audiobook**](https://waitbutwhy.com/whatsourproblem) or get the [**Wait But Why version**](https://waitbutwhy.com/2023/02/wop-contents.html) to read the whole thing right here._
+Since the start of this year, a rotating cast of San Franciscans have been gathering for dinner and drinks while discussing the city’s most pressing problems. Rather than the typical bitchfest, this discreet group of tech entrepreneurs, nonprofit leaders, elected officials and City Hall commissioners spends less time bemoaning what’s wrong and more time noodling on solutions.
 
-#### Introduction:
+[Bilal Mahmood](https://sfstandard.com/politics/elections/bilal-mahmood-entrepreneur-and-scientist-on-why-hes-running/), a startup founder and neuroscientist who finished third in a state Assembly special election last year, designed the dinner parties after the Junto Club, a 12-member group of tradesmen and artisans formed by Benjamin Franklin in 1727. Franklin’s goal was to develop ideas on how to build a new nation and more humane society, and the result of these meetings led to the colonies’ first community fire department and the country’s first hospital. The latter was created through a public-private partnership, an untested concept in the burgeoning nation.
 
-## The Big Picture
+Mahmood told The Standard that these off-the-record dinner parties will soon go by another name Franklin’s group used—Leather Apron Club, a decidedly metal-meets- [Folsom Street Fair](https://sfstandard.com/arts-culture/pleasure-pain-and-leather-photos-of-folsom-street-fair-2022/) moniker. In mid-January, Mahmood and 11 others gathered to discuss one of San Francisco’s most existential issues: how to save Downtown.
 
-_The problem with people is that they’re only human._– Bill Watterson
+The loss of businesses and in-office workers since the pandemic has kneecapped the flow of tax revenue to City Hall, and foot traffic to small businesses in the area has evaporated. San Francisco is staring down the barrel of a [nearly $800 million deficit](https://sfstandard.com/politics/city-hall/san-franciscos-deficit-swells-to-780m-in-latest-sign-of-budget-distress/), and increasingly hyperbolic concerns of a [real estate collapse](https://sfstandard.com/business/san-francisco-braces-for-epic-commercial-real-estate-crash/), [death spiral](https://sfstandard.com/arts-culture/downtown-sfs-death-spiral-continues-as-independent-bookstore-shutters/) and [doom loop](https://www.nytimes.com/interactive/2023/04/07/business/what-is-doom-loop.html) are becoming commonplace.
 
-* * *
+![](https://sfstandard.com/_next/image/?url=https%3A%2F%2Fsfstandard.com%2Fwp-content%2Fuploads%2F2023%2F04%2FINLINED04_DowntownSF04102023.jpg&w=3840&q=75)Pedestrians walk through San Francisco’s Financial District, which has had a surge of vacant storefront properties, on Nov. 17, 2022. \| Camille Cohen/The Standard
 
-Imagine if all of human history were written down in a fat book called _The Story of Us_.
+But as Mahmood and his guests discussed the state of Downtown over karaage, sashimi and wagyu at Ozumo, an upscale Japanese restaurant near the Embarcadero, one guest floated an idea that seemed to linger. Zach Klein, the venture capitalist and co-founder of Vimeo, suggested San Francisco should create a new university, or at least a vast array of college student housing, in the downtown core.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.01_sou-book_V2-600x424.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.01_sou-book_V2.png)
+“That was one idea that nobody had any negative thoughts around, and we thought it could be a really powerful way to revitalize the area,” said Cristina Cordova, an early stage venture capitalist who also attended the dinner.
 
-Humans have been around for a long, long time—according to the most recent estimates, between 200,000 and 300,000 years. [1](#footnote-1-10114) If every page of _The Story of Us_ covered 250 years of history, the book would be about 1,000 pages long. To take a closer look, let’s tear all the pages out and lay them on the table:
+Klein, who declined a formal interview request, told The Standard via direct message that he got the idea from Kim-Mai Cutler, a partner at Initialized Capital who tweeted about it last year.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.02_sou-pages-743x750.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.02_sou-pages.png)
+> My small 2 cents here is the city and the state of California should work with [@UofCalifornia](https://twitter.com/UofCalifornia?ref_src=twsrc%5Etfw) and/or [@stanford](https://twitter.com/Stanford?ref_src=twsrc%5Etfw) to see if we could anchor a re-imagined CBD/neighborhood with an urban university campus flanked by mixed-use/residential/creative space.... [https://t.co/e51JVS3XA9](https://t.co/e51JVS3XA9)
+>
+> — Kim-Mai Cutler (@kimmaicutler) [October 19, 2022](https://twitter.com/kimmaicutler/status/1582860957885177856?ref_src=twsrc%5Etfw)
 
-When we really zoom out, we see that most of what we consider ancient history is really just the very last pages of the story. The Agricultural Revolution starts around page 950 or 960, recorded history gets going at about page 976, and Christianity isn’t born until page 993. Page 1,000, which goes from the early 1770s to the early 2020s, contains all of U.S. history.
+The theory goes: Vacant commercial towers in San Francisco will likely never again reach capacity, but they could be converted to student housing by public universities, which are exempt from much of the red tape that otherwise stymies development. These schools also receive substantial tax breaks, making the cost of such projects “pencil out.” Large cohorts of new, young residents would not only make use of the buildings themselves but also reinvigorate Downtown by supporting local restaurants, bars and other small businesses.
 
-We’re now collectively venturing into the mysterious new world of page 1,001. This excites me—and also scares me—because of three concurrent facts.
+The idea might not be a silver bullet for saving Downtown, but it’s a possibility that makes other ideas floated over the last year feel small.
 
-### Fact 1: Technology is exponential
+“We are proposing a university or an academic campus or student housing Downtown as one of the major solutions to solve this crisis, because we have a lot of piecemeal solutions that are important and necessary,” Mahmood said. “But there’s no big, bold idea that could radically solve this in a single swoop.”
 
-Say we went back to page 760 of _The Story of Us,_ kidnapped someone, and transported them a few centuries forward to page 761. Other than having to find new friends and make some cultural adjustments, they’d probably get along fine, because the worlds of pages 760 and 761 were pretty much the same.
+Mahmood and others have spent the last few months studying the issue and taking meetings to figure out what’s feasible. And while the idea of transforming Downtown into a mecca for college kids is still in its infancy, the initial reaction from city officials, urban planners and developers appears promising.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.03_time-machine-1_V2-600x436.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.03_time-machine-1_V2.png)
+## SF Goes Back to School
 
-For most of our history, that’s what it would be like to jump forward 250 years to the next page. But the closer you get to page 1,000, the less the rule holds. Like, what if we did the same thing with someone on page 992, 998, or 999?
+Downtown San Francisco is clearly in crisis. The remote work shift has hollowed out many buildings and made issues like street conditions and homelessness more stark.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.04_time-machine-2_V3-750x535.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.04_time-machine-2_V3.png)
+The Bay Area Council Economic Institute [published research](http://www.bayareaeconomy.org/files/pdf/TrackingBayAreaRecovery-CBRE-WebVersion.pdf) that found a nearly five-fold increase in people working from home during the course of the pandemic, a key reason why San Francisco’s economic recovery ranks 24th out of 25 large U.S. cities, beating out only Baltimore. The neighborhood’s resulting 60% drop in daytime population has been an albatross around the neck of small businesses that rely on a steady stream of office workers.
 
-The later you lived in _The Story of Us,_ the more mind-blowing it would be to jump forward to the next page. As you can see, our little person on page 999 was so shocked by the world he saw on page 1,000, he keeled over and died. We can see why when we compare page 1,000 to all the pages before it.
+The growing consensus among the business community, city officials and the general public is that Downtown needs to evolve in order to survive. Putting student housing at the center of that transformation, advocates say, could reinvigorate the city in the way New York City has [embraced campus culture](https://www.ef.com/wwen/blog/efacademyblog/10-reasons-new-york-best-place-study/) across different boroughs with NYU, Cornell and Columbia. Meanwhile, a younger population could also help reactivate BART, which [continues to struggle](https://sfstandard.com/transportation/bart-edges-closer-to-fiscal-disaster-as-it-hopes-for-a-savior/) with low ridership.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.05_sou-table.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.05_sou-table.png)
+![](https://sfstandard.com/_next/image/?url=https%3A%2F%2Fsfstandard.com%2Fwp-content%2Fuploads%2F2023%2F02%2FBartHomelessnes02162023_715-2500x1668.jpg&w=3840&q=75)An individual sleeps on a Bay Area Rapid Transit train en route to the San Francisco International Airport on Feb. 17, 2023. \| Benjamin Fanjoy for The Standard
 
-It’s natural to assume that the world we grew up in is normal. But nothing about our current world is normal. Because technology is exponential. More advanced societies make progress at a faster _rate_ than less advanced societies— _because_ they’re more advanced. People in the 19th century knew more and had better technology than people in the 16th century, so it’s no surprise that there were more advances on page 1,000 than on page 999. Over the centuries, this builds upon itself, leading to increasingly rapid progress. [2](#footnote-2-10114) And ever since the Middle Ages ended, human technology has been advancing on an exponential fast track, leading to a world on page 1,000 that would seem like a totally different planet to humans on any previous page.
+An [analysis conducted](https://www.spur.org/sites/default/files/2023-03/SPUR_Office-to-Residential_Conversion_in_SF.pdf) by architecture firm Gensler and public policy nonprofit SPUR found that the conversion of vacant office buildings could yield [11,200 new units Downtown](https://sfstandard.com/housing-development/turning-downtown-offices-into-housing-isnt-the-solution-you-think-it-is/). But the study also noted that current economic conditions and costs make most conversions “not financially feasible.”
 
-### Fact 2: More technology means higher stakes
+In recognition of this, Mayor London Breed and Board of Supervisors President Aaron Peskin [recently introduced legislation](https://sfstandard.com/business/new-law-could-kickstart-downtown-office-to-housing-conversions-but-its-only-half-the-battle/) to streamline office-to-residential conversions. The changes would address planning codes and zoning issues, although cost remains an overriding concern.
 
-Technology is a multiplier of both good and bad. More technology means better good times, but it also means badder bad times.
+But state agencies like public universities are able to take advantage of their tax-exempt status to limit the expense of such projects.
 
-On page 999 of human history, the Enlightenment and Scientific Revolution that generated vast improvements in human prosperity also generated an explosion of slavery and brutal imperialism.
+“Look, Downtown San Francisco is super-rich in transit,” Peskin said. “It’s just a couple or three BART stops from \[UC Berkeley\]. So yeah, it sounds like a fine idea. The University of California is not subject to the laws of any city or county in the state of California. And they know how to acquire real estate, and they know how to do development projects. So, I’m happy to knock on their door, and they’re welcome to knock on mine."
 
-Page 1,000, a time of unprecedented life expectancy, wealth, and political freedom, also saw the two most catastrophic wars in history followed by existential threats with the invention of nuclear and biological weapons and the onset of climate change.
+UC College of Law, formerly known as UC Hastings, recently unveiled plans for its [Academe academic village](https://academe198sf.com/) development. The 14-story project is slated to open this summer, offering 650 apartments for graduate students at the law school, as well as surrounding institutions like UCSF, San Francisco State and University of the Pacific's Dugoni School of Dentistry.
 
-As the times get better, they also get more dangerous. More technology makes our species more powerful, which increases risk _._ And the scary thing is, if the good and bad keep exponentially growing, it doesn’t matter how great the good times become. If the bad gets to a certain level of bad, it’s all over for us.
+Jeff Cretan, a spokesperson for Mayor Breed, said the city would be open to UC Berkeley and other universities expanding student housing Downtown, but there have been no discussions with school officials.
 
-So far in the 21st century, Fact 1 and Fact 2 seem to be holding strong. The pace of change has been dizzying, with the advent of widespread internet, social media, smart phones, self-driving cars, and crypto, not to mention the dramatic leaps in AI powering many of these advances. The jump in technology from page 1,000 to 1,001 should prove to be even more extreme than the jump from 999 to 1,000—maybe many times more so. This could be unfathomably awesome. We could conquer every problem that ails us today—disease, poverty, climate change, maybe even mortality itself.
+"The [Mayor’s Roadmap for Downtown](https://www.google.com/search?q=Mayor%E2%80%99s+Roadmap+for+Downtown+sfstandard&rlz=1C5GCEM_en&ei=5akwZOe9N9WG0PEPqdq3kAo&ved=0ahUKEwinxMHj-Jj-AhVVAzQIHSntDaIQ4dUDCBA&uact=5&oq=Mayor%E2%80%99s+Roadmap+for+Downtown+sfstandard&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCCEQoAEQCjIHCCEQoAEQCjIHCCEQoAEQCjoFCCEQoAE6BQghEKsCOggIIRAWEB4QHUoECEEYAVDGAViiFWCjFmgCcAB4AoABggWIAakSkgELMC4yLjIuMS4xLjGYAQCgAQHAAQE&sclient=gws-wiz-serp) calls for diversifying uses in our commercial areas, and a proposal to add either an academic institution or housing for students would certainly fit that goal," Cretan said, adding that the UC College of Law development is an excellent example of what’s possible.
 
-But if the catastrophes of page 1,000 were the most devastating yet, what does that mean about catastrophes on page 1,001? The same technology that has made our world magical has also opened a large number of Pandora’s boxes: rapidly advancing AI, cyber warfare, autonomous weapons, and bioweapons, to name a few.
+![](https://sfstandard.com/_next/image/?url=https%3A%2F%2Fsfstandard.com%2Fwp-content%2Fuploads%2F2023%2F04%2FINLINED00_DowntownSF04102023-2500x1668.jpg&w=3840&q=75)An apartment complex under construction at 198 McAllister Street in San Francisco on April 6, 2023. The building will include academic and retail space and student housing for UC College of Law. \| Michaela Vatcheva for The Standard
 
-With the stakes this high, we’d want to be our wisest selves. Which is unfortunate, because:
+Sujata Srivastava, the San Francisco director for SPUR and another attendee of Mahmood’s mid-January dinner, referenced UC Berkeley’s [scutt](https://www.sfgate.com/bayarea/article/UC-Berkeley-suspends-plans-to-build-Global-Campus-9187281.php) [l](https://www.sfgate.com/bayarea/article/UC-Berkeley-suspends-plans-to-build-Global-Campus-9187281.php) [ed campus](https://www.sfgate.com/bayarea/article/UC-Berkeley-suspends-plans-to-build-Global-Campus-9187281.php) in Richmond and suggested that part of the reason behind its failure to launch was a lack of access to amenities and transit.
 
-### Fact 3: My society is currently acting like a poopy-pantsed four-year-old who dropped its ice cream
+“It’s really interesting to look at this against the backdrop of what’s happening at UC Berkeley and some of the other UCs too, where they aren’t really able to adequately house not just students, but also their staff,” Srivastava said. “There’s no place more central than Downtown San Francisco.”
 
-I picture society as a giant human—a living organism like each of us, only much bigger. And when I look at the American society around me, I’m not really seeing this:
+## Eyes on UC Berkeley
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.06_adult-society.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.06_adult-society.png)
+Across the board, local higher-ed institutions struggle to house their students, and UC Berkeley is a prime example. The UC system wants to [expand enrollment by 33,000 students by the end of this decade](https://www.latimes.com/california/story/2022-07-23/under-big-admissions-demand-uc-aims-to-grow-by-33-000-seats), and UC Berkeley was one of three campuses designated to absorb half of those new students.
 
-It looks more like this:
+However, the university is unable to guarantee more than one year of housing for its current student body, who regularly report issues around housing insecurity. The university houses only 23% of its students—by far the lowest percentage in the UC system.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.07_child-society.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.07_child-society.png)
+![](https://sfstandard.com/_next/image/?url=https%3A%2F%2Fsfstandard.com%2Fwp-content%2Fuploads%2F2023%2F04%2FINLINED02_DowntownSF04102023-2500x1663.jpg&w=3840&q=75)Students walk through Sather Gate at UC Berkeley on Feb. 15, 2023. \| Samantha Laurey for The Standard
 
-Humans are supposed to mature as they age—but the giant human I live in has been getting more childish each year. Tribalism and political division are on the rise. False narratives and outlandish conspiracy theories are flourishing. Major institutions are floundering. Medieval-style public shaming is suddenly back in fashion. Trust, the critical currency of a healthy society, is disintegrating. And these trends seem to be happening in lots of societies, not just my own.
+UC Berkeley spokesperson Dan Mogulof said the university is notably not a commuter school, and one of its ambitions is to open up housing opportunities closer to campus, particularly for undergraduates.
 
-So what’s our problem? Why, in a time so prosperous, with the stakes so high, would we be going _backward_ in wisdom?
+“Their ability to take advantage of the full university experience is hindered if they don’t live in close proximity to campus—not just in terms of the academic programs, but all the extracurricular programs that make the university something special,” Mogulof said. “Chancellor \[Carol\] Christ refers to this as an ‘equity of experience’ across the undergraduate population.”
 
-This wouldn’t be the first time. In 1905, philosopher George Santayana issued a warning to humanity:
+UC Berkeley’s [housing initiative](https://chancellor.berkeley.edu/housing-initiative) has a particular focus on the development of properties owned by the university in close proximity to campus, Mogulof said. Still, the university is thousands of beds short of its goal of guaranteeing all incoming freshmen at least two years in housing in university facilities.
 
-_Those who cannot remember the past are condemned to repeat it_. [1](#footnote2-1-10114)
+While the university has attempted to develop more housing in line with its charge to increase enrollment, school officials have been stymied by legal challenges like a lawsuit filed against a $312 million project at People’s Park. The development would contain 1,100 beds for students and 125 beds for supportive housing.
 
-The worrying thing about that quote is that philosopher Edmund Burke issued the same warning over a century earlier, in 1790:
+UC Berkeley operates a few graduate student housing projects in neighboring cities like Albany and Emeryville. The latter development, known as [The Intersection](https://housing.berkeley.edu/explore-housing-options/apartments/intersection-apartments/), is roughly 30 minutes away from campus via public transit, similar to a commute between San Francisco’s Financial District and UC Berkeley by BART.
 
-_People will not look forward to posterity, who never look backward to their ancestors._ [2](#footnote2-2-10114)
+Matt Dorsey, a San Francisco supervisor whose Downtown district would absorb the proposed student housing, said he hadn’t heard of Mahmood and others’ plan, but he liked the initial concept.
 
-We seem to be having trouble learning an important lesson here.
+“Hey, if they’re running into issues in Berkeley, great, we would love to have them,” Dorsey said.
 
-When we learn a technology lesson, we tend not to forget it. The invention of the integrated circuit in 1959 was a breakthrough that launched a new paradigm in modern computing. This isn’t the kind of thing we later forget, finding ourselves accidentally going back to making computers with vacuum tubes. But wisdom lessons don’t always seem to _stick._ Unlike technological growth, wisdom seems to oscillate up and down, leading societies to repeat age-old mistakes.
+![](https://sfstandard.com/_next/image/?url=https%3A%2F%2Fsfstandard.com%2Fwp-content%2Fuploads%2F2023%2F03%2F022723BOSRoundup-49-2500x1668.jpg&w=3840&q=75)Supervisor Matt Dorsey during the Board of Supervisors meeting within the Board of Supervisors Chambers at City Hall in San Francisco on Feb. 28, 2023. \| Michaela Vatcheva for The Standard
 
-As I look at the world around me today, I worry that we’re on our way toward making some terrible—and preventable—mistakes. When I think about Facts 1 and 2, I picture our societies as giants trudging upward on a mountain ridge toward a glorious future—but as they move upward, the ridge gets thinner and the cliffs on either side grow steeper. The higher we go, the more deadly a fall we risk. When I think about Fact 3, I see those giants losing their composure and becoming more erratic in their steps, at the worst possible time.
+Mogulof said looking toward Downtown San Francisco might be more of a possibility for the roughly 11,000 graduate students at UC Berkeley.
 
-If you were reading _The Story of Us_ and turned the page to 1,001, everything would seem to be coming to a head, with many storylines suddenly converging. You’d be glued to the book, needing to find out _what happens to this species._
+“The university is always going to be interested in options that are of interest and appeal, particularly to graduate students if something in the future like that is proposed and real and tangible,” Mogulof said. “I’m not going to sit here and dismiss anything offhand.”
 
-Except we’re not reading _The Story of Us_—we’re living inside of it, as its characters. We’re also its authors, writing the story as we go along.
+## New Kids on the Block
 
-Our responsibility is immense. If we can figure out how to get page 1,001 right, Future Us and trillions of our descendants could live high up on that mountain in what would seem like a magical utopia to Today Us. If we get page 1,001 wrong and stumble off those steep cliffs, this might be the last page of the story.
+Mark Hogan, the principal of architecture firm OpenScope Studio, has been one of the thought leaders shaping San Francisco policy around office-to-residential conversions. He has personal experience that would be instructive for the Downtown proposal, as he attended grad school at UC Berkeley and commuted to class on BART from San Francisco.
 
-As the authors of _The Story of Us_, we have no mentors, no editors, no one to make sure it all turns out okay. It’s all in our hands. This scares me, but it’s also what gives me hope. If we can all get just a little wiser, together, it may be enough to nudge the story onto a trajectory that points toward an unimaginably good future.
+Hogan highlighted the design and financial advantages that make office conversions into student housing more feasible than other projects.
 
-## Hey
+“One of the benefits of student housing is that you could potentially do more of a group housing setup, with fewer kitchens and bathrooms,” Hogan said. “That can be cheaper to build and easier to retrofit into an existing building.”
 
-Hey.
+Outside of public operators like universities, a range of private developers that specialize in student housing could also create opportunities for transformation. Case in point, a Lower Nob Hill office building at 701 Sutter St., which previously housed tech tenants, was sold at a major discount to a developer that specializes in student housing.
 
-I know we’re all intense-feeling right now after that intro, but I just want to pause for a minute and introduce myself.
+Ben and Elle Black, a venture capitalist and entrepreneur couple in the city, are also working on the idea of vastly expanding student housing Downtown, although their concept calls for creating local and international university campuses.
 
-I’m Tim. I spend my time writing a blog called _Wait But Why_, where I explore all kinds of things—artificial intelligence, procrastination, relationships, aliens, and lots of other random topics that interest me. Then I illustrate the writing with drawings that seem like they were done by a fourth grader but actually were done by a grown-up man. This was all going fine until a few years ago, when something began to nag at me. The society around me seemed to be devolving, and if that kept happening, none of those other topics I write about would matter. If we really were losing our grip on things, every other topic was secondary to _that_ topic. So I dove in.
+“We want to open San Francisco to the world,” Elle Black said. “San Francisco gives a very attractive proposition to everybody. I don't know a single university that wouldn't want to have a footprint in Silicon Valley.”
 
-When I pick a topic to write about, I like to go deep down the rabbit hole. But this topic— _what’s our problem?—_ turned out to be a rabbit hole like no other. As I began to crawl in, I slipped and fell and ended up here.
+All of these ideas, for the time being, are still just that: ideas. But a groundswell of support for creating a younger, more vibrant Downtown San Francisco appears to be taking root across the city. Mahmood said he plans to continue hosting his dinner parties to try to confront other crises in San Francisco.
 
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.08_rabbit-hole-591x600.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.08_rabbit-hole.png)
+“City Hall does not hear from younger professionals, younger tech,” he said. “A lot of the business community here is more than the hotel industry and real estate.”
 
-Normally, I spend somewhere between three days and three months learning and pondering and discussing a topic before I know what I want to say. This one took me six years. When I finally emerged from the extended rabbit hole, I had a new perspective on the world, on politics, on group dynamics, on how we think and why we believe the things we believe. In [this book](https://waitbutwhy.com/whatsourproblem), I’ll share that perspective with you.
-
-In Chapter 1, we’ll get to know the book’s primary tool—a framework that I’ve spent the past six years developing, testing, and refining. I call it the Ladder. The Ladder is a thinking lens—a pair of glasses for the brain to help us better understand the world and ourselves. It’s made me a much better thinker and communicator, and I hope it will do the same for you.
-
-In Chapter 2, we’ll look at the familiar subject of politics through our unfamiliar new glasses. Instead of seeing politics as a mere horizontal axis of left, right, and center, we’ll use the Ladder to supplement the one-dimensional political discussion with a badly needed vertical dimension.
-
-In Chapter 3, we’ll examine the story of our regression: how and why I believe we’ve been slipping down the Ladder as a society.
-
-From there, we’ll look at our current trajectory up close by examining two American stories. First, in Chapter 4, we’ll turn our attention to America’s Republican Party, and then, in Chapters 5–7, a deep dive into the controversial world of American social justice. [3](#footnote-3-10114) The tired discussions around these phenomena are, I believe, missing the forest for the trees. In both cases, the Ladder will reveal a more interesting and more useful story than is portrayed in popular discourse.
-
-All together, our journey looks like this:
-
-[![](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.09_table-of-contents_V3-724x750.png)](https://149909199.v2.pressablecdn.com/wp-content/uploads/2023/02/1.09_table-of-contents_V3.png)
-
-Ready?
-
-* * *
-
-_This was an excerpt from_ _**What’s Our Problem? A Self-Help Book for Societies**. To read the whole book, get the ebook or audiobook on all platforms [**here**](https://waitbutwhy.com/whatsourproblem) or buy the [**Wait But Why version**](https://waitbutwhy.com/2023/02/wop-contents.html) to keep reading here._
-
-More things:
-
-[**The story behind the making of this book**](https://waitbutwhy.com/2023/02/last-six-years.html)
-
-[**Wait But Why homepage**](https://waitbutwhy.com/home)
-
-**[Wait But Why newsletter](http://newsletter.waitbutwhy.com/signup)**
+Imagine an influx of young people that could shift the staid reputation of Downtown, help feed a thriving arts scene and fill restaurants, bars and nightclubs with energy and activity past happy hour. In a town that is already on the younger side, bringing in a bunch of kids may be San Francisco’s best bet for the future.

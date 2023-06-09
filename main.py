@@ -286,7 +286,6 @@ async def post_audio(file: UploadFile = File(...)):
 
     # Decode audio
     message_decoded = convert_audio_to_text(audio_input)
-    print("erro1")
 
     # Guard: Ensure output
     if not message_decoded:
@@ -294,12 +293,10 @@ async def post_audio(file: UploadFile = File(...)):
 
     # Get chat response
     chat_response = get_chat_response_simple(message_decoded)
-    print("erro2")
     
 
     # Store messages
     store_messages_simple(message_decoded, chat_response)
-    print("error3")
 
     # Guard: Ensure output
     if not chat_response:
