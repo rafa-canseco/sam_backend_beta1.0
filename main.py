@@ -22,6 +22,7 @@ import requests
 import shutil
 import os
 
+os.environ["PATH"] += os.pathsep + "/usr/bin"
 
 
 # Custom function imports
