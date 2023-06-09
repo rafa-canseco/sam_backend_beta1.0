@@ -117,9 +117,6 @@ def incrementar_contador_clicks(chat_id):
         # Manejar el error según sea necesario
 
 
-
-
-
 # Check health
 @app.get("/health")
 async def check_health():
@@ -592,8 +589,8 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    webhook_url = f"{ngrok_url}/webhook"
-    # webhook_url = "https://readymad3.com/webhook"
+    # webhook_url = f"{ngrok_url}/webhook"
+    webhook_url = "https://readymad3.com/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
     
