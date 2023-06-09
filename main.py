@@ -52,9 +52,10 @@ authorized_users = [chat_id_rafa,chat_id_orla]
 respuesta = "texto"
 bot = Bot(token=token)
 # Obtener la ruta de FFmpeg
-# ffmpeg_path = shutil.which('ffmpeg')
-ffmpeg_path = "/usr/bin/ffprobe"
-print(ffmpeg_path)
+# ffprobe_path = shutil.which('ffprobe')
+
+ffprobe_path = '/usr/bin/ffprobe'
+print(ffprobe_path)
 
 
 # Initiate App
@@ -517,7 +518,7 @@ async def telegram_webhook(request: Request):
                     print("Archivo de audio descargado")
 
                 # Convertir audio a un formato aceptado (por ejemplo, a WAV)
-                    audio = AudioSegment.from_file("audio.oga", format="ogg", ffmpeg=ffmpeg_path)
+                    audio = AudioSegment.from_file("audio.oga", format="ogg", ffmpeg=ffprobe_path)
                     audio.export("audio.wav", format="wav")
 
                     # Abrir y procesar el archivo de audio convertido
@@ -548,7 +549,7 @@ async def telegram_webhook(request: Request):
                         audio_file.write(audio_output)
 
                     ## Obtener la duración del audio en segundos
-                    audio = AudioSegment.from_file("audio_output.ogg", ffmpeg=ffmpeg_path)
+                    audio = AudioSegment.from_file("audio_output.ogg", ffmpeg=ffprobe_path)
                     audio_duration_sec = len(audio) / 1000
                     print("Duración del audio:", audio_duration_sec, "segundos")
 
