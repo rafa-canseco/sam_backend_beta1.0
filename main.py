@@ -52,7 +52,8 @@ authorized_users = [chat_id_rafa,chat_id_orla]
 respuesta = "texto"
 bot = Bot(token=token)
 # Obtener la ruta de FFmpeg
-ffmpeg_path = shutil.which('ffmpeg')
+# ffmpeg_path = shutil.which('ffmpeg')
+ffmpeg_path = "/usr/bin/ffprobe"
 print(ffmpeg_path)
 
 
@@ -63,7 +64,6 @@ def cargar_chat_ids():
     with open("chat_ids.json") as f:
         chat_ids_data = json.load(f)
     return chat_ids_data.get("chat_ids", {})
-
 
 
 # CORS - Origins
