@@ -21,6 +21,7 @@ import time
 import requests
 import shutil
 import os
+import time, datetime
 
 os.environ["PATH"] += os.pathsep + "/usr/bin"
 
@@ -32,6 +33,7 @@ from functions.database import store_messages, reset_messages, store_messages_si
 from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
 from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
+from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
 import json
@@ -638,6 +640,69 @@ async def borrar(data: dict):
     user = data["user"]
     response = borrar_contenido(user)
     return {"response": response}
+
+@app.post("/post_voiceowned_video")
+async def post_audio(request: Request, file: UploadFile = File(...)):
+    form_data = await request.form()
+    user = form_data.get('user')
+    start_time = time.time()
+
+    # Convert audio to text - production
+    # Save the file temporarily
+    with open(file.filename, "wb") as buffer:
+        buffer.write(file.file.read())
+    audio_input = open(file.filename, "rb")
+
+    # Decode audio
+    message_decoded = convert_audio_to_text(audio_input)
+
+    # Guard: Ensure output
+    if not message_decoded:
+        raise HTTPException(status_code=400, detail="Failed to decode audio")
+
+    # Get chat response
+    chat_response = get_chat_response_video(message_decoded)
+    print(chat_response)
+
+    # Guard: Ensure output
+    if not chat_response:
+        raise HTTPException(status_code=400, detail="Failed chat response")
+
+    speech = convert_text_to_speech_video(chat_response,user=user)
+    print(speech)
+    id =video_avatar(speech=speech)
+    print(id)
+    url = url_video(id)
+    print(url)
+    video = url
+    end_time = time.time()  # Tiempo de finalización
+    elapsed_time = end_time - start_time  # Tiempo transcurrido
+    print("Tiempo de ejecución:", elapsed_time, "segundos")
+    print(video)
+    return {"response": video}
+
+@app.post("/post_texto_simple_video")
+async def borrar(data: dict):
+    texto = data["texto"]
+    start_time = time.time()  # Tiempo de inicio
+
+    # Get chat response
+    chat_response = get_chat_response_video(texto)
+    print(chat_response)
+
+    # Guard: Ensure output
+    if not chat_response:
+        raise HTTPException(status_code=400, detail="Failed chat response")
+
+    id = video_avatar_texto(speech=chat_response)
+    print(id)
+    url = url_video(id)
+    video = url
+    end_time = time.time()  # Tiempo de finalización
+    elapsed_time = end_time - start_time  # Tiempo transcurrido
+    print("Tiempo de ejecución:", elapsed_time, "segundos")
+    print(video)
+    return {"response":video}
 
 
 if __name__ == "__main__":

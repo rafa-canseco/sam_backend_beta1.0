@@ -9,16 +9,14 @@ import os
 import openai
 import datetime
 
+
 openai.organization = config("OPEN_AI_ORG")
 openai.api_key = config("OPEN_AI_KEY")
-
-cred = credentials.Certificate("samai-b9f36-firebase-adminsdk-4lk6x-ee898f95b0.json")
-firebase_admin.initialize_app(cred)
-firebase_app =firebase_admin.get_app()
-API= "ZTM4ZmE1ZDViMDkwNDkxNDgwN2ZlOTliNGMwMjk4MzAtMTY4NjY4NzE3MQ=="
-user ="rafa.canseco@gmail.com"
+API = config("API")
 ELEVEN_LABS_API_KEY = config("ELEVEN_LABS_API_KEY")
-def video_avatar(chat_response):
+
+
+def video_avatar(speech):
     url = 'https://api.heygen.com/v1/video.generate'
     api_key = API
 
@@ -33,7 +31,7 @@ def video_avatar(chat_response):
             {
                 "avatar_id": "Daisy-inskirt-20220818",
                 "avatar_style": "normal",
-                "input_text": chat_response,
+                "input_audio": speech,
                 "offset": {
                     "x": 0,
                     "y": 0
@@ -63,7 +61,51 @@ def video_avatar(chat_response):
     return video_id
 
 
-##############
+def video_avatar_texto(speech):
+    url = 'https://api.heygen.com/v1/video.generate'
+    api_key = API
+
+    headers = {
+        'X-Api-Key': api_key,
+        'Content-Type': 'application/json'
+    }
+
+    data = {
+        "background": "#ffffff",
+        "clips": [
+            {
+                "avatar_id": "Daisy-inskirt-20220818",
+                "avatar_style": "normal",
+                "input_text": speech,
+                "offset": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": 1,
+                "voice_id": "1bd001e7e50f421d891986aad5158bc8",
+                "voice_language": "Spanish"
+            }
+        ],
+        "ratio": "16:9",
+        "test": True,
+        "version": "v1alpha"
+    }
+
+
+    response = requests.post(url, headers=headers, json=data)
+
+    if response.status_code == 200:
+        result = response.json()
+        video_id = result['data']['video_id']
+        print(video_id)
+        result = response.content
+        print(result)
+        print("///secuencia 1 hecha")
+    else:
+        print('Error en la solicitud:', response.status_code)
+    return video_id
+
+
 
 def url_video(video_id):
     url = f'https://api.heygen.com/v1/video_status.get?video_id={video_id}'
@@ -96,10 +138,6 @@ def url_video(video_id):
             print('Error en la solicitud:', response.status_code)
             break
 
-
-#######
-
-
 def download_video(url):
     download_url = url  # Reemplaza con la URL de descarga del archivo
     output_file = 'first_video.mp4'  # Nombre del archivo de salida
@@ -110,8 +148,10 @@ def download_video(url):
         with open(output_file, 'wb') as file:
             file.write(response.content)
         print(f'Archivo descargado exitosamente: {output_file}')
+        return response.content
     else:
         print('Error en la descarga:', response.status_code)
+        return response.status_code
 
 def get_audio_download_url(file_path):
     storage_client = storage.bucket("samai-b9f36.appspot.com")
@@ -119,7 +159,7 @@ def get_audio_download_url(file_path):
     return blob.generate_signed_url(method="GET", expiration=datetime.timedelta(days=1))
 
 
-def convert_text_to_speech_video(texto):
+def convert_text_to_speech_video(texto,user):
 
     CHUNK_SIZE = 1024
     #Define Data
@@ -171,9 +211,10 @@ def convert_text_to_speech_video(texto):
     else:
         return
     
+
 def get_chat_response_video(message_input):
 
-    messages = get_recent_messages()
+    messages = get_recent_messages_video()
     user_messages = {"role":"user","content":message_input}
     messages.append(user_messages)
     print(messages)
@@ -193,10 +234,10 @@ def get_chat_response_video(message_input):
 def get_recent_messages_video():
 
   #asignar variable
-  prompt_usuario = "Tu nombre es Samantha. Tus respuestas deben ser muy cortas, menos de 20 palabras"
+  prompt_usuario = "Tu nombre es Samantha. Tus respuestas deben ser muy cortas, menos de 10 palabras"
   
   learn_instruction = {"role": "system", 
-                       "content": prompt_usuario + "Keep your answers under 30 words"}
+                       "content": prompt_usuario + " Keep your answers under 10 words"}
   
   # Initialize messages
   messages = []
@@ -216,32 +257,3 @@ def get_recent_messages_video():
   
   # Return messages
   return messages
-
-
-
-
-
-
-texto = "Hola, me gustaría saber a que edad puede un bebe comer comida sólido"
-def video_final (texto):
-    start_time = time.time()  # Tiempo de inicio
-    chat_response = get_chat_response_video(texto)
-    print(chat_response)
-    speech = convert_text_to_speech(chat_response)
-    print(speech)
-    id =video_avatar(chat_response)
-    print(id)
-    url = url_video(id)
-    print(url)
-    video = download_video(url)
-    end_time = time.time()  # Tiempo de finalización
-    elapsed_time = end_time - start_time  # Tiempo transcurrido
-    print("Tiempo de ejecución:", elapsed_time, "segundos")
-    return video
-
-
-# hola = video_final(texto)
-# id="6c2803b538d74d30a694216a71351d95"
-# url = url_video(id)
-# video = download_video(url)
-
