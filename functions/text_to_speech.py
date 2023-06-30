@@ -102,13 +102,13 @@ def convert_text_to_speech_telegram(message):
         "text": message,
         "model_id": "eleven_multilingual_v1",
         "voice_settings": {
-            "stability": 0,
+            "stability": 0.75,
             "similarity_boost":0,
         }
     }
 
     #Define voice
-    voice_rachel = "21m00Tcm4TlvDq8ikWAM"
+    voice_rachel = "k6ySAJf7wfnoqjacH1BJ"
     voice_antoni = "oUciFfPUJCaDqHitPLu5"
 
 
