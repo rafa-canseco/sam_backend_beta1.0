@@ -79,7 +79,8 @@ origins = [
     "https://sam-frontend-beta1-0.vercel.app",
     "https://sam-frontend-beta1-0-rcsc1.vercel.app",
     "https://sam-frontend-beta1-0-git-main-rcsc1.vercel.app",
-    "https://front-fawn-rho.vercel.app/landing"
+    "https://front-fawn-rho.vercel.app",
+    "https://front-rcsc1.vercel.app"
 ]
 
 
