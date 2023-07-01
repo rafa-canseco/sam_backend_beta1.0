@@ -102,8 +102,8 @@ def convert_text_to_speech_telegram(message):
         "text": message,
         "model_id": "eleven_multilingual_v1",
         "voice_settings": {
-            "stability": 0.75,
-            "similarity_boost":0,
+            "stability": 0.06,
+            "similarity_boost":0.3,
         }
     }
 

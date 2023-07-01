@@ -46,7 +46,7 @@ def video_avatar(speech):
         "version": "v1alpha"
     }
 
-
+    print("tope 2")
     response = requests.post(url, headers=headers, json=data)
 
     if response.status_code == 200:
@@ -83,7 +83,6 @@ def video_avatar_texto(speech):
                 },
                 "scale": 1,
                 "voice_id": "1bd001e7e50f421d891986aad5158bc8",
-                "voice_language": "Spanish"
             }
         ],
         "ratio": "16:9",
@@ -96,12 +95,14 @@ def video_avatar_texto(speech):
 
     if response.status_code == 200:
         result = response.json()
+        print(result)
         video_id = result['data']['video_id']
         print(video_id)
         result = response.content
         print(result)
         print("///secuencia 1 hecha")
     else:
+        print(response.content)
         print('Error en la solicitud:', response.status_code)
     return video_id
 

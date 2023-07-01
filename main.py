@@ -696,7 +696,7 @@ async def borrar(data: dict):
     # Guard: Ensure output
     if not chat_response:
         raise HTTPException(status_code=400, detail="Failed chat response")
-
+    
     id = video_avatar_texto(speech=chat_response)
     print(id)
     url = url_video(id)
