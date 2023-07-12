@@ -51,7 +51,8 @@ token= config("token")
 ngrok_url = config("ngrok_url")
 chat_id_orla = config("chat_id_orla")
 chat_id_rafa = config("chat_id_rafa")
-authorized_users = [chat_id_rafa,chat_id_orla]
+chat_id_amigo_orla = config("chat_id_amigo_orla")
+authorized_users = [chat_id_rafa,chat_id_orla,chat_id_amigo_orla]
 respuesta = "texto"
 bot = Bot(token=token)
 # Obtener la ruta de FFmpeg
