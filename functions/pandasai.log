@@ -1,0 +1,1477 @@
+2023-07-14 12:52:18 [INFO] Question: Obten el promedio del salario de los data scientist level senior
+2023-07-14 12:52:18 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:52:18 [INFO] Prompt ID: 7c831ddb-f45f-4601-9f34-080474376982
+2023-07-14 12:52:22 [INFO] 
+                        Code generated:
+                        ```
+                        df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]['salary'].mean()
+                        ```
+                    
+2023-07-14 12:52:22 [INFO] 
+Code running:
+```
+df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]['salary'].mean()
+```
+2023-07-14 12:52:22 [INFO] Answer: 165580.25328947368
+2023-07-14 12:52:22 [INFO] Executed in: 3.486187696456909s
+2023-07-14 12:52:44 [INFO] Question: Obten el promedio del salario de los data scientist level senior
+2023-07-14 12:52:44 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:52:44 [INFO] Prompt ID: f6809260-a355-4fd6-96f7-873bd0c100c4
+2023-07-14 12:52:44 [INFO] Using cached response
+2023-07-14 12:52:44 [INFO] 
+Code running:
+```
+df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]['salary'].mean()
+```
+2023-07-14 12:52:44 [INFO] Answer: 165580.25328947368
+2023-07-14 12:52:44 [INFO] Executed in: 0.003818988800048828s
+2023-07-14 12:53:56 [INFO] Question: Obten el promedio del salario de los data scientist level senior y grafícalo en una plot bar
+2023-07-14 12:53:56 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:53:56 [INFO] Prompt ID: b3e73d0a-498f-47ce-abaa-28d0af26124b
+2023-07-14 12:56:05 [INFO] Question: grafica el salario de los data scientist level senior 
+2023-07-14 12:56:05 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:56:05 [INFO] Prompt ID: 555bec37-49a0-4556-99f3-443b070de8b4
+2023-07-14 12:56:08 [INFO] 
+                        Code generated:
+                        ```
+                        df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')].plot(x='work_year', y='salary', kind='bar')
+                        ```
+                    
+2023-07-14 12:56:08 [INFO] 
+Code running:
+```
+df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')].plot(x='work_year', y='salary', kind='bar')
+```
+2023-07-14 12:56:09 [INFO] Answer: Axes(0.125,0.11;0.775x0.77)
+2023-07-14 12:56:09 [INFO] Executed in: 4.174743175506592s
+2023-07-14 12:56:57 [INFO] Question: grafica el salario de los data scientist level senior 
+2023-07-14 12:56:57 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:56:57 [INFO] Prompt ID: 99766a45-f1e6-4dc4-8718-0b63080d6d50
+2023-07-14 12:56:57 [INFO] Using cached response
+2023-07-14 12:56:57 [INFO] 
+Code running:
+```
+df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')].plot(x='work_year', y='salary', kind='bar')
+```
+2023-07-14 12:56:58 [INFO] Answer: Axes(0.125,0.11;0.775x0.77)
+2023-07-14 12:56:58 [INFO] Executed in: 0.8776712417602539s
+2023-07-14 12:56:58 [INFO] Question: grafica el salario de los data scientist level senior 
+2023-07-14 12:56:58 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 12:56:58 [INFO] Prompt ID: 7066c6b4-f22d-4061-a964-c7f4b9da22f7
+2023-07-14 12:56:58 [INFO] Using cached response
+2023-07-14 12:56:58 [INFO] 
+Code running:
+```
+df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')].plot(x='work_year', y='salary', kind='bar')
+```
+2023-07-14 12:56:59 [INFO] Answer: Axes(0.125,0.11;0.775x0.77)
+2023-07-14 12:56:59 [INFO] Executed in: 0.7983651161193848s
+2023-07-14 13:45:32 [INFO] Question: grafica con un histograma el salario de los data scientist level senior 
+2023-07-14 13:45:32 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:45:32 [INFO] Prompt ID: a7ea12fe-0d10-4317-a1dc-4bb018085344
+2023-07-14 13:45:37 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+# Filter dataframe to only include Senior Data Scientists
+df_senior_ds = df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]
+
+# Plot histogram of salary
+plt.hist(df_senior_ds['salary'])
+plt.title('Salary of Senior Data Scientists')
+plt.xlabel('Salary')
+plt.ylabel('Number of Senior Data Scientists')
+plt.show()
+                        ```
+                    
+2023-07-14 13:45:37 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/a7ea12fe-0d10-4317-a1dc-4bb018085344
+2023-07-14 13:45:37 [INFO] 
+Code running:
+```
+df_senior_ds = df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]
+plt.hist(df_senior_ds['salary'])
+plt.title('Salary of Senior Data Scientists')
+plt.xlabel('Salary')
+plt.ylabel('Number of Senior Data Scientists')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/a7ea12fe-0d10-4317-a1dc-4bb018085344/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:45:43 [INFO] Answer: None
+2023-07-14 13:45:43 [INFO] Executed in: 11.674134731292725s
+2023-07-14 13:45:43 [INFO] Question: grafica con un histograma el salario de los data scientist level senior 
+2023-07-14 13:45:43 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:45:43 [INFO] Prompt ID: 731eeed2-152a-4aec-a541-4a17dc2d4697
+2023-07-14 13:45:43 [INFO] Using cached response
+2023-07-14 13:45:43 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/731eeed2-152a-4aec-a541-4a17dc2d4697
+2023-07-14 13:45:43 [INFO] 
+Code running:
+```
+df_senior_ds = df[(df['experience_level'] == 'SE') & (df['job_title'] == 'Data Scientist')]
+plt.hist(df_senior_ds['salary'])
+plt.title('Salary of Senior Data Scientists')
+plt.xlabel('Salary')
+plt.ylabel('Number of Senior Data Scientists')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/731eeed2-152a-4aec-a541-4a17dc2d4697/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:45:45 [INFO] Answer: None
+2023-07-14 13:45:45 [INFO] Executed in: 1.480808973312378s
+2023-07-14 13:46:34 [INFO] Question: grafica con un histograma el salario
+2023-07-14 13:46:34 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:46:34 [INFO] Prompt ID: 10934540-9d8e-41b2-a1d0-72b096205c2f
+2023-07-14 13:46:38 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+plt.hist(df['salary'])
+plt.title('Salary Histogram')
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.show()
+                        ```
+                    
+2023-07-14 13:46:38 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/10934540-9d8e-41b2-a1d0-72b096205c2f
+2023-07-14 13:46:38 [INFO] 
+Code running:
+```
+plt.hist(df['salary'])
+plt.title('Salary Histogram')
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/10934540-9d8e-41b2-a1d0-72b096205c2f/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:46:44 [INFO] Answer: None
+2023-07-14 13:46:44 [INFO] Executed in: 9.487558126449585s
+2023-07-14 13:46:44 [INFO] Question: grafica con un histograma el salario
+2023-07-14 13:46:44 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:46:44 [INFO] Prompt ID: 9dddf086-1696-4898-ad76-512aa802083e
+2023-07-14 13:46:44 [INFO] Using cached response
+2023-07-14 13:46:44 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/9dddf086-1696-4898-ad76-512aa802083e
+2023-07-14 13:46:44 [INFO] 
+Code running:
+```
+plt.hist(df['salary'])
+plt.title('Salary Histogram')
+plt.xlabel('Salary')
+plt.ylabel('Frequency')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/9dddf086-1696-4898-ad76-512aa802083e/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:46:45 [INFO] Answer: None
+2023-07-14 13:46:45 [INFO] Executed in: 1.4177041053771973s
+2023-07-14 13:47:10 [INFO] Question: grafica con un histograma el salario contra el job title
+2023-07-14 13:47:10 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:47:10 [INFO] Prompt ID: 8fe2e2e4-6495-4cae-bb14-0ab66c2ec4a0
+2023-07-14 13:47:14 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+plt.hist(df['salary'], bins=20, color='#0504aa', alpha=0.7, rwidth=0.85)
+plt.xlabel('Salary')
+plt.ylabel('Job Title')
+plt.title('Salary vs Job Title')
+plt.show()
+                        ```
+                    
+2023-07-14 13:47:14 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/8fe2e2e4-6495-4cae-bb14-0ab66c2ec4a0
+2023-07-14 13:47:14 [INFO] 
+Code running:
+```
+plt.hist(df['salary'], bins=20, color='#0504aa', alpha=0.7, rwidth=0.85)
+plt.xlabel('Salary')
+plt.ylabel('Job Title')
+plt.title('Salary vs Job Title')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/8fe2e2e4-6495-4cae-bb14-0ab66c2ec4a0/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:47:29 [INFO] Answer: None
+2023-07-14 13:47:29 [INFO] Executed in: 19.65403175354004s
+2023-07-14 13:47:29 [INFO] Question: grafica con un histograma el salario contra el job title
+2023-07-14 13:47:29 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:47:29 [INFO] Prompt ID: 06c82ef3-0efd-40c6-a9c7-9d671fd9d702
+2023-07-14 13:47:29 [INFO] Using cached response
+2023-07-14 13:47:29 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/06c82ef3-0efd-40c6-a9c7-9d671fd9d702
+2023-07-14 13:47:29 [INFO] 
+Code running:
+```
+plt.hist(df['salary'], bins=20, color='#0504aa', alpha=0.7, rwidth=0.85)
+plt.xlabel('Salary')
+plt.ylabel('Job Title')
+plt.title('Salary vs Job Title')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/06c82ef3-0efd-40c6-a9c7-9d671fd9d702/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:47:31 [INFO] Answer: None
+2023-07-14 13:47:31 [INFO] Executed in: 1.6278767585754395s
+2023-07-14 13:47:56 [INFO] Question: grafica con un histograma el salary_in_usd en el eje y contra el job title en el eje x
+2023-07-14 13:47:56 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:47:56 [INFO] Prompt ID: 3f28e593-657b-4606-979d-a00cdfe3355c
+2023-07-14 13:48:00 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+plt.hist(df['salary_in_usd'], bins=20)
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salary in USD vs Job Title')
+plt.show()
+                        ```
+                    
+2023-07-14 13:48:00 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/3f28e593-657b-4606-979d-a00cdfe3355c
+2023-07-14 13:48:00 [INFO] 
+Code running:
+```
+plt.hist(df['salary_in_usd'], bins=20)
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salary in USD vs Job Title')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/3f28e593-657b-4606-979d-a00cdfe3355c/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:48:56 [INFO] Answer: None
+2023-07-14 13:48:56 [INFO] Executed in: 60.175946950912476s
+2023-07-14 13:48:56 [INFO] Question: grafica con un histograma el salary_in_usd en el eje y contra el job title en el eje x
+2023-07-14 13:48:56 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:48:56 [INFO] Prompt ID: 8a1d7416-b8e6-4aaa-9374-44658d085f11
+2023-07-14 13:48:56 [INFO] Using cached response
+2023-07-14 13:48:56 [INFO] Charts saving to: /Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/8a1d7416-b8e6-4aaa-9374-44658d085f11
+2023-07-14 13:48:56 [INFO] 
+Code running:
+```
+plt.hist(df['salary_in_usd'], bins=20)
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salary in USD vs Job Title')
+plt.savefig('/Users/rafacanseco/Desktop/Sam_1.0/backend/venv/lib/python3.11/site-packages/exports/charts/8a1d7416-b8e6-4aaa-9374-44658d085f11/chart.png')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:48:58 [INFO] Answer: None
+2023-07-14 13:48:58 [INFO] Executed in: 2.343402147293091s
+2023-07-14 13:49:04 [INFO] Question: grafica con un histograma el salary_in_usd en el eje y contra el employee_residence en el eje x
+2023-07-14 13:49:04 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:49:04 [INFO] Prompt ID: d5e639f0-c935-4bac-a642-a10d26e38557
+2023-07-14 13:49:07 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+plt.hist(df['salary_in_usd'], by=df['employee_residence'])
+plt.xlabel('Employee Residence')
+plt.ylabel('Salary in USD')
+plt.title('Salary in USD vs Employee Residence')
+plt.show()
+                        ```
+                    
+2023-07-14 13:49:07 [INFO] 
+Code running:
+```
+plt.hist(df['salary_in_usd'], by=df['employee_residence'])
+plt.xlabel('Employee Residence')
+plt.ylabel('Salary in USD')
+plt.title('Salary in USD vs Employee Residence')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:52:53 [INFO] Question: grafica con un pie chart el porcentaje de cada employee residence 
+2023-07-14 13:52:53 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:52:53 [INFO] Prompt ID: ced2aca4-1928-4987-b601-dbe1224081e5
+2023-07-14 13:52:59 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+# Get the counts of each employee residence
+employee_residence_counts = df['employee_residence'].value_counts()
+
+# Plot the pie chart
+plt.pie(employee_residence_counts, labels=employee_residence_counts.index, autopct='%1.1f%%')
+plt.title('Employee Residence Distribution')
+plt.show()
+                        ```
+                    
+2023-07-14 13:52:59 [INFO] 
+Code running:
+```
+employee_residence_counts = df['employee_residence'].value_counts()
+plt.pie(employee_residence_counts, labels=employee_residence_counts.index, autopct='%1.1f%%')
+plt.title('Employee Residence Distribution')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:53:10 [INFO] Answer: None
+2023-07-14 13:53:10 [INFO] Executed in: 16.929391145706177s
+2023-07-14 13:53:10 [INFO] Question: grafica con un pie chart el porcentaje de cada employee residence 
+2023-07-14 13:53:10 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:53:10 [INFO] Prompt ID: 0f5212e4-2fe5-44a3-af70-789e96fd4199
+2023-07-14 13:53:10 [INFO] Using cached response
+2023-07-14 13:53:10 [INFO] 
+Code running:
+```
+employee_residence_counts = df['employee_residence'].value_counts()
+plt.pie(employee_residence_counts, labels=employee_residence_counts.index, autopct='%1.1f%%')
+plt.title('Employee Residence Distribution')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:53:12 [INFO] Answer: None
+2023-07-14 13:53:12 [INFO] Executed in: 1.992136001586914s
+2023-07-14 13:55:07 [INFO] Question: grafica con un pie chart el porcentaje de cada puesto de trabajo
+2023-07-14 13:55:07 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:55:07 [INFO] Prompt ID: 94a78a48-3afe-47f4-917a-8baaface69b4
+2023-07-14 13:55:18 [INFO] 
+                        Code generated:
+                        ```
+                        import matplotlib.pyplot as plt
+
+# Get the job titles
+job_titles = df['job_title'].unique()
+
+# Get the counts of each job title
+job_title_counts = df['job_title'].value_counts()
+
+# Create a pie chart
+plt.pie(job_title_counts, labels=job_titles, autopct='%1.1f%%')
+plt.title('Percentage of Each Job Title')
+plt.show()
+                        ```
+                    
+2023-07-14 13:55:18 [INFO] 
+Code running:
+```
+job_titles = df['job_title'].unique()
+job_title_counts = df['job_title'].value_counts()
+plt.pie(job_title_counts, labels=job_titles, autopct='%1.1f%%')
+plt.title('Percentage of Each Job Title')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:55:24 [INFO] Answer: None
+2023-07-14 13:55:24 [INFO] Executed in: 17.30156898498535s
+2023-07-14 13:55:24 [INFO] Question: grafica con un pie chart el porcentaje de cada puesto de trabajo
+2023-07-14 13:55:24 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:55:24 [INFO] Prompt ID: 41554278-22dd-404e-9a3b-f35b2127fa6c
+2023-07-14 13:55:24 [INFO] Using cached response
+2023-07-14 13:55:24 [INFO] 
+Code running:
+```
+job_titles = df['job_title'].unique()
+job_title_counts = df['job_title'].value_counts()
+plt.pie(job_title_counts, labels=job_titles, autopct='%1.1f%%')
+plt.title('Percentage of Each Job Title')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:55:25 [INFO] Answer: None
+2023-07-14 13:55:25 [INFO] Executed in: 1.3224678039550781s
+2023-07-14 13:55:44 [INFO] Question: grafica con un pie chart el porcentaje de cada puesto de trabajo,solamente grafica el los que tengan mas de 10%
+2023-07-14 13:55:44 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:55:44 [INFO] Prompt ID: d234fec0-f97f-48b5-bea0-2dbad7373562
+2023-07-14 13:55:49 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Get the job titles and their respective counts
+job_counts = df['job_title'].value_counts()
+
+# Get the job titles with more than 10% of the total
+job_counts_10 = job_counts[job_counts > (0.1 * df.shape[0])]
+
+# Plot the pie chart
+plt.pie(job_counts_10, labels=job_counts_10.index, autopct='%1.1f%%')
+plt.title('Job Titles with more than 10% of the total')
+plt.show()
+                        ```
+                    
+2023-07-14 13:55:49 [INFO] 
+Code running:
+```
+job_counts = df['job_title'].value_counts()
+job_counts_10 = job_counts[job_counts > 0.1 * df.shape[0]]
+plt.pie(job_counts_10, labels=job_counts_10.index, autopct='%1.1f%%')
+plt.title('Job Titles with more than 10% of the total')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:55:58 [INFO] Answer: None
+2023-07-14 13:55:58 [INFO] Executed in: 13.384918928146362s
+2023-07-14 13:55:58 [INFO] Question: grafica con un pie chart el porcentaje de cada puesto de trabajo,solamente grafica el los que tengan mas de 10%
+2023-07-14 13:55:58 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:55:58 [INFO] Prompt ID: 988bc22b-0494-4a85-a9b0-622c55231320
+2023-07-14 13:55:58 [INFO] Using cached response
+2023-07-14 13:55:58 [INFO] 
+Code running:
+```
+job_counts = df['job_title'].value_counts()
+job_counts_10 = job_counts[job_counts > 0.1 * df.shape[0]]
+plt.pie(job_counts_10, labels=job_counts_10.index, autopct='%1.1f%%')
+plt.title('Job Titles with more than 10% of the total')
+plt.show()
+plt.close('all')
+```
+2023-07-14 13:55:59 [INFO] Answer: None
+2023-07-14 13:55:59 [INFO] Executed in: 1.5032720565795898s
+2023-07-14 13:56:48 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist
+2023-07-14 13:56:48 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:56:48 [INFO] Prompt ID: f2b45d92-8211-499e-869c-5d8345efb3ed
+2023-07-14 13:56:50 [INFO] 
+                        Code generated:
+                        ```
+                        df[df['job_title'] == 'Data Scientist']['salary'].mean()
+                        ```
+                    
+2023-07-14 13:56:50 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Scientist']['salary'].mean()
+```
+2023-07-14 13:56:50 [INFO] Answer: 239073.47619047618
+2023-07-14 13:56:50 [INFO] Executed in: 1.9698460102081299s
+2023-07-14 13:56:50 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist
+2023-07-14 13:56:50 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:56:50 [INFO] Prompt ID: 7360189f-2577-4285-90da-4ab90faa2cce
+2023-07-14 13:56:50 [INFO] Using cached response
+2023-07-14 13:56:50 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Scientist']['salary'].mean()
+```
+2023-07-14 13:56:50 [INFO] Answer: 239073.47619047618
+2023-07-14 13:56:50 [INFO] Executed in: 0.0032587051391601562s
+2023-07-14 13:57:22 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist, da una respuesta en frase completa
+2023-07-14 13:57:22 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:57:22 [INFO] Prompt ID: 5f61c7c1-0b31-424a-9728-9e0956a54842
+2023-07-14 13:57:25 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist, da una respuesta en frase completa
+2023-07-14 13:57:25 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:57:25 [INFO] Prompt ID: e87627ba-0d46-40a4-ab4c-9a1879662337
+2023-07-14 13:57:39 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist, da una respuesta en frase completa
+2023-07-14 13:57:39 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:57:39 [INFO] Prompt ID: aaa26b35-208d-4a14-abdf-f96fc2e12913
+2023-07-14 13:57:42 [INFO] Question: quiero saber el promedio de salary que ganan los data scientist, da una respuesta en frase completa
+2023-07-14 13:57:42 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 13:57:42 [INFO] Prompt ID: 7de8e42b-ede1-4d0d-b63d-0ec916f33779
+2023-07-14 14:03:18 [INFO] Question: grafica con un pie chart el porcentaje de cada puesto de trabajo,solamente grafica el los que tengan mas de 10%
+2023-07-14 14:03:18 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:03:18 [INFO] Prompt ID: 7cc23b18-9759-49b6-af40-70791edcd780
+2023-07-14 14:03:18 [INFO] Using cached response
+2023-07-14 14:03:18 [INFO] 
+Code running:
+```
+job_counts = df['job_title'].value_counts()
+job_counts_10 = job_counts[job_counts > 0.1 * df.shape[0]]
+plt.pie(job_counts_10, labels=job_counts_10.index, autopct='%1.1f%%')
+plt.title('Job Titles with more than 10% of the total')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:07:40 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:07:40 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:07:40 [INFO] Prompt ID: ee1515f8-7e9b-46b0-a6c7-b73318570068
+2023-07-14 14:07:42 [INFO] 
+                        Code generated:
+                        ```
+                        df.sort_values(by='salary', ascending=True).head(1)['job_title']
+                        ```
+                    
+2023-07-14 14:07:42 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:07:42 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:07:42 [INFO] Executed in: 2.2018678188323975s
+2023-07-14 14:07:42 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:07:42 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:07:42 [INFO] Prompt ID: a51cde1b-5a33-44c5-a6f2-6559198d7758
+2023-07-14 14:07:42 [INFO] Using cached response
+2023-07-14 14:07:42 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:07:42 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:07:42 [INFO] Executed in: 0.0035262107849121094s
+2023-07-14 14:08:02 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:08:02 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:08:02 [INFO] Prompt ID: ec57539d-fe63-4c61-93d5-3c6fefcc104c
+2023-07-14 14:08:02 [INFO] Using cached response
+2023-07-14 14:08:02 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:08:02 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:08:02 [INFO] Executed in: 0.004376649856567383s
+2023-07-14 14:08:02 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:08:02 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:08:02 [INFO] Prompt ID: c46caac7-0b40-4ae6-9d27-d169a7335b9f
+2023-07-14 14:08:02 [INFO] Using cached response
+2023-07-14 14:08:02 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:08:02 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:08:02 [INFO] Executed in: 0.00177001953125s
+2023-07-14 14:08:31 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:08:31 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:08:31 [INFO] Prompt ID: 7a56a40a-c6a6-4ba8-91b4-5b7c0aca306b
+2023-07-14 14:08:31 [INFO] Using cached response
+2023-07-14 14:08:31 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:08:31 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:08:31 [INFO] Executed in: 0.003511190414428711s
+2023-07-14 14:08:31 [INFO] Question: que trabajos tienen el salario mas bajo?
+2023-07-14 14:08:31 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:08:31 [INFO] Prompt ID: 5173623f-640e-4a5a-a22d-76280db24af2
+2023-07-14 14:08:31 [INFO] Using cached response
+2023-07-14 14:08:31 [INFO] 
+Code running:
+```
+df.sort_values(by='salary', ascending=True).head(1)['job_title']
+```
+2023-07-14 14:08:31 [INFO] Answer: 1548    AI Developer
+Name: job_title, dtype: object
+2023-07-14 14:08:31 [INFO] Executed in: 0.001672983169555664s
+2023-07-14 14:09:03 [INFO] Question: cuanto gana en promedio un data analyst?
+2023-07-14 14:09:03 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:09:03 [INFO] Prompt ID: bf6b3de3-2ebf-4bf2-8425-9bd3ed12b2d9
+2023-07-14 14:09:03 [INFO] error_code=None error_message='This is a chat model and not supported in the v1/completions endpoint. Did you mean to use v1/chat/completions?' error_param=model error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-07-14 14:09:03 [INFO] Question: cuanto gana en promedio un data analyst?
+2023-07-14 14:09:03 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:09:03 [INFO] Prompt ID: ab932204-381c-4a4b-9bf8-27995678a30c
+2023-07-14 14:09:04 [INFO] error_code=None error_message='This is a chat model and not supported in the v1/completions endpoint. Did you mean to use v1/chat/completions?' error_param=model error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-07-14 14:10:16 [INFO] Question: cuanto gana en promedio un data analyst?
+2023-07-14 14:10:16 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:10:16 [INFO] Prompt ID: 545fe4f7-549b-41bb-85c7-303c1996a846
+2023-07-14 14:10:17 [INFO] 
+                        Code generated:
+                        ```
+                        df[df['job_title'] == 'Data Analyst']['salary'].mean()
+                        ```
+                    
+2023-07-14 14:10:17 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary'].mean()
+```
+2023-07-14 14:10:17 [INFO] Answer: 116374.04575163398
+2023-07-14 14:10:17 [INFO] Executed in: 1.1591780185699463s
+2023-07-14 14:10:17 [INFO] Question: cuanto gana en promedio un data analyst?
+2023-07-14 14:10:17 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:10:17 [INFO] Prompt ID: 409892ac-08ac-4d74-81c5-a0bb4d2e1b89
+2023-07-14 14:10:17 [INFO] Using cached response
+2023-07-14 14:10:17 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary'].mean()
+```
+2023-07-14 14:10:17 [INFO] Answer: 116374.04575163398
+2023-07-14 14:10:17 [INFO] Executed in: 0.0028069019317626953s
+2023-07-14 14:10:30 [INFO] Question: cuanto gana en promedio un data analyst? da tu respuesta en $
+2023-07-14 14:10:30 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:10:30 [INFO] Prompt ID: b028aa58-5334-4d37-880c-e01756d59d8b
+2023-07-14 14:10:34 [INFO] 
+                        Code generated:
+                        ```
+                        df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+                        ```
+                    
+2023-07-14 14:10:34 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+```
+2023-07-14 14:10:34 [INFO] Answer: 108716.227124183
+2023-07-14 14:10:34 [INFO] Executed in: 3.53174090385437s
+2023-07-14 14:10:34 [INFO] Question: cuanto gana en promedio un data analyst? da tu respuesta en $
+2023-07-14 14:10:34 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:10:34 [INFO] Prompt ID: 94771d6e-5f45-4d65-97ef-336287ce0181
+2023-07-14 14:10:34 [INFO] Using cached response
+2023-07-14 14:10:34 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+```
+2023-07-14 14:10:34 [INFO] Answer: 108716.227124183
+2023-07-14 14:10:34 [INFO] Executed in: 0.0026750564575195312s
+2023-07-14 14:11:04 [INFO] Question: cuanto gana en promedio un data analyst? da tu respuesta en formato de dinero
+
+por ejemplo:
+
+$100,000
+2023-07-14 14:11:04 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:11:04 [INFO] Prompt ID: f9be02ae-7713-4c9a-9151-4bc319721394
+2023-07-14 14:11:06 [INFO] 
+                        Code generated:
+                        ```
+                        df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+                        ```
+                    
+2023-07-14 14:11:06 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+```
+2023-07-14 14:11:06 [INFO] Answer: 108716.227124183
+2023-07-14 14:11:06 [INFO] Executed in: 1.5659408569335938s
+2023-07-14 14:11:06 [INFO] Question: cuanto gana en promedio un data analyst? da tu respuesta en formato de dinero
+
+por ejemplo:
+
+$100,000
+2023-07-14 14:11:06 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:11:06 [INFO] Prompt ID: 75af9bae-7c89-49c4-b656-ca346e809c2c
+2023-07-14 14:11:06 [INFO] Using cached response
+2023-07-14 14:11:06 [INFO] 
+Code running:
+```
+df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+```
+2023-07-14 14:11:06 [INFO] Answer: 108716.227124183
+2023-07-14 14:11:06 [INFO] Executed in: 0.003125905990600586s
+2023-07-14 14:11:39 [INFO] Question: cuanto gana en promedio un data analyst? 
+
+da tu respuesta en formato de dinero como el siguiente ejemplo
+
+///
+$100,000
+///
+
+2023-07-14 14:11:39 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:11:39 [INFO] Prompt ID: 1cbc852f-959e-4ca1-b616-db0e12177b31
+2023-07-14 14:11:41 [INFO] Question: cuanto gana en promedio un data analyst? 
+
+da tu respuesta en formato de dinero como el siguiente ejemplo
+
+///
+$100,000
+///
+
+2023-07-14 14:11:41 [INFO] Running PandasAI with langchain_openai LLM...
+2023-07-14 14:11:41 [INFO] Prompt ID: a3347f7d-7161-470a-8653-de6e864c6d7f
+2023-07-14 14:14:57 [INFO] Question: cuanto gana en promedio un data analyst? 
+2023-07-14 14:14:57 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:14:57 [INFO] Prompt ID: 26d6e227-4744-4c5f-9dae-6b13de97b1d7
+2023-07-14 14:15:02 [INFO] 
+                        Code generated:
+                        ```
+                        average_salary = df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+print("The average salary of a data analyst is:", average_salary)
+                        ```
+                    
+2023-07-14 14:15:02 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+print('The average salary of a data analyst is:', average_salary)
+```
+2023-07-14 14:15:02 [INFO] Answer: The average salary of a data analyst is: 108716.227124183
+2023-07-14 14:15:02 [INFO] Executed in: 4.7031309604644775s
+2023-07-14 14:15:02 [INFO] Question: cuanto gana en promedio un data analyst? 
+2023-07-14 14:15:02 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:15:02 [INFO] Prompt ID: 04e88bed-ce98-422a-a7c9-1889da06d5f4
+2023-07-14 14:15:02 [INFO] Using cached response
+2023-07-14 14:15:02 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+print('The average salary of a data analyst is:', average_salary)
+```
+2023-07-14 14:15:02 [INFO] Answer: The average salary of a data analyst is: 108716.227124183
+2023-07-14 14:15:02 [INFO] Executed in: 0.003660917282104492s
+2023-07-14 14:15:18 [INFO] Question: cuanto gana en promedio un data analyst? 
+2023-07-14 14:15:18 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:15:18 [INFO] Prompt ID: d09bab33-641a-4e5e-afcc-169efd845fd1
+2023-07-14 14:15:18 [INFO] Using cached response
+2023-07-14 14:15:18 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+print('The average salary of a data analyst is:', average_salary)
+```
+2023-07-14 14:15:18 [INFO] Answer: The average salary of a data analyst is: 108716.227124183
+2023-07-14 14:15:18 [INFO] Executed in: 0.0034818649291992188s
+2023-07-14 14:15:18 [INFO] Question: cuanto gana en promedio un data analyst? 
+2023-07-14 14:15:18 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:15:18 [INFO] Prompt ID: 8fdc8d04-eb79-4e16-a965-6cbf85bf7a37
+2023-07-14 14:15:18 [INFO] Using cached response
+2023-07-14 14:15:18 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Analyst']['salary_in_usd'].mean()
+print('The average salary of a data analyst is:', average_salary)
+```
+2023-07-14 14:15:18 [INFO] Answer: The average salary of a data analyst is: 108716.227124183
+2023-07-14 14:15:18 [INFO] Executed in: 0.0007920265197753906s
+2023-07-14 14:15:55 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares 
+2023-07-14 14:15:55 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:15:55 [INFO] Prompt ID: 76cf0dba-3e69-42e7-ac4e-8dc05408a25d
+2023-07-14 14:15:56 [INFO] error_code=model_not_found error_message='The model `gpt-3.5` does not exist' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-07-14 14:15:56 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares 
+2023-07-14 14:15:56 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:15:56 [INFO] Prompt ID: 45007336-1a52-457e-b146-67564186ea77
+2023-07-14 14:15:57 [INFO] error_code=model_not_found error_message='The model `gpt-3.5` does not exist' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-07-14 14:16:07 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares 
+2023-07-14 14:16:07 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:16:07 [INFO] Prompt ID: 3966d60f-bd4e-43d1-8d1c-c0e1b82d3c69
+2023-07-14 14:16:12 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the dataframe
+df = pd.read_csv('data.csv')
+
+# Sort the dataframe by salary_in_usd in descending order
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+
+# Select the top 5 rows
+top_5_jobs = df_sorted.head(5)
+
+# Plot a histogram of the top 5 jobs' salaries
+plt.hist(top_5_jobs['salary_in_usd'], bins=10)
+plt.xlabel('Salary in USD')
+plt.ylabel('Frequency')
+plt.title('Top 5 Jobs with Highest Salaries')
+plt.show()
+                        ```
+                    
+2023-07-14 14:16:12 [INFO] 
+Code running:
+```
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+top_5_jobs = df_sorted.head(5)
+plt.hist(top_5_jobs['salary_in_usd'], bins=10)
+plt.xlabel('Salary in USD')
+plt.ylabel('Frequency')
+plt.title('Top 5 Jobs with Highest Salaries')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:16:21 [INFO] Answer: None
+2023-07-14 14:16:21 [INFO] Executed in: 13.909609079360962s
+2023-07-14 14:16:21 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares 
+2023-07-14 14:16:21 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:16:21 [INFO] Prompt ID: bb094da5-0fad-40f4-a02f-a969ae951ee3
+2023-07-14 14:16:21 [INFO] Using cached response
+2023-07-14 14:16:21 [INFO] 
+Code running:
+```
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+top_5_jobs = df_sorted.head(5)
+plt.hist(top_5_jobs['salary_in_usd'], bins=10)
+plt.xlabel('Salary in USD')
+plt.ylabel('Frequency')
+plt.title('Top 5 Jobs with Highest Salaries')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:16:23 [INFO] Answer: None
+2023-07-14 14:16:23 [INFO] Executed in: 1.8752930164337158s
+2023-07-14 14:16:50 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares, grafica salarios en dólares contra job title 
+2023-07-14 14:16:50 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:16:50 [INFO] Prompt ID: 9eabe95d-8252-4ed9-96c8-47f38df48e0f
+2023-07-14 14:16:57 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the dataframe
+df = pd.read_csv('data.csv')
+
+# Sort the dataframe by salary in descending order
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+
+# Get the top 5 jobs with the highest salary
+top_5_jobs = df_sorted.head(5)
+
+# Plot a histogram of the top 5 jobs with the highest salary
+plt.figure(figsize=(10, 6))
+plt.bar(top_5_jobs['job_title'], top_5_jobs['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Top 5 Jobs with Highest Salary')
+plt.xticks(rotation=45)
+plt.show()
+
+# Plot salaries in USD against job title
+plt.figure(figsize=(10, 6))
+plt.scatter(df['job_title'], df['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salaries in USD vs Job Title')
+plt.xticks(rotation=45)
+plt.show()
+                        ```
+                    
+2023-07-14 14:16:57 [INFO] 
+Code running:
+```
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+top_5_jobs = df_sorted.head(5)
+plt.figure(figsize=(10, 6))
+plt.bar(top_5_jobs['job_title'], top_5_jobs['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Top 5 Jobs with Highest Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+plt.figure(figsize=(10, 6))
+plt.scatter(df['job_title'], df['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salaries in USD vs Job Title')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:17:29 [INFO] Answer: None
+2023-07-14 14:17:29 [INFO] Executed in: 39.80935597419739s
+2023-07-14 14:17:29 [INFO] Question: grafica en un histograma los 5 trabajos con mejores salario en dólares, grafica salarios en dólares contra job title 
+2023-07-14 14:17:29 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:17:29 [INFO] Prompt ID: c4318cba-e391-48f3-87b9-e1ea72a9bdbb
+2023-07-14 14:17:29 [INFO] Using cached response
+2023-07-14 14:17:29 [INFO] 
+Code running:
+```
+df_sorted = df.sort_values('salary_in_usd', ascending=False)
+top_5_jobs = df_sorted.head(5)
+plt.figure(figsize=(10, 6))
+plt.bar(top_5_jobs['job_title'], top_5_jobs['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Top 5 Jobs with Highest Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+plt.figure(figsize=(10, 6))
+plt.scatter(df['job_title'], df['salary_in_usd'])
+plt.xlabel('Job Title')
+plt.ylabel('Salary in USD')
+plt.title('Salaries in USD vs Job Title')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:17:31 [INFO] Answer: None
+2023-07-14 14:17:31 [INFO] Executed in: 1.7294909954071045s
+2023-07-14 14:25:00 [INFO] Question: 
+cuantas columnas hay?
+
+
+2023-07-14 14:25:00 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:00 [INFO] Prompt ID: b1e2d443-46d6-40af-8f0a-d94668b3a747
+2023-07-14 14:25:02 [INFO] 
+                        Code generated:
+                        ```
+                        num_columns = len(df.columns)
+print("Number of columns:", num_columns)
+                        ```
+                    
+2023-07-14 14:25:02 [INFO] 
+Code running:
+```
+num_columns = len(df.columns)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:02 [INFO] Answer: Number of columns: 11
+2023-07-14 14:25:02 [INFO] Executed in: 1.6685047149658203s
+2023-07-14 14:25:02 [INFO] Question: 
+cuantas columnas hay?
+
+
+2023-07-14 14:25:02 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:02 [INFO] Prompt ID: b6648f1c-98db-416d-bd38-63c25249b54c
+2023-07-14 14:25:02 [INFO] Using cached response
+2023-07-14 14:25:02 [INFO] 
+Code running:
+```
+num_columns = len(df.columns)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:02 [INFO] Answer: Number of columns: 11
+2023-07-14 14:25:02 [INFO] Executed in: 0.0011162757873535156s
+2023-07-14 14:25:23 [INFO] Question: 
+cuantas columnas y filas hay?
+
+
+2023-07-14 14:25:23 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:23 [INFO] Prompt ID: 04f7bb56-3e68-48f7-b717-bd1b7e7652a1
+2023-07-14 14:25:25 [INFO] 
+                        Code generated:
+                        ```
+                        # To get the number of rows and columns in the dataframe, we can use the shape attribute of the dataframe.
+
+num_rows = df.shape[0]  # Number of rows
+num_columns = df.shape[1]  # Number of columns
+
+print("Number of rows:", num_rows)
+print("Number of columns:", num_columns)
+                        ```
+                    
+2023-07-14 14:25:25 [INFO] 
+Code running:
+```
+num_rows = df.shape[0]
+num_columns = df.shape[1]
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:25 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:25:25 [INFO] Executed in: 2.848222017288208s
+2023-07-14 14:25:25 [INFO] Question: 
+cuantas columnas y filas hay?
+
+
+2023-07-14 14:25:25 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:25 [INFO] Prompt ID: 499a0ff0-bdc5-42f1-9758-6ead08769ba8
+2023-07-14 14:25:25 [INFO] Using cached response
+2023-07-14 14:25:25 [INFO] 
+Code running:
+```
+num_rows = df.shape[0]
+num_columns = df.shape[1]
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:25 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:25:25 [INFO] Executed in: 0.0011830329895019531s
+2023-07-14 14:25:35 [INFO] Question: 
+cuantas columnas y filas hay?
+
+
+2023-07-14 14:25:35 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:35 [INFO] Prompt ID: 772c32fe-6a09-41a7-8e96-153ffc818dc7
+2023-07-14 14:25:35 [INFO] Using cached response
+2023-07-14 14:25:35 [INFO] 
+Code running:
+```
+num_rows = df.shape[0]
+num_columns = df.shape[1]
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:35 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:25:35 [INFO] Executed in: 0.00039076805114746094s
+2023-07-14 14:25:35 [INFO] Question: 
+cuantas columnas y filas hay?
+
+
+2023-07-14 14:25:35 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:25:35 [INFO] Prompt ID: d680a49f-1973-4ba8-8803-506b95ffa8e0
+2023-07-14 14:25:35 [INFO] Using cached response
+2023-07-14 14:25:35 [INFO] 
+Code running:
+```
+num_rows = df.shape[0]
+num_columns = df.shape[1]
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:25:35 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:25:35 [INFO] Executed in: 0.0002090930938720703s
+2023-07-14 14:26:30 [INFO] Question: cual es el salario promedio de un Data Strategist?
+2023-07-14 14:26:30 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:26:30 [INFO] Prompt ID: f1b592fc-861c-42e0-b484-b89bd08ad642
+2023-07-14 14:26:34 [INFO] 
+                        Code generated:
+                        ```
+                        average_salary = df[df['job_title'] == 'Data Strategist']['salary_in_usd'].mean()
+print("The average salary of a Data Strategist is:", average_salary)
+                        ```
+                    
+2023-07-14 14:26:34 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Strategist']['salary_in_usd'].mean()
+print('The average salary of a Data Strategist is:', average_salary)
+```
+2023-07-14 14:26:34 [INFO] Answer: The average salary of a Data Strategist is: 81000.0
+2023-07-14 14:26:34 [INFO] Executed in: 4.321382999420166s
+2023-07-14 14:26:34 [INFO] Question: cual es el salario promedio de un Data Strategist?
+2023-07-14 14:26:34 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:26:34 [INFO] Prompt ID: 8be18cb0-f64f-41c2-8c79-abb361fff959
+2023-07-14 14:26:34 [INFO] Using cached response
+2023-07-14 14:26:34 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'Data Strategist']['salary_in_usd'].mean()
+print('The average salary of a Data Strategist is:', average_salary)
+```
+2023-07-14 14:26:34 [INFO] Answer: The average salary of a Data Strategist is: 81000.0
+2023-07-14 14:26:34 [INFO] Executed in: 0.0016832351684570312s
+2023-07-14 14:27:10 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:27:10 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:27:10 [INFO] Prompt ID: a31611da-9209-4a19-ae00-d138c4a7ecff
+2023-07-14 14:27:14 [INFO] 
+                        Code generated:
+                        ```
+                        average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print("The average salary of an AI developer is:", average_salary)
+                        ```
+                    
+2023-07-14 14:27:14 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:27:14 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:27:14 [INFO] Executed in: 4.513879060745239s
+2023-07-14 14:27:14 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:27:14 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:27:14 [INFO] Prompt ID: 4c9596ca-7f7f-4a5b-8269-8aaef3b18815
+2023-07-14 14:27:14 [INFO] Using cached response
+2023-07-14 14:27:14 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:27:14 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:27:14 [INFO] Executed in: 0.0016150474548339844s
+2023-07-14 14:28:08 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:28:08 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:28:08 [INFO] Prompt ID: 43c72407-2a63-4f75-b3ff-edc69b90a34d
+2023-07-14 14:28:13 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the dataframe
+df = pd.read_csv('data.csv')
+
+# Group the dataframe by job title and calculate the average salary
+average_salary = df.groupby('job_title')['salary'].mean()
+
+# Sort the average salary in descending order and select the top 5 job titles
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+
+# Plot the top 5 jobs with their average salary
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+                        ```
+                    
+2023-07-14 14:28:13 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:29:03 [INFO] Answer: None
+2023-07-14 14:29:03 [INFO] Executed in: 54.73614478111267s
+2023-07-14 14:29:03 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:29:03 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:29:03 [INFO] Prompt ID: eec65d21-f8a3-4839-92f5-feb93b95ac56
+2023-07-14 14:29:03 [INFO] Using cached response
+2023-07-14 14:29:03 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:29:04 [INFO] Answer: None
+2023-07-14 14:29:04 [INFO] Executed in: 1.7082691192626953s
+2023-07-14 14:30:48 [INFO] Question: cuantas columnas y filas hay?
+2023-07-14 14:30:48 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:30:48 [INFO] Prompt ID: 3228808b-1a0f-4a79-9926-1ba000e849fb
+2023-07-14 14:30:51 [INFO] 
+                        Code generated:
+                        ```
+                        num_rows, num_columns = df.shape
+print("Number of rows:", num_rows)
+print("Number of columns:", num_columns)
+                        ```
+                    
+2023-07-14 14:30:51 [INFO] 
+Code running:
+```
+num_rows, num_columns = df.shape
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:30:51 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:30:51 [INFO] Executed in: 3.538649797439575s
+2023-07-14 14:30:51 [INFO] Question: cuantas columnas y filas hay?
+2023-07-14 14:30:51 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:30:51 [INFO] Prompt ID: 43ae5626-b509-4858-a812-d61d91dc8786
+2023-07-14 14:30:51 [INFO] Using cached response
+2023-07-14 14:30:51 [INFO] 
+Code running:
+```
+num_rows, num_columns = df.shape
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:30:51 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:30:51 [INFO] Executed in: 0.0003902912139892578s
+2023-07-14 14:31:11 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:31:11 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:31:11 [INFO] Prompt ID: 8d4db2d9-d6eb-463d-9039-bf86dd4c298b
+2023-07-14 14:31:11 [INFO] Using cached response
+2023-07-14 14:31:11 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:31:11 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:31:11 [INFO] Executed in: 0.003008127212524414s
+2023-07-14 14:31:11 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:31:11 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:31:11 [INFO] Prompt ID: 0c1c1359-e7f9-409b-8cb5-9c4f35ab60dc
+2023-07-14 14:31:11 [INFO] Using cached response
+2023-07-14 14:31:11 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:31:11 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:31:11 [INFO] Executed in: 0.0004858970642089844s
+2023-07-14 14:31:26 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:31:26 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:31:26 [INFO] Prompt ID: 62afc4a4-5a5f-449e-8256-7dcf467865d9
+2023-07-14 14:31:26 [INFO] Using cached response
+2023-07-14 14:31:26 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:36:25 [INFO] Question: haz un pie chart con los porcentajes de las ubicaciones de las compañías
+2023-07-14 14:36:25 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:36:25 [INFO] Prompt ID: 91b23d13-4f22-4f07-bf20-bce622f9e58e
+2023-07-14 14:36:37 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create the dataframe
+data = {'work_year': [2023, 2023, 2023, 2023, 2023],
+        'experience_level': ['MI', 'SE', 'SE', 'MI', 'SE'],
+        'employment_type': ['FT', 'FT', 'CT', 'CT', 'FT'],
+        'job_title': ['ML Engineer', 'Principal Data Scientist', 'Data Scientist', 'ML Engineer', 'Data Scientist'],
+        'salary': [120000, 25500, 175000, 120000, 30000],
+        'salary_currency': ['USD', 'USD', 'USD', 'USD', 'EUR'],
+        'salary_in_usd': [30000, 175000, 25500, 120000, 25500],
+        'employee_residence': ['ES', 'US', 'US', 'CA', 'CA'],
+        'remote_ratio': [100, 100, 100, 100, 100],
+        'company_location': ['US', 'US', 'CA', 'CA', 'ES'],
+        'company_size': ['M', 'S', 'M', 'L', 'S']}
+
+df = pd.DataFrame(data)
+
+# Calculate the percentage of each company location
+company_location_percentage = df['company_location'].value_counts(normalize=True) * 100
+
+# Create the pie chart
+plt.pie(company_location_percentage, labels=company_location_percentage.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.axis('equal')
+plt.show()
+                        ```
+                    
+2023-07-14 14:36:37 [INFO] 
+Code running:
+```
+data = {'work_year': [2023, 2023, 2023, 2023, 2023], 'experience_level': ['MI', 'SE', 'SE', 'MI', 'SE'], 'employment_type': ['FT', 'FT', 'CT', 'CT', 'FT'], 'job_title': ['ML Engineer', 'Principal Data Scientist', 'Data Scientist', 'ML Engineer', 'Data Scientist'], 'salary': [120000, 25500, 175000, 120000, 30000], 'salary_currency': ['USD', 'USD', 'USD', 'USD', 'EUR'], 'salary_in_usd': [30000, 175000, 25500, 120000, 25500], 'employee_residence': ['ES', 'US', 'US', 'CA', 'CA'], 'remote_ratio': [100, 100, 100, 100, 100], 'company_location': ['US', 'US', 'CA', 'CA', 'ES'], 'company_size': ['M', 'S', 'M', 'L', 'S']}
+company_location_percentage = df['company_location'].value_counts(normalize=True) * 100
+plt.pie(company_location_percentage, labels=company_location_percentage.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.axis('equal')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:36:59 [INFO] Answer: None
+2023-07-14 14:36:59 [INFO] Executed in: 34.185627937316895s
+2023-07-14 14:36:59 [INFO] Question: haz un pie chart con los porcentajes de las ubicaciones de las compañías
+2023-07-14 14:36:59 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:36:59 [INFO] Prompt ID: f531e3ec-7cb6-4057-8630-f4d3c135ce5c
+2023-07-14 14:36:59 [INFO] Using cached response
+2023-07-14 14:36:59 [INFO] 
+Code running:
+```
+data = {'work_year': [2023, 2023, 2023, 2023, 2023], 'experience_level': ['MI', 'SE', 'SE', 'MI', 'SE'], 'employment_type': ['FT', 'FT', 'CT', 'CT', 'FT'], 'job_title': ['ML Engineer', 'Principal Data Scientist', 'Data Scientist', 'ML Engineer', 'Data Scientist'], 'salary': [120000, 25500, 175000, 120000, 30000], 'salary_currency': ['USD', 'USD', 'USD', 'USD', 'EUR'], 'salary_in_usd': [30000, 175000, 25500, 120000, 25500], 'employee_residence': ['ES', 'US', 'US', 'CA', 'CA'], 'remote_ratio': [100, 100, 100, 100, 100], 'company_location': ['US', 'US', 'CA', 'CA', 'ES'], 'company_size': ['M', 'S', 'M', 'L', 'S']}
+company_location_percentage = df['company_location'].value_counts(normalize=True) * 100
+plt.pie(company_location_percentage, labels=company_location_percentage.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.axis('equal')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:37:04 [INFO] Answer: None
+2023-07-14 14:37:04 [INFO] Executed in: 5.1877288818359375s
+2023-07-14 14:37:20 [INFO] Question: haz un pie chart con los porcentajes mayor a 1% de las ubicaciones de las compañías
+2023-07-14 14:37:20 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:37:20 [INFO] Prompt ID: 0af19b73-3eb4-4183-8f43-02e965b6b50b
+2023-07-14 14:37:24 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the dataframe
+df = pd.read_csv('data.csv')
+
+# Group the data by company location and calculate the percentage
+location_counts = df['company_location'].value_counts(normalize=True) * 100
+
+# Filter the locations with percentages greater than 1%
+filtered_locations = location_counts[location_counts > 1]
+
+# Create a pie chart
+plt.pie(filtered_locations, labels=filtered_locations.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.show()
+                        ```
+                    
+2023-07-14 14:37:24 [INFO] 
+Code running:
+```
+location_counts = df['company_location'].value_counts(normalize=True) * 100
+filtered_locations = location_counts[location_counts > 1]
+plt.pie(filtered_locations, labels=filtered_locations.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:39:20 [INFO] Question: cuantas columnas y filas hay?
+2023-07-14 14:39:20 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:39:20 [INFO] Prompt ID: beb4f650-9280-4797-80de-f955a51a222e
+2023-07-14 14:39:20 [INFO] Using cached response
+2023-07-14 14:39:20 [INFO] 
+Code running:
+```
+num_rows, num_columns = df.shape
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:39:20 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:39:20 [INFO] Executed in: 0.0016810894012451172s
+2023-07-14 14:39:20 [INFO] Question: cuantas columnas y filas hay?
+2023-07-14 14:39:20 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:39:20 [INFO] Prompt ID: e48e6cde-6fee-4fcc-bc31-db5c49aeebd3
+2023-07-14 14:39:20 [INFO] Using cached response
+2023-07-14 14:39:20 [INFO] 
+Code running:
+```
+num_rows, num_columns = df.shape
+print('Number of rows:', num_rows)
+print('Number of columns:', num_columns)
+```
+2023-07-14 14:39:20 [INFO] Answer: Number of rows: 3755
+Number of columns: 11
+2023-07-14 14:39:20 [INFO] Executed in: 0.00019478797912597656s
+2023-07-14 14:39:34 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:39:34 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:39:34 [INFO] Prompt ID: b7d6ad6a-47e3-4a97-a0eb-249eb544c041
+2023-07-14 14:39:34 [INFO] Using cached response
+2023-07-14 14:39:34 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:39:34 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:39:34 [INFO] Executed in: 0.0034198760986328125s
+2023-07-14 14:39:34 [INFO] Question: cual es el salario promedio de un AI developer?
+2023-07-14 14:39:34 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:39:34 [INFO] Prompt ID: 11e0cc37-27e2-4472-87ca-12b6d139b868
+2023-07-14 14:39:34 [INFO] Using cached response
+2023-07-14 14:39:34 [INFO] 
+Code running:
+```
+average_salary = df[df['job_title'] == 'AI Developer']['salary_in_usd'].mean()
+print('The average salary of an AI developer is:', average_salary)
+```
+2023-07-14 14:39:34 [INFO] Answer: The average salary of an AI developer is: 136666.0909090909
+2023-07-14 14:39:34 [INFO] Executed in: 0.00048828125s
+2023-07-14 14:39:46 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:39:46 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:39:46 [INFO] Prompt ID: 2c5e346e-5bbc-4cce-b22a-2063c11a8aa2
+2023-07-14 14:39:46 [INFO] Using cached response
+2023-07-14 14:39:46 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:00 [INFO] Answer: None
+2023-07-14 14:40:00 [INFO] Executed in: 13.848127841949463s
+2023-07-14 14:40:00 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:40:00 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:40:00 [INFO] Prompt ID: 30ecb219-b866-474a-807a-8a245c51e116
+2023-07-14 14:40:00 [INFO] Using cached response
+2023-07-14 14:40:00 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:01 [INFO] Answer: None
+2023-07-14 14:40:01 [INFO] Executed in: 1.4672691822052002s
+2023-07-14 14:40:05 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:40:05 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:40:05 [INFO] Prompt ID: 65a7f58d-f00a-4401-9dc7-1a41976c6ef0
+2023-07-14 14:40:05 [INFO] Using cached response
+2023-07-14 14:40:05 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:07 [INFO] Answer: None
+2023-07-14 14:40:07 [INFO] Executed in: 1.937101125717163s
+2023-07-14 14:40:07 [INFO] Question: grafica los 5 trabajos que tengan en promedio el mejor salario
+2023-07-14 14:40:07 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:40:07 [INFO] Prompt ID: 7eaccc73-17a3-4440-b05a-434410e133bf
+2023-07-14 14:40:07 [INFO] Using cached response
+2023-07-14 14:40:07 [INFO] 
+Code running:
+```
+average_salary = df.groupby('job_title')['salary'].mean()
+top_5_jobs = average_salary.sort_values(ascending=False).head(5)
+plt.bar(top_5_jobs.index, top_5_jobs.values)
+plt.xlabel('Job Title')
+plt.ylabel('Average Salary')
+plt.title('Top 5 Jobs with Highest Average Salary')
+plt.xticks(rotation=45)
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:08 [INFO] Answer: None
+2023-07-14 14:40:08 [INFO] Executed in: 0.915045976638794s
+2023-07-14 14:40:20 [INFO] Question: haz un pie chart con los porcentajes mayor a 1% de las ubicaciones de las compañías
+2023-07-14 14:40:20 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:40:20 [INFO] Prompt ID: 5c57f985-60a5-4832-851f-741e2df09b1d
+2023-07-14 14:40:24 [INFO] 
+                        Code generated:
+                        ```
+                        import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the dataframe
+df = pd.read_csv('data.csv')
+
+# Group the data by company location and calculate the percentage
+location_counts = df['company_location'].value_counts(normalize=True) * 100
+
+# Filter the locations with percentages greater than 1%
+filtered_locations = location_counts[location_counts > 1]
+
+# Create a pie chart
+plt.pie(filtered_locations, labels=filtered_locations.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.show()
+                        ```
+                    
+2023-07-14 14:40:24 [INFO] 
+Code running:
+```
+location_counts = df['company_location'].value_counts(normalize=True) * 100
+filtered_locations = location_counts[location_counts > 1]
+plt.pie(filtered_locations, labels=filtered_locations.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:56 [INFO] Answer: None
+2023-07-14 14:40:56 [INFO] Executed in: 36.13475203514099s
+2023-07-14 14:40:56 [INFO] Question: haz un pie chart con los porcentajes mayor a 1% de las ubicaciones de las compañías
+2023-07-14 14:40:56 [INFO] Running PandasAI with langchain_openai-chat LLM...
+2023-07-14 14:40:56 [INFO] Prompt ID: b8fe9a0c-b116-412c-99ec-c72b93166ab6
+2023-07-14 14:40:56 [INFO] Using cached response
+2023-07-14 14:40:56 [INFO] 
+Code running:
+```
+location_counts = df['company_location'].value_counts(normalize=True) * 100
+filtered_locations = location_counts[location_counts > 1]
+plt.pie(filtered_locations, labels=filtered_locations.index, autopct='%1.1f%%')
+plt.title('Company Locations')
+plt.show()
+plt.close('all')
+```
+2023-07-14 14:40:57 [INFO] Answer: None
+2023-07-14 14:40:57 [INFO] Executed in: 0.764883279800415s
