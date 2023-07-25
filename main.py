@@ -82,7 +82,7 @@ origins = [
     "https://sam-frontend-beta1-0-git-main-rcsc1.vercel.app",
     "https://front-fawn-rho.vercel.app",
     "https://front-rcsc1.vercel.app",
-    "https://portfolio-rcsc1.vercel.app/"
+    "https://portfolio-rcsc1.vercel.app"
 ]
 
 
