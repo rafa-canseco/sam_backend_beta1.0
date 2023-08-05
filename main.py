@@ -5,8 +5,11 @@
 
 # Main imports
 from fastapi import FastAPI, File, UploadFile, HTTPException,WebSocket,Request
+from fastapi.responses import Response,FileResponse
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 from decouple import config
 import openai
 from typing import Dict
@@ -22,18 +25,21 @@ import requests
 import shutil
 import os
 import time, datetime
+import tempfile
 
 os.environ["PATH"] += os.pathsep + "/usr/bin"
 
 
 # Custom function imports
 from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single,convert_text_to_speech_telegram
-from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple,get_chat_response_telegram
+from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple,get_chat_response_telegram,get_treatment
 from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram, cargar_chat_ids,store_messages_telegram
 from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
 from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
 from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
+from functions.responses import search_precise,agentv1
+from twilio.twiml.messaging_response import MessagingResponse
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
 import json
@@ -61,10 +67,13 @@ bot = Bot(token=token)
 ffprobe_path = '/usr/bin/ffprobe'
 print(ffprobe_path)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+
 
 # Initiate App
 app = FastAPI()
-
+app.mount("/static", StaticFiles(directory="static"), name="static")
 def cargar_chat_ids():
     with open("chat_ids.json") as f:
         chat_ids_data = json.load(f)
@@ -489,16 +498,12 @@ async def telegram_webhook(request: Request):
                     message_decoded = message["text"]
                     print(message_decoded)
 
-                    # Get chat response
-                    chat_response = get_chat_response_telegram(message_decoded)
-                    print(chat_response)
-                    # Guard: Ensure output
-                    if not chat_response:
-                        raise HTTPException(status_code=400, detail="Failed chat response")
+                    agent_response = agentv1(message_decoded)
+    
 
-                    await bot.send_message(chat_id=chat_id,text=chat_response)
+                    await bot.send_message(chat_id=chat_id,text=agent_response)
                     incrementar_contador_clicks(chat_id)
-                    store_messages_telegram(request_message=message_decoded, response_message=chat_response,user=usuario)
+                    store_messages_telegram(request_message=message_decoded, response_message=agent_response,user=usuario)
 
                           
             elif "voice" in message:
@@ -534,7 +539,7 @@ async def telegram_webhook(request: Request):
                         print(message_decoded)
                         print("Audio recibido (estructura de voz)")
                                 # Get chat response
-                    chat_response = get_chat_response_telegram(message_decoded)
+                    chat_response = agentv1(message_decoded)
                     print(chat_response)
                     store_messages_telegram(request_message=message_decoded, response_message=chat_response,user=usuario)
 
@@ -597,8 +602,8 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    # webhook_url = f"{ngrok_url}/webhook"
-    webhook_url = "https://readymad3.com/webhook"
+    webhook_url = f"{ngrok_url}/webhook"
+    # webhook_url = "https://readymad3.com/webhook"
     # webhook_url = "http://localhost:8000/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
@@ -708,6 +713,86 @@ async def borrar(data: dict):
     print("Tiempo de ejecución:", elapsed_time, "segundos")
     print(video)
     return {"response":video}
+
+@app.post("/whatsapp")
+async def message(request: Request):
+    form_data = await request.form()
+
+    
+    if "MediaContentType0" in form_data:
+        media_url = form_data["MediaUrl0"]
+        response = requests.get(media_url)
+        audio_data = response.content
+
+        if response.status_code == 200:
+            # Guarda el audio descargado
+            audio_oga_path = os.path.join(STATIC_DIR, "audio.oga")
+            with open(audio_oga_path, "wb") as file:
+                file.write(audio_data)
+            print("Archivo de audio descargado")
+
+            # Convertir audio a WAV
+            audio = AudioSegment.from_file(audio_oga_path, format="ogg")
+            audio_wav_path = os.path.join(STATIC_DIR, "audio.wav")
+            audio.export(audio_wav_path, format="wav")
+            
+            # Abrir y procesar el archivo de audio convertido
+            with open(audio_wav_path, "rb") as audio_file:
+                message_decoded = convert_audio_to_text(audio_file)
+                print(message_decoded)
+                
+            # Get chat response
+            chat_response = agentv1(message_decoded)
+            print(chat_response)
+
+            # Convert chat response to audio
+            audio_output = convert_text_to_speech_telegram(chat_response)
+            print("audio generado")
+
+            # Guard: Ensure output
+            if not audio_output:
+                raise HTTPException(status_code=400, detail="Failed audio output")
+            
+            # Guardar los bytes de audio en un archivo
+            audio_output_path = os.path.join(STATIC_DIR, "audio_output.ogg")
+            with open(audio_output_path, "wb") as audio_file:
+                audio_file.write(audio_output)
+
+            # Obtener la duración del audio en segundos
+            # audio = AudioSegment.from_file(audio_output_path, format="ogg")
+
+            # # Convertir audio a MP3 para enviarlo de regreso
+            # audio_mp3_path = os.path.join(STATIC_DIR, "audio_response.mp3")
+            # audio.export(audio_mp3_path, format="mp3")
+
+            # <Media>https://readymad3.com/static/audio_response.mp3</Media>
+
+
+            twiml_response = f"""<?xml version="1.0" encoding="UTF-8"?>
+            <Response>
+                <Message>
+                    <Media>https://28cb-2806-10ae-8-bb17-119a-d35f-2b50-c4d7.ngrok-free.app/static/audio_output.ogg</Media>
+                </Message>
+            </Response>
+            """
+        
+            return Response(content=twiml_response, media_type="application/xml")
+
+        else:
+            return {"error": "Failed to download media"}
+    else:
+        incoming_que = (await request.form()).get('Body', '').lower()
+        print(incoming_que)
+
+                        # Get chat response
+        chat_response = agentv1(incoming_que)
+        print(chat_response)
+        bot_resp = MessagingResponse()
+        msg = bot_resp.message()
+        msg.body(chat_response)  # Si agent_response es una cadena, esto debería funcionar
+
+        # Configurar el encabezado Content-Type como "application/xml"
+        return Response(content=str(bot_resp), media_type="application/xml")
 
 
 

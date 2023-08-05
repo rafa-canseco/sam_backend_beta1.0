@@ -195,6 +195,33 @@ def get_recent_messages_telegram():
     # Return messages
     return messages
 
+def get_messages_treatment():
+    # Define the file name
+    file_name = "stored_data_telegram.json"
+
+    # Verificar si el archivo está vacío
+    if os.path.exists(file_name) and os.stat(file_name).st_size > 0:
+        # Leer el archivo si no está vacío
+        with open(file_name) as f:
+            data = json.load(f)
+    else:
+        # Inicializar con el prompt de usuario si el archivo está vacío
+        prompt_usuario = """
+     
+     
+     Traduce tu respuesta al español y añádale la personalidad de Belinda, una talentosa y carismática cantante Mexicana./
+     Asegúrate de que tus respuestas reflejen un tono conversacional, amigable y cercano, haciendo que los usuarios se sientan cómodos y bien atendidos.
+
+        """
+        learn_instruction = {"role": "system", "content": prompt_usuario }
+        data = [learn_instruction]
+
+    # Asignar los mensajes
+    messages = data
+
+    # Return messages
+    return messages
+
 import json
 import os
 
