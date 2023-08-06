@@ -602,8 +602,8 @@ async def telegram_webhook(request: Request):
 async def setup_webhook():
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    webhook_url = f"{ngrok_url}/webhook"
-    # webhook_url = "https://readymad3.com/webhook"
+    # webhook_url = f"{ngrok_url}/webhook"
+    webhook_url = "https://readymad3.com/webhook"
     # webhook_url = "http://localhost:8000/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)
@@ -765,13 +765,13 @@ async def message(request: Request):
             # audio_mp3_path = os.path.join(STATIC_DIR, "audio_response.mp3")
             # audio.export(audio_mp3_path, format="mp3")
 
-            # <Media>https://readymad3.com/static/audio_response.mp3</Media>
 
+    # <Media>https://28cb-2806-10ae-8-bb17-119a-d35f-2b50-c4d7.ngrok-free.app/static/audio_output.ogg</Media>
 
             twiml_response = f"""<?xml version="1.0" encoding="UTF-8"?>
             <Response>
                 <Message>
-                    <Media>https://28cb-2806-10ae-8-bb17-119a-d35f-2b50-c4d7.ngrok-free.app/static/audio_output.ogg</Media>
+            <Media>https://readymad3.com/static/audio_output.ogg</Media>
                 </Message>
             </Response>
             """
