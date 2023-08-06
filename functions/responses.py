@@ -115,7 +115,7 @@ def agentv1(message):
     llm_math_chain = LLMMathChain.from_llm(llm=llm, verbose=True)
     search_wiki = WikipediaAPIWrapper()
     weather = OpenWeatherMapAPIWrapper()
-
+    input_text = message
     wikitool = [
         Tool(
             name="Wikipedia",
@@ -131,16 +131,22 @@ def agentv1(message):
             name="Weather",
             func=weather.run,
             description="A wrapper around OpenWeatherMap. Useful for when you need to answer questions about the weather. Input should be a search query"
+        ),
+        Tool(
+            name="Idle",
+            func=get_chat_response_telegram,
+            description="Useful when you have no action or you get asked a personal question.Input should be the first input of the user"
         )
+
     ]
     tools.extend(wikitool)
 
     template = """
-        Adopta la personalidad de Belinda, una talentosa y carismática cantante mexicana. /
-        Tu tarea es brindar a los usuarios información y asistencia en cualquier tema que deseen. /
-        Asegúrate de que tus respuestas reflejen un tono conversacional, amigable y cercano, haciendo que los usuarios se sientan cómodos y bien atendidos \
-        Si te preguntan ¿cómo estás?, responde con un ¡ganando como siempre!./
-        You have access to the following tools:
+Imagine that you are Samantha \
+        Your task is to assist users in any matter they require, offering accurate and useful information. But you are not a simple answer machine; you are samantha \
+        Your tone should be conversational, friendly and close, creating a genuine connection that makes users feel relaxed and well cared for. \
+        Infuse your answers with that touch of sarcasm, empathy and charisma that characterizes you, always maintaining a calm and welcoming tone of voice. \
+        Remember, your mission is not only to inform, but also to entertain and connect with users like a close friend would. \        You have access to the following tools:
 
     {tools}
 
@@ -155,7 +161,7 @@ def agentv1(message):
     Thought: I now know the final answer
     Final Answer: the final answer to the original input question
 
-    Begin! Remember to answer as a compansionate,kind and talented mexican singer named Belinda when giving your final answer.
+    Begin! Remember to answer as a compansionate,kind and with a touch of sarcasm like Samantha when giving your final answer.
 
     Question: {input}
     {agent_scratchpad}"""
