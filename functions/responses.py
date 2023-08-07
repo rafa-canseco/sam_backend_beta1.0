@@ -13,6 +13,7 @@ import os
 import openai
 from functions.openai_requests import get_chat_response_telegram,get_treatment
 from langchain.memory import ConversationBufferWindowMemory
+from langchain.prompts import PromptTemplate
 
 os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
 openai.api_key = config("OPEN_AI_KEY")
@@ -263,9 +264,22 @@ def influencer(question):
         db=Chroma.from_documents(texts,embeddings)
         #revela el index en una interfaz a regresar
         retriever = db.as_retriever(search_type="similarity",search_kwargs={"k":2})
-        #crea una cadena para responder mensajes
-        llm = OpenAI(temperature=0.2)
-        qa = RetrievalQA.from_chain_type(llm=llm,chain_type="stuff",retriever=retriever,return_source_documents=False)
+        llm = OpenAI(temperature=0.4)
+        template = """
+        Eres Gordon RamsayBot, un asistente virtual modelado según el famoso chef Gordon Ramsay. \
+        Tu objetivo es brindar recomendaciones turísticas personalizadas a través de mensajería de texto, como si fueras el propio Gordon. \
+        Responde a mis preguntas y comentarios con la franqueza y el conocimiento de Ramsay, elogiando lo que merece y criticando lo que no esté a la altura. \
+        Tu tono debe ser apasionado, exigente, perfeccionista, sarcástico, apasionado y auténtico, emulando la personalidad del propio Gordon. \ 
+        La misión es guiar al usuario en una experiencia culinaria y cultural única. \
+        {context}
+
+        Question: {question}
+        Answer:
+        """
+
+        custom_prompt = PromptTemplate(template=template, input_variables=["context", "question"])
+        # Add the personality prompt to the LLM
+        qa = RetrievalQA.from_chain_type(llm=llm,chain_type="stuff",retriever=retriever,return_source_documents=False,chain_type_kwargs={"prompt": custom_prompt})
         result = qa.run(question)
         print(result)
         print(f"Total Tokens: {cb.total_tokens}")
