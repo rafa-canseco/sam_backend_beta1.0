@@ -38,7 +38,7 @@ from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirt
 from functions.completion import get_completion_from_messages
 from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
 from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
-from functions.responses import search_precise,agentv1
+from functions.responses import search_precise,agentv1,influencer
 from twilio.twiml.messaging_response import MessagingResponse
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
@@ -743,7 +743,7 @@ async def message(request: Request):
                 print(message_decoded)
                 
             # Get chat response
-            chat_response = agentv1(message_decoded)
+            chat_response = influencer(message_decoded)
             print(chat_response)
 
             # Convert chat response to audio
@@ -767,12 +767,12 @@ async def message(request: Request):
             # audio.export(audio_mp3_path, format="mp3")
 
 
-    # <Media>https://28cb-2806-10ae-8-bb17-119a-d35f-2b50-c4d7.ngrok-free.app/static/audio_output.ogg</Media>
+    # <Media>https://463e-2806-10a6-19-34d5-7113-e58-a405-b1cc.ngrok-free.app/static/audio_output.ogg</Media>
 
             twiml_response = f"""<?xml version="1.0" encoding="UTF-8"?>
             <Response>
                 <Message>
-            <Media>https://readymad3.com/static/audio_output.ogg</Media>
+                    <Media>https://readymad3.com/static/audio_output.ogg</Media>
                 </Message>
             </Response>
             """
@@ -786,7 +786,7 @@ async def message(request: Request):
         print(incoming_que)
 
                         # Get chat response
-        chat_response = agentv1(incoming_que)
+        chat_response = influencer(incoming_que)
         print(chat_response)
         bot_resp = MessagingResponse()
         msg = bot_resp.message()

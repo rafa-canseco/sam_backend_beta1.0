@@ -233,3 +233,45 @@ Imagine that you are Samantha \
     response =agent_executor.run(message)
     return response
 
+from langchain.callbacks import get_openai_callback
+from langchain.document_loaders import CSVLoader
+from langchain.vectorstores import Chroma
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.chains import RetrievalQA
+from langchain import OpenAI
+import os
+from decouple import config
+import openai
+
+os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
+openai.api_key = config("OPEN_AI_KEY")
+question="que museos me recomiendas?"
+def influencer(question):
+    name_pdf ="./Influencers/base de datos lugares cdmx - cdmx.csv"
+    with get_openai_callback() as cb:
+        
+        loader = CSVLoader(name_pdf)
+        documents = loader.load()
+        # split el documento en pedazos
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000,chunk_overlap=0)
+        texts = text_splitter.split_documents(documents)
+
+        #Seleccionar los embedings
+        embeddings = OpenAIEmbeddings()
+        #crear un vectorstore para usarlo de indice
+        db=Chroma.from_documents(texts,embeddings)
+        #revela el index en una interfaz a regresar
+        retriever = db.as_retriever(search_type="similarity",search_kwargs={"k":2})
+        #crea una cadena para responder mensajes
+        llm = OpenAI(temperature=0.2)
+        qa = RetrievalQA.from_chain_type(llm=llm,chain_type="stuff",retriever=retriever,return_source_documents=False)
+        result = qa.run(question)
+        print(result)
+        print(f"Total Tokens: {cb.total_tokens}")
+        print(f"Prompt Tokens: {cb.prompt_tokens}")
+        print(f"Completion Tokens: {cb.completion_tokens}")
+        print(f"Successful Requests: {cb.successful_requests}")
+        print(f"Total Cost (USD): ${cb.total_cost}")
+        return result
+
