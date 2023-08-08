@@ -795,7 +795,15 @@ async def message(request: Request):
         # Configurar el encabezado Content-Type como "application/xml"
         return Response(content=str(bot_resp), media_type="application/xml")
 
+@app.post("/agentv1")
+async def post_audio(data:dict):
 
+    message_decoded = data["question"]
+    print(message_decoded)
+
+    response = agentv1(message_decoded)
+
+    return {"response": response}
 
 
 if __name__ == "__main__":
