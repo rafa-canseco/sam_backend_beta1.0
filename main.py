@@ -39,6 +39,7 @@ from functions.completion import get_completion_from_messages
 from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
 from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
 from functions.responses import search_precise,agentv1,influencer
+from functions.PDF.Pdf_Module import small_Archive,big_archive
 from twilio.twiml.messaging_response import MessagingResponse
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
@@ -805,6 +806,19 @@ async def post_audio(data:dict):
 
     return {"response": response}
 
+@app.post("/Saúl_small")
+async def pdf(data: dict):
+    url = data["url"]
+    selection = data["type"]
+    response = small_Archive(url=url,selection=selection)
+    return {"response": response}
+
+@app.post("/Saúl")
+async def pdf(data: dict):
+    url = data["url"]
+    selection = data["type"]
+    response = big_archive(url=url,selection=selection)
+    return {"response": response}
 
 if __name__ == "__main__":
   uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

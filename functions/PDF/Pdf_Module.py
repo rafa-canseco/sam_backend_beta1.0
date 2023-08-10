@@ -47,6 +47,7 @@ def small_Archive(url,selection):
 
             summary_chain = load_summarize_chain(llm=llm, chain_type='map_reduce',verbose=False)
             output = summary_chain.run(docs)
+            print("resumen normal")
 
         elif (selection == "extended"):
         
@@ -71,6 +72,8 @@ def small_Archive(url,selection):
                                     verbose=True
                                         )
             output = summary_chain.run(docs)
+            print("resumen extended")
+
 
         elif (selection == "bulletpoints"):
             map_prompt = """
@@ -93,6 +96,7 @@ def small_Archive(url,selection):
                                     verbose=True
                                         )
             output = summary_chain.run(docs)
+            print("bulletpoints")
 
 
         print(output)
@@ -101,10 +105,9 @@ def small_Archive(url,selection):
         print(f"Completion Tokens: {cb.completion_tokens}")
         print(f"Successful Requests: {cb.successful_requests}")
         print(f"Total Cost (USD): ${cb.total_cost}")
+        return output
 
 
-url = "https://firebasestorage.googleapis.com/v0/b/samai-b9f36.appspot.com/o/rafa.canseco%40gmail.com%2FState-of-Crypto.pdf?alt=media&token=79569a1c-8c5f-45e4-835f-51c5a69d4085"
-small_Archive(url,selection3)
 def big_archive(url,selection):
     inicio = time.time()
     with get_openai_callback() as cb:
@@ -124,7 +127,7 @@ def big_archive(url,selection):
 
         vectors = embeddings.embed_documents([x.page_content for x in docs])
 
-        num_clusters = 11
+        num_clusters = 5
 
         kmeans = KMeans(n_clusters=num_clusters, random_state=42).fit(vectors)
 
@@ -238,14 +241,14 @@ def big_archive(url,selection):
             print (output)
 
 
-        print(f"Total Tokens: {cb.total_tokens}")
-        print(f"Prompt Tokens: {cb.prompt_tokens}")
-        print(f"Completion Tokens: {cb.completion_tokens}")
-        print(f"Successful Requests: {cb.successful_requests}")
-        print(f"Total Cost (USD): ${cb.total_cost}")
-        fin = time.time()
-        tiempo_total = fin-inicio
-        print(tiempo_total)
+            print(f"Total Tokens: {cb.total_tokens}")
+            print(f"Prompt Tokens: {cb.prompt_tokens}")
+            print(f"Completion Tokens: {cb.completion_tokens}")
+            print(f"Successful Requests: {cb.successful_requests}")
+            print(f"Total Cost (USD): ${cb.total_cost}")
+            fin = time.time()
+            tiempo_total = fin-inicio
+            print(tiempo_total)
+            return output
 
-url_largo = "https://firebasestorage.googleapis.com/v0/b/samai-b9f36.appspot.com/o/rafa.canseco%40gmail.com%2FSnow%20Crash%20(Neal%20Stephenson)%20(Z-Library).pdf?alt=media&token=25418650-98b7-48f6-8163-d147bb6f929d"
 
