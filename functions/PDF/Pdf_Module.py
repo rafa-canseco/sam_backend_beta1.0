@@ -111,6 +111,7 @@ def small_Archive(url,selection):
 def big_archive(url,selection):
     inicio = time.time()
     with get_openai_callback() as cb:
+        print("big archive")
         loader = PyPDFLoader(url)
         pages = loader.load()
         pages = pages[3:]
@@ -120,15 +121,13 @@ def big_archive(url,selection):
             text += page.page_content
         
         text = text.replace('\t', ' ')
-
-        text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", "\t"], chunk_size=10000, chunk_overlap=3000)
+        text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", "\t"], chunk_size=8000, chunk_overlap=5000)
         docs = text_splitter.create_documents([text])
         embeddings = OpenAIEmbeddings(openai_api_key=openai.api_key)
 
         vectors = embeddings.embed_documents([x.page_content for x in docs])
 
-        num_clusters = 5
-
+        num_clusters = 7
         kmeans = KMeans(n_clusters=num_clusters, random_state=42).fit(vectors)
 
         closest_indices = []
@@ -239,16 +238,16 @@ def big_archive(url,selection):
                                     )
             output = reduce_chain.run([summaries])
             print (output)
-
-
+            fin = time.time()
+            tiempo_total = fin-inicio
+            print(tiempo_total)
             print(f"Total Tokens: {cb.total_tokens}")
             print(f"Prompt Tokens: {cb.prompt_tokens}")
             print(f"Completion Tokens: {cb.completion_tokens}")
             print(f"Successful Requests: {cb.successful_requests}")
             print(f"Total Cost (USD): ${cb.total_cost}")
-            fin = time.time()
-            tiempo_total = fin-inicio
-            print(tiempo_total)
             return output
+
+
 
 
