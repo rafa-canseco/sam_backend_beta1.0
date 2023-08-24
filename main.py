@@ -806,7 +806,7 @@ async def post_audio(data:dict):
 
     return {"response": response}
 
-@app.post("/Saúl_small")
+@app.post("/Saul_small")
 async def pdf(data: dict):
     url = data["url"]
     selection = data["type"]
