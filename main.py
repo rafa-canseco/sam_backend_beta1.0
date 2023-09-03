@@ -95,7 +95,7 @@ origins = [
     "https://front-fawn-rho.vercel.app",
     "https://front-rcsc1.vercel.app",
     "https://portfolio-rcsc1.vercel.app",
-    "https://samantha.com.mx"
+    "https://www.samantha.com.mx"
 ]
 
 
