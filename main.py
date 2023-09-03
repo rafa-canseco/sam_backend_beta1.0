@@ -40,6 +40,7 @@ from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_dat
 from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
 from functions.responses import search_precise,agentv1,influencer
 from functions.PDF.Pdf_Module import small_Archive,big_archive
+from functions.Youtube.youtubeModule import preguntar_youtube,youtube_resume
 from twilio.twiml.messaging_response import MessagingResponse
 from firebase_admin import credentials,storage, firestore
 import firebase_admin 
@@ -235,10 +236,11 @@ async def post_audio(file: UploadFile = File(...)):
     return {"response": response}
 
 # Reset Conversation
-@app.post("/youtubeResponse")
+@app.post("/resume_youtube")
 async def YT_RESUME(data: dict):
     url = data["url"]
-    response = youtube_resume(url)
+    selection =data["type"]
+    response = youtube_resume(url,selection=selection)
     return {"response": response}
 
 @app.post("/ask_youtube")
