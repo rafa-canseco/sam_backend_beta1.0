@@ -42,7 +42,7 @@ def youtube_resume(url,selection):
     with get_openai_callback() as cb:
         ssl._create_default_https_context = ssl._create_stdlib_context
         loader = YoutubeLoader.from_youtube_url(url)
-        text = loader.load()
+        text=loader.load()
         llm =OpenAI(temperature=0,openai_api_key=openai.api_key)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
         texts=text_splitter.split_documents(text)

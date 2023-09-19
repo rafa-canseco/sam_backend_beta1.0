@@ -61,7 +61,8 @@ chat_id_orla = config("chat_id_orla")
 chat_id_rafa = config("chat_id_rafa")
 chat_id_amigo_orla = config("chat_id_amigo_orla")
 chat_id_gabyperez = config("chat_id_gabyperez")
-authorized_users = [chat_id_rafa,chat_id_orla,chat_id_amigo_orla,chat_id_gabyperez]
+chat_id_abi = config("chat_id_abi")
+authorized_users = [chat_id_rafa,chat_id_orla,chat_id_amigo_orla,chat_id_gabyperez,chat_id_abi]
 respuesta = "texto"
 bot = Bot(token=token)
 # Obtener la ruta de FFmpeg
