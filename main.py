@@ -34,7 +34,7 @@ os.environ["PATH"] += os.pathsep + "/usr/bin"
 from functions.text_to_speech import convert_text_to_speech, convert_text_to_speech_single,convert_text_to_speech_telegram
 from functions.openai_requests import convert_audio_to_text, get_chat_response, get_chat_response_simple,get_chat_response_telegram,get_treatment
 from functions.database import store_messages, reset_messages, store_messages_simple,get_recent_messages_telegram, cargar_chat_ids,store_messages_telegram
-from functions.newAdd import instruction,search, youtube_resume, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, preguntar_youtube, load_url,pregunta_url_resumen, pregunta_url_abierta
+from functions.newAdd import instruction,search, pdf_pages, dirty_data,abstraction, blockchain_tx,url_resume, preguntar_url, load_url,pregunta_url_resumen, pregunta_url_abierta
 from functions.completion import get_completion_from_messages
 from functions.analisis import resumen_opcion_multiple,vector_index,pregunta_data,borrar_contenido
 from functions.functions_video import get_chat_response_video,convert_text_to_speech_video,video_avatar,url_video,download_video,video_avatar_texto
