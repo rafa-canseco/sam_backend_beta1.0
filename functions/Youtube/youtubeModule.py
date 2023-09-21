@@ -15,7 +15,10 @@ import openai
 os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
 openai.api_key = config("OPEN_AI_KEY")
 
-
+url_esp = "https://www.youtube.com/watch?v=Ok9qHeLxu10"
+url_ingles = "https://www.youtube.com/watch?v=DWUdGhRrv2c"
+question = "de que trata el video?"
+selection="normal"
 
 def preguntar_youtube(url,question):
     with get_openai_callback() as cb:
@@ -126,4 +129,8 @@ def youtube_resume(url,selection):
             print(f"Total Cost (USD): ${cb.total_cost}")
             return resume
 
-                
+
+# preguntar_youtube(url_ingles,question)       
+# youtube_resume(url_esp,selection)
+        
+   
