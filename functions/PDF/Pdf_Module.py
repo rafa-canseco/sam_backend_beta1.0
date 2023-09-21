@@ -60,8 +60,9 @@ def small_Archive(url,selection):
             combine_prompt = """
             Write a concise summary of the following text delimited by triple backquotes.
             Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
-            Your response should be at least three paragraphs and fully encompass what was said in the passage.
+            Your response should be at least 1600 characters and fully encompass what was said in the passage.
             Always deliver your response in spanish.
+            
                     ```{text}```
             FULL SUMMARY:
             """
