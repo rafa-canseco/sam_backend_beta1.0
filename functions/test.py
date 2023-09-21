@@ -130,7 +130,7 @@ def youtube_resume(url,selection):
             return resume
 
 
-# preguntar_youtube(url_ingles,question)       
+preguntar_youtube(url_ingles,question)       
 youtube_resume(url_esp,selection)
         
    
