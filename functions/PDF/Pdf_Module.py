@@ -60,7 +60,8 @@ def small_Archive(url,selection):
             combine_prompt = """
             Write a concise summary of the following text delimited by triple backquotes.
             Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
-            Your response should be at least three paragraphs and fully encompass what was said in the passage. 
+            Your response should be at least three paragraphs and fully encompass what was said in the passage.
+            Always deliver your response in spanish.
                     ```{text}```
             FULL SUMMARY:
             """
@@ -85,6 +86,7 @@ def small_Archive(url,selection):
             combine_prompt = """
             Write a concise summary of the following text delimited by triple backquotes.
             Return your response in bullet points which covers the key points of the text.
+            Always deliver your response in spanish.
             ```{text}```
             BULLET POINT SUMMARY:
             """
@@ -151,7 +153,7 @@ def big_archive(url,selection):
         You will be given a single passage of a book. This section will be enclosed in triple backticks (```)
         Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
         Your response should be at least three paragraphs and fully encompass what was said in the passage.
-
+        Always deliver your response in spanish.
         ```{text}```
         FULL SUMMARY:
         """
@@ -191,6 +193,7 @@ def big_archive(url,selection):
             You will be given a series of summaries from a book. The summaries will be enclosed in triple backticks (```)
             Your goal is to give a short summary of what happened in the story.
             The reader should be able to grasp what happened in the book in a concise way.
+            Always deliver your response in spanish.
 
             ```{text}```
             SHORT SUMMARY:
@@ -208,6 +211,7 @@ def big_archive(url,selection):
             You will be given a series of summaries from a book. The summaries will be enclosed in triple backticks (```)
             Your goal is to give a verbose summary of what happened in the story.
             The reader should be able to grasp what happened in the book.
+            Always deliver your response in spanish.
 
             ```{text}```
             VERBOSE SUMMARY:
@@ -226,6 +230,7 @@ def big_archive(url,selection):
             Your goal is to give a bulletpoints summary of what happened in the story.
             The reader should be able to grasp what happened in the book.
             Return your response in bullet points which covers the key points of the text
+            Always deliver your response in spanish.
 
             ```{text}```
             BULLETPOINTS SUMMARY:
