@@ -16,10 +16,13 @@ os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
 openai.api_key = config("OPEN_AI_KEY")
 
 
+
 def preguntar_youtube(url,question):
     with get_openai_callback() as cb:
         ssl._create_default_https_context = ssl._create_stdlib_context
-        loader = YoutubeLoader.from_youtube_url(url)
+        loader = YoutubeLoader.from_youtube_url(url,
+        language=["en","es"],
+        translation="es")
         result = loader.load()
         llm =OpenAI(temperature=0,openai_api_key=openai.api_key)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
@@ -41,7 +44,9 @@ def preguntar_youtube(url,question):
 def youtube_resume(url,selection):
     with get_openai_callback() as cb:
         ssl._create_default_https_context = ssl._create_stdlib_context
-        loader = YoutubeLoader.from_youtube_url(url)
+        loader = YoutubeLoader.from_youtube_url(url,
+          language=["en","es"],
+        translation="es")
         text=loader.load()
         llm =OpenAI(temperature=0,openai_api_key=openai.api_key)
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
@@ -72,7 +77,8 @@ def youtube_resume(url,selection):
             combine_prompt = """
             Write a concise summary of the following text delimited by triple backquotes.
             Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
-            Your response should be at least three paragraphs and fully encompass what was said in the passage. 
+            Your response should be at least three paragraphs and fully encompass what was said in the passage.
+            Always deliver your response in spanish. 
                     ```{text}```
             FULL SUMMARY:
             """
@@ -83,6 +89,7 @@ def youtube_resume(url,selection):
                                                  combine_prompt=combine_prompt_template)
             resume = summary_chain.run(texts)
             print("resumen extended")
+            print(resume)
             print(f"Total Tokens: {cb.total_tokens}")
             print(f"Prompt Tokens: {cb.prompt_tokens}")
             print(f"Completion Tokens: {cb.completion_tokens}")
@@ -100,6 +107,7 @@ def youtube_resume(url,selection):
             combine_prompt = """
             Write a concise summary of the following text delimited by triple backquotes.
             Return your response in bullet points which covers the key points of the text.
+            Always deliver your response in spanish.
             ```{text}```
             BULLET POINT SUMMARY:
             """
@@ -110,6 +118,7 @@ def youtube_resume(url,selection):
                                                  combine_prompt=combine_prompt_template)
             resume = summary_chain.run(texts)
             print("resumen bulletpoints")
+            print(resume)
             print(f"Total Tokens: {cb.total_tokens}")
             print(f"Prompt Tokens: {cb.prompt_tokens}")
             print(f"Completion Tokens: {cb.completion_tokens}")
@@ -118,6 +127,3 @@ def youtube_resume(url,selection):
             return resume
 
                 
-                
-        
-            

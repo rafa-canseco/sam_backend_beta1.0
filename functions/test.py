@@ -1,12 +1,13 @@
 from langchain.callbacks import get_openai_callback
-from langchain.document_loaders import CSVLoader
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.chains import RetrievalQA
+from langchain.document_loaders import YoutubeLoader
 from langchain import OpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains.question_answering import load_qa_chain
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.chains import RetrievalQA
+from langchain.chains.summarize import load_summarize_chain
+from langchain import PromptTemplate
+import ssl
 import os
 from decouple import config
 import openai
@@ -14,42 +15,26 @@ import openai
 os.environ["OPENAI_API_KEY"] =config("OPEN_AI_KEY")
 openai.api_key = config("OPEN_AI_KEY")
 
-def influencer(question):
-    name_pdf ="./Influencers/base de datos lugares cdmx - cdmx.csv"
+url = "https://www.youtube.com/watch?v=Ok9qHeLxu10"
+question = "de que trata el video?"
+selection="bulletpoints"
+
+def preguntar_youtube(url,question):
     with get_openai_callback() as cb:
-        
-        loader = CSVLoader(name_pdf)
-        documents = loader.load()
-        # split el documento en pedazos
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000,chunk_overlap=0)
-        texts = text_splitter.split_documents(documents)
-
-        #Seleccionar los embedings
+        ssl._create_default_https_context = ssl._create_stdlib_context
+        loader = YoutubeLoader.from_youtube_url(url,
+        language=["en","es"],
+        translation="es")
+        result = loader.load()
+        llm =OpenAI(temperature=0,openai_api_key=openai.api_key)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
+        texts=text_splitter.split_documents(result)
         embeddings = OpenAIEmbeddings()
-        #crear un vectorstore para usarlo de indice
-        db=Chroma.from_documents(texts,embeddings)
-        #revela el index en una interfaz a regresar
-        retriever = db.as_retriever(search_type="similarity",search_kwargs={"k":2})
-        #crea una cadena para responder mensajes
-        llm = OpenAI(temperature=0.2)
-        #crea una cadena para responder mensajes
-        template = """
-        Eres Gordon RamsayBot, un asistente virtual modelado según el famoso chef Gordon Ramsay. \
-        Tu objetivo es brindar recomendaciones turísticas personalizadas a través de mensajería de texto, como si fueras el propio Gordon. \
-        Responde a mis preguntas y comentarios con la franqueza y el conocimiento de Ramsay, elogiando lo que merece y criticando lo que no esté a la altura. \
-        Tu tono debe ser apasionado, exigente, perfeccionista, sarcástico, apasionado y auténtico, emulando la personalidad del propio Gordon. \ 
-        La misión es guiar al usuario en una experiencia culinaria y cultural única. \
-        {context}
-
-        Question: {question}
-        Answer:
-        """
-
-        custom_prompt = PromptTemplate(template=template, input_variables=["context", "question"])
-        # Add the personality prompt to the LLM
-        qa = RetrievalQA.from_chain_type(llm=llm,chain_type="stuff",retriever=retriever,return_source_documents=False,chain_type_kwargs={"prompt": custom_prompt})
-        result = qa.run(question)
-
+        db =Chroma.from_documents(texts,embeddings)
+        retriever =db.as_retriever(search_type="similarity",search_kwargs={"k":2})
+        qa = RetrievalQA.from_chain_type(llm=OpenAI(temperature=0),chain_type="stuff",retriever=retriever,return_source_documents=False)
+        query=question
+        result=qa({"query":query})
         print(result)
         print(f"Total Tokens: {cb.total_tokens}")
         print(f"Prompt Tokens: {cb.prompt_tokens}")
@@ -57,128 +42,93 @@ def influencer(question):
         print(f"Successful Requests: {cb.successful_requests}")
         print(f"Total Cost (USD): ${cb.total_cost}")
         return result
-
-from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent, AgentOutputParser
-from langchain.prompts import StringPromptTemplate
-from langchain import OpenAI, LLMChain,LLMMathChain
-from typing import List, Union
-from langchain.schema import AgentAction, AgentFinish
-import re
-import langchain
-from langchain.utilities import OpenWeatherMapAPIWrapper
-from langchain.agents import AgentType,load_tools
-from openai_requests import get_chat_response_telegram
-
-def agent_influencer(message):
-    llm = OpenAI(temperature=0, openai_api_key=openai.api_key)
-    tools = []
-    wikitool = [
-        Tool(
-            name="Demo",
-            func=influencer,
-            description="Useful for when you get asked about recommendations of food,enterteinment or places to visit.Input should be the first input of the user"
-        ),
-        Tool(
-            name="Idle",
-            func=get_chat_response_telegram,
-            description="Useful when you have no action or you get asked a personal question.Input should be the first input of the user"
-        )
-
-    ]
-    tools.extend(wikitool)
-
-    template = """
-    Eres Gordon RamsayBot, un asistente virtual modelado según el famoso chef Gordon Ramsay. \
-    Tu objetivo es brindar recomendaciones turísticas personalizadas a través de mensajería de texto, como si fueras el propio Gordon. \
-    Tu tono debe ser apasionado, exigente, perfeccionista, sarcástico, apasionado y auténtico, emulando la personalidad del propio Gordon. \ 
-    La misión es guiar al usuario en una experiencia culinaria y cultural única. \
     
-    You have access to the following tools:
-
-    {tools}
-
-    Use the following format:
-
-    Question: the input question you must answer
-    Thought: you should always think about what to do
-    Action: the action to take, should be one of [{tool_names}]
-    Action Input: the input to the action
-    Observation: the result of the action
-    ... (this Thought/Action/Action Input/Observation can repeat N times)
-    Thought: I now know the final answer
-    Final Answer: the final answer to the original input question
-
-    Begin! Remember to answer as a passionate and sarcastic like the Chef Gordon Ramsay when giving your final answer.
-
-    Question: {input}
-    {agent_scratchpad}"""
-
-    # Set up a prompt template
-    class CustomPromptTemplate(StringPromptTemplate):
-        # The template to use
-        template: str
-        # The list of tools available
-        tools: List[Tool]
+def youtube_resume(url,selection):
+    with get_openai_callback() as cb:
+        ssl._create_default_https_context = ssl._create_stdlib_context
+        loader = YoutubeLoader.from_youtube_url(url,
+          language=["en","es"],
+        translation="es")
+        text=loader.load()
+        llm =OpenAI(temperature=0,openai_api_key=openai.api_key)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000,chunk_overlap=0)
+        texts=text_splitter.split_documents(text)
         
-        def format(self, **kwargs) -> str:
-            # Get the intermediate steps (AgentAction, Observation tuples)
-            # Format them in a particular way
-            intermediate_steps = kwargs.pop("intermediate_steps")
-            thoughts = ""
-            for action, observation in intermediate_steps:
-                thoughts += action.log
-                thoughts += f"\nObservation: {observation}\nThought: "
-            # Set the agent_scratchpad variable to that value
-            kwargs["agent_scratchpad"] = thoughts
-            # Create a tools variable from the list of tools provided
-            kwargs["tools"] = "\n".join([f"{tool.name}: {tool.description}" for tool in self.tools])
-            # Create a list of tool names for the tools provided
-            kwargs["tool_names"] = ", ".join([tool.name for tool in self.tools])
-            return self.template.format(**kwargs)
-
-            
-    prompt = CustomPromptTemplate(
-        template=template,
-        tools=tools,
-        # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
-        # This includes the `intermediate_steps` variable because that is needed
-        input_variables=["input", "intermediate_steps"]
-    )
-    class CustomOutputParser(AgentOutputParser):
+        if (selection == "normal"):
+            summary_chain = load_summarize_chain(llm=llm,chain_type="map_reduce",verbose=False)
+            resume =summary_chain.run(texts)  
+            print("---------------------------")
+            print("Resumen:   ")
+            print(resume)
+            print("---------------------------")
+            print(f"Total Tokens: {cb.total_tokens}")
+            print(f"Prompt Tokens: {cb.prompt_tokens}")
+            print(f"Completion Tokens: {cb.completion_tokens}")
+            print(f"Successful Requests: {cb.successful_requests}")
+            print(f"Total Cost (USD): ${cb.total_cost}")
+            return resume
         
-        def parse(self, llm_output: str) -> Union[AgentAction, AgentFinish]:
-            # Check if agent should finish
-            if "Final Answer:" in llm_output:
-                return AgentFinish(
-                    # Return values is generally always a dictionary with a single `output` key
-                    # It is not recommended to try anything else at the moment :)
-                    return_values={"output": llm_output.split("Final Answer:")[-1].strip()},
-                    log=llm_output,
-                )
-            # Parse out the action and action input
-            regex = r"Action\s*\d*\s*:(.*?)\nAction\s*\d*\s*Input\s*\d*\s*:[\s]*(.*)"
-            match = re.search(regex, llm_output, re.DOTALL)
-            if not match:
-                raise ValueError(f"Could not parse LLM output: `{llm_output}`")
-            action = match.group(1).strip()
-            action_input = match.group(2)
-            # Return the action and action input
-            return AgentAction(tool=action, tool_input=action_input.strip(" ").strip('"'), log=llm_output)
+        elif (selection == "extended"):
 
-    output_parser = CustomOutputParser()
-    llm_chain = LLMChain(llm=llm, prompt=prompt)
-    tool_names = [tool.name for tool in tools]
-    agent = LLMSingleActionAgent(
-        llm_chain=llm_chain, 
-        output_parser=output_parser,
-        stop=["\nObservation:"], 
-        allowed_tools=tool_names
-    )
-    agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, 
-                                                    tools=tools, 
-                                                    verbose=True)
-    response =agent_executor.run(message)
-    return response
+            map_prompt = """
+            Write a concise summary of the following:
+            "{text}"
+            CONCISE SUMMARY:
+            """
+            map_prompt_template = PromptTemplate(template=map_prompt,input_variables=["text"])
+            combine_prompt = """
+            Write a concise summary of the following text delimited by triple backquotes.
+            Your goal is to give a summary of this section so that a reader will have a full understanding of what happened.
+            Your response should be at least three paragraphs and fully encompass what was said in the passage.
+            Always deliver your response in spanish. 
+                    ```{text}```
+            FULL SUMMARY:
+            """
+            combine_prompt_template = PromptTemplate(template=combine_prompt,input_variables=["text"])
+            summary_chain = load_summarize_chain(llm=llm,chain_type="map_reduce",
+                                                 verbose=True,
+                                                 map_prompt=map_prompt_template,
+                                                 combine_prompt=combine_prompt_template)
+            resume = summary_chain.run(texts)
+            print("resumen extended")
+            print(resume)
+            print(f"Total Tokens: {cb.total_tokens}")
+            print(f"Prompt Tokens: {cb.prompt_tokens}")
+            print(f"Completion Tokens: {cb.completion_tokens}")
+            print(f"Successful Requests: {cb.successful_requests}")
+            print(f"Total Cost (USD): ${cb.total_cost}")
+            return resume
+        
+        elif (selection == "bulletpoints"):
+            map_prompt = """
+            Write a concise summary of the following:
+            "{text}"
+            CONCISE SUMMARY:
+            """
+            map_prompt_template = PromptTemplate(template=map_prompt,input_variables=["text"])
+            combine_prompt = """
+            Write a concise summary of the following text delimited by triple backquotes.
+            Return your response in bullet points which covers the key points of the text.
+            Always deliver your response in spanish.
+            ```{text}```
+            BULLET POINT SUMMARY:
+            """
+            combine_prompt_template = PromptTemplate(template=combine_prompt,input_variables=["text"])
+            summary_chain = load_summarize_chain(llm=llm,chain_type="map_reduce",
+                                                 verbose=True,
+                                                 map_prompt=map_prompt_template,
+                                                 combine_prompt=combine_prompt_template)
+            resume = summary_chain.run(texts)
+            print("resumen bulletpoints")
+            print(resume)
+            print(f"Total Tokens: {cb.total_tokens}")
+            print(f"Prompt Tokens: {cb.prompt_tokens}")
+            print(f"Completion Tokens: {cb.completion_tokens}")
+            print(f"Successful Requests: {cb.successful_requests}")
+            print(f"Total Cost (USD): ${cb.total_cost}")
+            return resume
 
-hgola =influencer(question)
-print(hgola)
+                
+                
+        
+   
