@@ -17,6 +17,7 @@ import json
 import uvicorn
 from telegram import Bot,Update
 from telegram.ext import Updater,CallbackContext,MessageHandler,filters
+from telegram.request import RequestData
 import requests
 from json import loads
 from pydub import AudioSegment
@@ -548,7 +549,7 @@ async def telegram_webhook(request: Request):
                     chat_response = agentv1(message_decoded)
                     print(chat_response)
                     store_messages_telegram(request_message=message_decoded, response_message=chat_response,user=usuario)
-
+                    print("respuesta generada")
                     # Guard: Ensure output
                     if not chat_response:
                         raise HTTPException(status_code=400, detail="Failed chat response")
@@ -606,10 +607,12 @@ async def telegram_webhook(request: Request):
 
 @app.on_event("startup")
 async def setup_webhook():
+
     # Configurar el webhook con la API de Telegram
     webhook_endpoint = f"https://api.telegram.org/bot{token}/setWebhook"
-    # webhook_url = f"{ngrok_url}/webhook"
-    webhook_url = "https://readymad3.com/webhook"
+    webhook_url = f"{ngrok_url}/webhook"
+
+    # webhook_url = "https://readymad3.com/webhook"
     # webhook_url = "http://localhost:8000/webhook"
     response = requests.post(webhook_endpoint, json={"url": webhook_url})
     print(response)

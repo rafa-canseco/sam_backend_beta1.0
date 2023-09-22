@@ -100,7 +100,7 @@ def convert_text_to_speech_telegram(message):
     #Define Data
     body = {
         "text": message,
-        "model_id": "eleven_multilingual_v1",
+        "model_id": "eleven_multilingual_v2",
         "voice_settings": {
             "stability": 0.06,
             "similarity_boost":0.3,
@@ -108,7 +108,7 @@ def convert_text_to_speech_telegram(message):
     }
 
     #Define voice
-    voice_rachel = "k6ySAJf7wfnoqjacH1BJ"
+    voice_rachel = "5foAkxpX0K5wizIaF5vu"
     voice_antoni = "oUciFfPUJCaDqHitPLu5"
 
 
@@ -127,8 +127,10 @@ def convert_text_to_speech_telegram(message):
 
     # Send request
     try:
+        print("generando voz")
         response = requests.post(endpoint, json=body, headers=headers)
     except Exception as e:
+        print(f"Ocurrió un error: {e}")
         return
     
     #Handle Response 
